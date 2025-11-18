@@ -16,6 +16,7 @@
             --primary-color: #2563eb;
             --secondary-color: #1e40af;
             --accent-color: #dc2626;
+            --success-color: #059669;
             --text-dark: #1f2937;
             --text-light: #6b7280;
             --bg-light: #f9fafb;
@@ -111,8 +112,38 @@
             box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
         }
 
-        /* Services Section */
-        .services {
+        /* Stats Section */
+        .stats {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
             padding: 5rem 0;
             background: var(--bg-light);
         }
@@ -129,6 +160,374 @@
             color: var(--text-light);
             margin-bottom: 3rem;
             font-size: 1.1rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-category {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-description {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .portfolio-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        .portfolio-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--success-color);
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Case Studies Section */
+        .case-studies {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .case-study {
+            background: var(--bg-light);
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .case-study-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .case-study-title {
+            font-size: 2rem;
+            color: var(--text-dark);
+        }
+
+        .case-study-industry {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .case-study-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .case-block {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .case-block h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .case-block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .case-block li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .case-block li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .case-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--success-color);
+            display: block;
+        }
+
+        .result-label {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Before/After Section */
+        .before-after {
+            padding: 5rem 0;
+            background: var(--bg-light);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .comparison-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .comparison-header {
+            padding: 1.5rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .comparison-header.before {
+            background: #ef4444;
+            color: var(--white);
+        }
+
+        .comparison-header.after {
+            background: var(--success-color);
+            color: var(--white);
+        }
+
+        .comparison-content {
+            padding: 2rem;
+        }
+
+        .comparison-visual {
+            width: 100%;
+            height: 200px;
+            background: #f3f4f6;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 3rem;
+        }
+
+        .comparison-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .comparison-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .comparison-list li:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-list.before li:before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .comparison-list.after li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-rating {
+            color: #fbbf24;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .testimonial-position {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: var(--bg-light);
         }
 
         .service-grid {
@@ -449,6 +848,18 @@
             .pricing-grid {
                 grid-template-columns: 1fr;
             }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-study-content {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -458,10 +869,10 @@
         <nav class="container">
             <div class="logo">SwissDigital Consulting</div>
             <ul class="nav-links">
+                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#services">Dienstleistungen</a></li>
                 <li><a href="#pricing">Preise</a></li>
-                <li><a href="#industries">Branchen</a></li>
-                <li><a href="#about">Über uns</a></li>
+                <li><a href="#testimonials">Referenzen</a></li>
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
         </nav>
@@ -473,6 +884,469 @@
             <h1>Digitalisierung für Schweizer KMUs</h1>
             <p>Professionelle Web-Lösungen, Automatisierung und digitale Transformation für Ihr Unternehmen</p>
             <a href="#contact" class="cta-button">Kostenlose Beratung anfragen</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Jahre Erfahrung</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Erfolgreich abgeschlossene Projekte</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Kundenzufriedenheit</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support & Betreuung</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Unsere Projekte</h2>
+            <p class="section-subtitle">Reale Lösungen für reale Herausforderungen</p>
+            
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">🎯</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Web Platform</span>
+                        <h3 class="portfolio-title">Digital Customer Loyalty Platform</h3>
+                        <p class="portfolio-description">
+                            Entwicklung einer innovativen Kundenbindungsplattform mit integriertem Belohnungssystem. 
+                            Social Features ermöglichen Kunden, ihre Erfahrungen zu teilen und zu vernetzen.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Smart Contracts</span>
+                        </div>
+                        <div class="portfolio-metrics">
+                            <div class="metric">
+                                <div class="metric-value">+45%</div>
+                                <div class="metric-label">Kundenbindung</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">5.000+</div>
+                                <div class="metric-label">Aktive Nutzer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">💳</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Payment System</span>
+                        <h3 class="portfolio-title">Payment Automation System</h3>
+                        <p class="portfolio-description">
+                            Micro-Payment-Lösung für kleine Händler und Dienstleister. 
+                            Automatisierte Zahlungsabwicklung mit Multi-Currency Support und sofortiger Abrechnung.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Blockchain</span>
+                            <span class="tech-tag">API Integration</span>
+                            <span class="tech-tag">Security</span>
+                        </div>
+                        <div class="portfolio-metrics">
+                            <div class="metric">
+                                <div class="metric-value">-70%</div>
+                                <div class="metric-label">Transaktionskosten</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">Instant</div>
+                                <div class="metric-label">Settlement</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">📚</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">E-Learning</span>
+                        <h3 class="portfolio-title">Interactive Learning Portal</h3>
+                        <p class="portfolio-description">
+                            Moderne Bildungsplattform mit gamifiziertem Lernsystem. 
+                            Automatische Bewertung, Fortschritts-Tracking und Belohnungssystem zur Motivation der Lernenden.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Quiz Engine</span>
+                            <span class="tech-tag">Analytics</span>
+                            <span class="tech-tag">Gamification</span>
+                        </div>
+                        <div class="portfolio-metrics">
+                            <div class="metric">
+                                <div class="metric-value">+85%</div>
+                                <div class="metric-label">Engagement Rate</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">2.500+</div>
+                                <div class="metric-label">Abgeschlossene Kurse</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">📊</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Analytics Dashboard</span>
+                        <h3 class="portfolio-title">Real-time Analytics Dashboard</h3>
+                        <p class="portfolio-description">
+                            Echtzeit-Statistik-Dashboard für Sportvereins-Management. 
+                            Automatische Datenerfassung, Spieler-Performance-Tracking und Team-Analytics.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Data Visualization</span>
+                            <span class="tech-tag">Real-time</span>
+                            <span class="tech-tag">Reporting</span>
+                        </div>
+                        <div class="portfolio-metrics">
+                            <div class="metric">
+                                <div class="metric-value">-90%</div>
+                                <div class="metric-label">Manuelle Arbeit</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">Live</div>
+                                <div class="metric-label">Daten-Updates</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="case-studies">
+        <div class="container">
+            <h2 class="section-title">Erfolgsgeschichten</h2>
+            <p class="section-subtitle">Wie wir KMUs zum Erfolg verhelfen</p>
+
+            <!-- Case Study 1: Restaurant -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h3 class="case-study-title">Restaurant Digitalisierung</h3>
+                    <span class="case-study-industry">Gastronomie</span>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-block">
+                        <h4>Herausforderung</h4>
+                        <ul>
+                            <li>30% verlorene Reservierungen durch besetztes Telefon</li>
+                            <li>Keine Online-Präsenz</li>
+                            <li>Manuelle Reservierungsverwaltung</li>
+                            <li>Hohe No-Show Rate (25%)</li>
+                        </ul>
+                    </div>
+                    <div class="case-block">
+                        <h4>Lösung</h4>
+                        <ul>
+                            <li>24/7 Online-Buchungssystem</li>
+                            <li>WhatsApp Integration für Bestätigungen</li>
+                            <li>Automatische Erinnerungen</li>
+                            <li>Digitale Menükarte mit QR-Code</li>
+                        </ul>
+                    </div>
+                    <div class="case-block">
+                        <h4>Technologie</h4>
+                        <ul>
+                            <li>Custom Web-App</li>
+                            <li>WhatsApp Business API</li>
+                            <li>Google Calendar Integration</li>
+                            <li>Mobile-optimiert</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="case-results">
+                    <div class="result-item">
+                        <span class="result-value">+40%</span>
+                        <div class="result-label">Mehr Reservierungen</div>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value">-15h</span>
+                        <div class="result-label">Weniger Telefon pro Woche</div>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value">-60%</span>
+                        <div class="result-label">No-Show Reduktion</div>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value">3 Mon.</span>
+                        <div class="result-label">ROI erreicht in</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study 2: Handwerker -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h3 class="case-study-title">Elektriker Terminverwaltung</h3>
+                    <span class="case-study-industry">Handwerk</span>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-block">
+                        <h4>Herausforderung</h4>
+                        <ul>
+                            <li>2-3 Stunden täglich für Terminkoordination</li>
+                            <li>Ständige Unterbrechungen auf der Baustelle</li>
+                            <li>Doppelbuchungen durch manuelle Planung</li>
+                            <li>Verpasste Anrufe = verlorene Kunden</li>
+                        </ul>
+                    </div>
+                    <div class="case-block">
+                        <h4>Lösung</h4>
+                        <ul>
+                            <li>Self-Service Online-Terminbuchung</li>
+                            <li>Automatische SMS-Erinnerungen</li>
+                            <li>Google Calendar Synchronisation</li>
+                            <li>Einfaches Admin-Panel</li>
+                        </ul>
+                    </div>
+                    <div class="case-block">
+                        <h4>Technologie</h4>
+                        <ul>
+                            <li>Booking System</li>
+                            <li>SMS-Gateway Integration</li>
+                            <li>Calendar API</li>
+                            <li>Mobile App</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="case-results">
+                    <div class="result-item">
+                        <span class="result-value">-70%</span>
+                        <div class="result-label">Weniger Telefon-Anrufe</div>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value">12h</span>
+                        <div class="result-label">Zeit gespart pro Woche</div>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value">+35%</span>
+                        <div class="result-label">Mehr Aufträge</div>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value">2 Mon.</span>
+                        <div class="result-label">Amortisation</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study 3: Production -->
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h3 class="case-study-title">Produktions-Optimierung</h3>
+                    <span class="case-study-industry">Industrie</span>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-block">
+                        <h4>Herausforderung</h4>
+                        <ul>
+                            <li>Keine Echtzeit-Übersicht der Maschinenauslastung</li>
+                            <li>Manuelle Excel-Tabellen für Tracking</li>
+                            <li>Verzögerte Problemerkennung</li>
+                            <li>Ineffiziente Produktionsplanung</li>
+                        </ul>
+                    </div>
+                    <div class="case-block">
+                        <h4>Lösung</h4>
+                        <ul>
+                            <li>Echtzeit-Dashboard für alle Maschinen</li>
+                            <li>Automatische Datenerfassung</li>
+                            <li>Auslastungs-Tracking & Alerts</li>
+                            <li>Produktions-KPI Visualisierung</li>
+                        </ul>
+                    </div>
+                    <div class="case-block">
+                        <h4>Technologie</h4>
+                        <ul>
+                            <li>Custom Dashboard</li>
+                            <li>IoT Sensor Integration</li>
+                            <li>Real-time Analytics</li>
+                            <li>Reporting System</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="case-results">
+                    <div class="result-item">
+                        <span class="result-value">+18%</span>
+                        <div class="result-label">Effizienz-Steigerung</div>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value">-25%</span>
+                        <div class="result-label">Stillstandszeiten</div>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value">Live</span>
+                        <div class="result-label">Echtzeit-Daten</div>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-value">4 Mon.</span>
+                        <div class="result-label">ROI erreicht in</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Section -->
+    <section class="before-after">
+        <div class="container">
+            <h2 class="section-title">Vorher / Nachher</h2>
+            <p class="section-subtitle">Der Unterschied ist messbar</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header before">VORHER</div>
+                    <div class="comparison-content">
+                        <div class="comparison-visual">📞</div>
+                        <ul class="comparison-list before">
+                            <li>Manuelle Terminvereinbarungen am Telefon</li>
+                            <li>Verpasste Anrufe = verlorene Kunden</li>
+                            <li>Doppelbuchungen durch Excel-Tabellen</li>
+                            <li>Keine Übersicht über Auslastung</li>
+                            <li>2-3 Stunden täglich für Administration</li>
+                            <li>Hohe No-Show Rate ohne Erinnerungen</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="comparison-header after">NACHHER</div>
+                    <div class="comparison-content">
+                        <div class="comparison-visual">⚡</div>
+                        <ul class="comparison-list after">
+                            <li>Automatische Online-Buchung 24/7</li>
+                            <li>Jede Anfrage wird erfasst und bearbeitet</li>
+                            <li>Intelligente Kalender-Synchronisation</li>
+                            <li>Echtzeit-Übersicht aller Termine</li>
+                            <li>Nur 15 Minuten täglich für Verwaltung</li>
+                            <li>Automatische SMS/WhatsApp-Erinnerungen</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Was unsere Kunden sagen</h2>
+            <p class="section-subtitle">Echte Erfahrungen von echten Unternehmen</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        Die neue Buchungsplattform hat unseren Alltag komplett verändert. Wir verlieren keine Reservierungen mehr und haben endlich Zeit für das Wesentliche – unsere Gäste.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MS</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">M. Schmidt</div>
+                            <div class="testimonial-position">Inhaber, Restaurant Bellevue, Zürich</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        Als CNC-Fertiger weiß Serkan genau, wovon er spricht. Die Lösung war exakt auf unsere Bedürfnisse zugeschnitten. Das Dashboard zeigt uns in Echtzeit, wo wir stehen.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">TW</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">T. Weber</div>
+                            <div class="testimonial-position">Geschäftsführer, Weber Präzisionsteile AG, Aargau</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        Früher habe ich jeden Tag 2-3 Stunden am Telefon verbracht. Jetzt buchen die Kunden selbst online. Ich spare Zeit und kann mehr Aufträge annehmen. Investition hat sich in 2 Monaten gelohnt!
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">PK</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">P. Keller</div>
+                            <div class="testimonial-position">Elektriker, Keller Elektro GmbH, Luzern</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        Professionelle Arbeit von A bis Z. Die Kommunikation war klar, die Umsetzung schnell und das Ergebnis übertrifft unsere Erwartungen. Endlich ein Partner, der versteht was KMUs brauchen.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AL</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">A. Lopez</div>
+                            <div class="testimonial-position">Inhaberin, Cafe Central, Basel</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        Das WhatsApp-System ist genial! Unsere Kunden lieben es, dass sie einfach per WhatsApp mit uns kommunizieren können. Die No-Show Rate ist um 60% gesunken.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RS</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">R. Steiner</div>
+                            <div class="testimonial-position">Inhaber, Steiner Sanitär AG, Bern</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        Die Kombination aus technischem Know-how und Verständnis für unsere Branche ist einzigartig. Serkan kennt die Herausforderungen im Produktionsalltag aus eigener Erfahrung.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MH</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">M. Huber</div>
+                            <div class="testimonial-position">Produktionsleiter, Metallbau Huber GmbH, St. Gallen</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -770,11 +1644,11 @@
                 </div>
 
                 <div class="footer-section">
-    <h3>Kontakt</h3>
-    <p>📧 serayd6161@gmail.com</p>
-    <p>📱 +41 78 665 02 53</p>
-    <p>📍 Aargau, Schweiz</p>
-</div>
+                    <h3>Kontakt</h3>
+                    <p>📧 serayd6161@gmail.com</p>
+                    <p>📱 +41 78 665 02 53</p>
+                    <p>📍 Aargau, Schweiz</p>
+                </div>
             </div>
 
             <div class="footer-bottom">
@@ -783,7 +1657,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -798,5 +1672,10 @@
             });
         });
 
-        // Form submission handler (you'll need to connect this to your backend)
-        document.querySelector('.contact-form')
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            // Formspree will handle the submission
+        });
+    </script>
+</body>
+</html>
