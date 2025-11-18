@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwissDigital Consulting - Digitalisierung für KMUs</title>
+    <meta name="description" content="Professionelle Digitalisierungslösungen für Restaurants, Handwerker und Produktionsfirmen in der Schweiz">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #dc2626;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .service-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        /* Industries Section */
+        .industries {
+            padding: 5rem 0;
+            background: var(--bg-light);
+        }
+
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .industry-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .industry-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .expertise-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .expertise-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .expertise-item span {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #b91c1c;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #9ca3af;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .expertise-list {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">SwissDigital Consulting</div>
+            <ul class="nav-links">
+                <li><a href="#services">Dienstleistungen</a></li>
+                <li><a href="#pricing">Preise</a></li>
+                <li><a href="#industries">Branchen</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Digitalisierung für Schweizer KMUs</h1>
+            <p>Professionelle Web-Lösungen, Automatisierung und digitale Transformation für Ihr Unternehmen</p>
+            <a href="#contact" class="cta-button">Kostenlose Beratung anfragen</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Unsere Dienstleistungen</h2>
+            <p class="section-subtitle">Massgeschneiderte digitale Lösungen für Ihr Unternehmen</p>
+            
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Professionelle Websites</h3>
+                    <p>Modern, responsive und SEO-optimiert. Ihre digitale Visitenkarte, die Kunden überzeugt.</p>
+                    <ul>
+                        <li>Responsive Design</li>
+                        <li>SEO-Optimierung</li>
+                        <li>Content Management</li>
+                        <li>Mobile-First Ansatz</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>Prozess-Automatisierung</h3>
+                    <p>Sparen Sie Zeit und Kosten durch intelligente Automatisierung Ihrer Geschäftsprozesse.</p>
+                    <ul>
+                        <li>Workflow-Automatisierung</li>
+                        <li>E-Mail Marketing Automation</li>
+                        <li>Datenverarbeitung</li>
+                        <li>Integration bestehender Systeme</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💬</div>
+                    <h3>WhatsApp Business</h3>
+                    <p>Automatisierte Kundenkommunikation über WhatsApp. Termine, Anfragen und Support automatisiert.</p>
+                    <ul>
+                        <li>Automatische Antworten</li>
+                        <li>Terminbuchung</li>
+                        <li>FAQ-Bots</li>
+                        <li>Kundenservice 24/7</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Custom Web-Apps</h3>
+                    <p>Individuelle Webanwendungen für Ihre spezifischen Geschäftsanforderungen.</p>
+                    <ul>
+                        <li>Kundenverwaltung (CRM)</li>
+                        <li>Statistik-Dashboards</li>
+                        <li>Buchungssysteme</li>
+                        <li>Interne Tools</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Business Analytics</h3>
+                    <p>Datenbasierte Entscheidungen treffen mit professionellen Analyse-Tools.</p>
+                    <ul>
+                        <li>Echtzeit-Statistiken</li>
+                        <li>Reporting-Systeme</li>
+                        <li>KPI-Tracking</li>
+                        <li>Datenvisualisierung</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Wartung & Support</h3>
+                    <p>Zuverlässiger technischer Support und kontinuierliche Weiterentwicklung Ihrer Systeme.</p>
+                    <ul>
+                        <li>24/7 Monitoring</li>
+                        <li>Regelmässige Updates</li>
+                        <li>Sicherheits-Patches</li>
+                        <li>Technischer Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Transparente Preise</h2>
+            <p class="section-subtitle">Wählen Sie das passende Paket für Ihr Unternehmen</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Digital Start</h3>
+                    <div class="price">2'500 CHF</div>
+                    <p class="price-period">Einmalig</p>
+                    <ul class="pricing-features">
+                        <li>✓ Professionelle Website</li>
+                        <li>✓ Responsive Design</li>
+                        <li>✓ Google My Business Setup</li>
+                        <li>✓ Kontaktformular</li>
+                        <li>✓ SEO Grundoptimierung</li>
+                        <li>✓ 1 Monat Support</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Jetzt anfragen</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>Digital Plus</h3>
+                    <div class="price">4'500 CHF</div>
+                    <p class="price-period">Einmalig</p>
+                    <ul class="pricing-features">
+                        <li>✓ Alles aus Digital Start</li>
+                        <li>✓ WhatsApp Business Integration</li>
+                        <li>✓ Online-Terminbuchung</li>
+                        <li>✓ Einfache Automatisierung</li>
+                        <li>✓ Newsletter-System</li>
+                        <li>✓ 3 Monate Support</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Jetzt anfragen</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Digital Premium</h3>
+                    <div class="price">8'500 CHF</div>
+                    <p class="price-period">Einmalig</p>
+                    <ul class="pricing-features">
+                        <li>✓ Alles aus Digital Plus</li>
+                        <li>✓ Custom Web-App</li>
+                        <li>✓ Vollständige Automatisierung</li>
+                        <li>✓ CRM-Integration</li>
+                        <li>✓ Analytics Dashboard</li>
+                        <li>✓ 6 Monate Premium Support</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Jetzt anfragen</a>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; color: var(--text-light);">
+                <strong>Wartungsvertrag:</strong> Ab 150 CHF/Monat für kontinuierliche Betreuung, Updates und Support
+            </p>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industries" class="industries">
+        <div class="container">
+            <h2 class="section-title">Unsere Branchen-Expertise</h2>
+            <p class="section-subtitle">Spezialisierte Lösungen für verschiedene Industrien</p>
+            
+            <div class="industry-grid">
+                <div class="industry-card">
+                    <h3>🍽️ Restaurants & Gastro</h3>
+                    <p><strong>Digitale Menükarten</strong> - Online-Reservierungen - WhatsApp-Bestellung - Lieferdienst-Integration - Kundenbewertungen</p>
+                    <p style="margin-top: 1rem; font-style: italic; color: var(--text-light);">
+                        Steigern Sie Ihre Tischauslastung und vereinfachen Sie Reservierungen.
+                    </p>
+                </div>
+
+                <div class="industry-card">
+                    <h3>🔧 Handwerker & Dienstleister</h3>
+                    <p><strong>Online-Terminbuchung</strong> - Auftragsverwaltung - Kundenkommunikation - Angebotserstellung - Materialbeschaffung</p>
+                    <p style="margin-top: 1rem; font-style: italic; color: var(--text-light);">
+                        Weniger Telefonate, mehr Zeit für Ihr Handwerk.
+                    </p>
+                </div>
+
+                <div class="industry-card">
+                    <h3>🏭 Produktionsfirmen</h3>
+                    <p><strong>Produktionsplanung</strong> - Maschinenauslastung - Qualitätskontrolle - Materialverwaltung - Echtzeit-Statistiken</p>
+                    <p style="margin-top: 1rem; font-style: italic; color: var(--text-light);">
+                        Optimieren Sie Ihre Produktionsprozesse mit digitalen Tools.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Über SwissDigital Consulting</h2>
+                    <p>
+                        Mit über 15 Jahren Erfahrung in der Industrie und moderner Web-Entwicklung 
+                        verstehe ich die Herausforderungen von KMUs in der Schweiz.
+                    </p>
+                    <p>
+                        Meine Mission: Digitalisierung einfach, effizient und bezahlbar machen. 
+                        Keine komplexen IT-Projekte, sondern praktische Lösungen, die sofort Mehrwert schaffen.
+                    </p>
+                    <p>
+                        <strong>Serkan Aydin</strong> - Gründer & Digitalisierungs-Experte
+                    </p>
+
+                    <div class="expertise-list">
+                        <div class="expertise-item">
+                            <span>✓</span> 15+ Jahre Industrie-Erfahrung
+                        </div>
+                        <div class="expertise-item">
+                            <span>✓</span> Web-Entwicklung
+                        </div>
+                        <div class="expertise-item">
+                            <span>✓</span> Prozess-Automatisierung
+                        </div>
+                        <div class="expertise-item">
+                            <span>✓</span> Blockchain & Web3
+                        </div>
+                        <div class="expertise-item">
+                            <span>✓</span> CNC & Produktionstechnik
+                        </div>
+                        <div class="expertise-item">
+                            <span>✓</span> Business Analytics
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-image">
+                    <svg width="100%" height="400" viewBox="0 0 400 400" style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); border-radius: 15px;">
+                        <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="120" font-weight="bold" font-family="Arial">SD</text>
+                        <text x="50%" y="65%" text-anchor="middle" fill="white" font-size="20" font-family="Arial">SwissDigital</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Bereit für die Digitalisierung?</h2>
+            <p>Kontaktieren Sie uns für eine kostenlose Erstberatung</p>
+            
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name / Firma *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-Mail *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefon</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="industry">Branche</label>
+                    <select id="industry" name="industry">
+                        <option value="">Bitte wählen...</option>
+                        <option value="gastro">Restaurant / Gastronomie</option>
+                        <option value="handwerk">Handwerk / Dienstleistung</option>
+                        <option value="produktion">Produktion / Industrie</option>
+                        <option value="andere">Andere</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Ihre Nachricht *</label>
+                    <textarea id="message" name="message" required placeholder="Beschreiben Sie kurz Ihr Projekt oder Ihre Anforderungen..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Anfrage senden</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SwissDigital Consulting</h3>
+                    <p>Digitalisierungslösungen für Schweizer KMUs</p>
+                    <p>Professionell • Zuverlässig • Persönlich</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <a href="#services">Web-Entwicklung</a>
+                    <a href="#services">Automatisierung</a>
+                    <a href="#services">WhatsApp Business</a>
+                    <a href="#services">Custom Apps</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Branchen</h3>
+                    <a href="#industries">Restaurants</a>
+                    <a href="#industries">Handwerker</a>
+                    <a href="#industries">Produktionsfirmen</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4e272028210e3d39273d3d2a2729273a2f22602d26">[email&#160;protected]</a></p>
+                    <p>📱 WhatsApp Business</p>
+                    <p>📍 Schweiz</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 SwissDigital Consulting. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler (you'll need to connect this to your backend)
+        document.querySelector('.contact-form')
