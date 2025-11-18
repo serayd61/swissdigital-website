@@ -17,6 +17,7 @@
             --secondary-color: #1e40af;
             --accent-color: #dc2626;
             --success-color: #059669;
+            --warning-color: #f59e0b;
             --text-dark: #1f2937;
             --text-light: #6b7280;
             --bg-light: #f9fafb;
@@ -33,6 +34,58 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+
+        /* Sticky CTA Bar */
+        .sticky-cta {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.75rem 0;
+            z-index: 2000;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .sticky-cta.show {
+            transform: translateY(0);
+        }
+
+        .sticky-cta-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .sticky-cta-text {
+            font-weight: 600;
+        }
+
+        .sticky-cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .sticky-cta-btn {
+            background: var(--white);
+            color: var(--accent-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+
+        .sticky-cta-btn:hover {
+            transform: scale(1.05);
         }
 
         /* Header & Navigation */
@@ -74,6 +127,13 @@
             color: var(--primary-color);
         }
 
+        .nav-links a.tools-link {
+            background: var(--warning-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -86,12 +146,14 @@
             font-size: 3rem;
             margin-bottom: 1rem;
             font-weight: 700;
+            animation: fadeInUp 0.8s ease;
         }
 
         .hero p {
             font-size: 1.25rem;
             margin-bottom: 2rem;
             opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s both;
         }
 
         .cta-button {
@@ -105,6 +167,7 @@
             font-size: 1.1rem;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+            animation: fadeInUp 0.8s ease 0.4s both;
         }
 
         .cta-button:hover {
@@ -112,7 +175,149 @@
             box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
         }
 
-        /* Stats Section */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Problem Section - NEW! */
+        .problem-section {
+            background: #fef2f2;
+            border-top: 5px solid var(--accent-color);
+            border-bottom: 5px solid var(--accent-color);
+            padding: 3rem 0;
+        }
+
+        .problem-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .problem-content h2 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .problem-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-item h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-cost {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 1rem 0;
+        }
+
+        /* Tools CTA Banner - NEW! */
+        .tools-banner {
+            background: linear-gradient(135deg, var(--warning-color) 0%, #f97316 100%);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .tools-banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tools-banner p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tool-card-mini {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: block;
+        }
+
+        .tool-card-mini:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .tool-card-mini h3 {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            color: var(--primary-color);
+        }
+
+        .tool-icon-mini {
+            font-size: 3rem;
+        }
+
+        /* Trust Badges - NEW! */
+        .trust-badges {
+            background: var(--white);
+            padding: 2rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .badges-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .badge-icon {
+            font-size: 1.5rem;
+            color: var(--success-color);
+        }
+
+        /* Stats Section with Animation */
         .stats {
             padding: 4rem 0;
             background: var(--white);
@@ -175,7 +380,14 @@
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
         }
+
+        .portfolio-card:nth-child(1) { animation-delay: 0.1s; }
+        .portfolio-card:nth-child(2) { animation-delay: 0.2s; }
+        .portfolio-card:nth-child(3) { animation-delay: 0.3s; }
+        .portfolio-card:nth-child(4) { animation-delay: 0.4s; }
 
         .portfolio-card:hover {
             transform: translateY(-10px);
@@ -257,7 +469,7 @@
             color: var(--text-light);
         }
 
-        /* Case Studies Section */
+        /* Case Studies */
         .case-studies {
             padding: 5rem 0;
             background: var(--white);
@@ -358,94 +570,59 @@
             margin-top: 0.5rem;
         }
 
-        /* Before/After Section */
-        .before-after {
-            padding: 5rem 0;
-            background: var(--bg-light);
+        /* Inline Calculator - NEW! */
+        .inline-calculator {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
         }
 
-        .comparison-grid {
+        .inline-calculator h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .calculator-inputs {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        .comparison-card {
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .comparison-header {
-            padding: 1.5rem;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.3rem;
-        }
-
-        .comparison-header.before {
-            background: #ef4444;
-            color: var(--white);
-        }
-
-        .comparison-header.after {
-            background: var(--success-color);
-            color: var(--white);
-        }
-
-        .comparison-content {
-            padding: 2rem;
-        }
-
-        .comparison-visual {
-            width: 100%;
-            height: 200px;
-            background: #f3f4f6;
-            border-radius: 10px;
+        .calc-input-group {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
+            flex-direction: column;
+        }
+
+        .calc-input-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .calc-input-group input {
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .calc-result {
+            background: rgba(255,255,255,0.2);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .calc-result-value {
             font-size: 3rem;
-        }
-
-        .comparison-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .comparison-list li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #e5e7eb;
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .comparison-list li:last-child {
-            border-bottom: none;
-        }
-
-        .comparison-list.before li:before {
-            content: "✗";
-            position: absolute;
-            left: 0;
-            color: #ef4444;
             font-weight: bold;
-            font-size: 1.2rem;
+            margin: 1rem 0;
         }
 
-        .comparison-list.after li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--success-color);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* Testimonials Section */
+        /* Testimonials */
         .testimonials {
             padding: 5rem 0;
             background: var(--white);
@@ -464,6 +641,11 @@
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             position: relative;
+            transition: transform 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
         }
 
         .testimonial-quote {
@@ -524,65 +706,54 @@
             color: var(--text-light);
         }
 
-        /* Services Section */
-        .services {
-            padding: 5rem 0;
-            background: var(--bg-light);
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .service-card ul {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .service-card li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
+        /* Video Testimonial Placeholder - NEW! */
+        .video-testimonial {
             position: relative;
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .service-card li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect fill="%23667eea" width="400" height="300"/></svg>');
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
             color: var(--primary-color);
-            font-weight: bold;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
         }
 
-        /* Pricing Section */
+        .video-testimonial:hover .play-button {
+            transform: scale(1.1);
+        }
+
+        /* Pricing */
         .pricing {
             padding: 5rem 0;
+            background: var(--bg-light);
         }
 
         .pricing-grid {
@@ -599,6 +770,7 @@
             padding: 2.5rem;
             text-align: center;
             transition: transform 0.3s, border-color 0.3s;
+            position: relative;
         }
 
         .pricing-card:hover {
@@ -609,6 +781,18 @@
         .pricing-card.featured {
             border-color: var(--primary-color);
             box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .urgency-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
         }
 
         .pricing-card h3 {
@@ -640,72 +824,21 @@
             border-bottom: 1px solid #f3f4f6;
         }
 
-        /* Industries Section */
-        .industries {
-            padding: 5rem 0;
-            background: var(--bg-light);
+        /* Countdown Timer - NEW! */
+        .countdown-timer {
+            background: var(--warning-color);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 1rem 0;
+            font-weight: 600;
         }
 
-        .industry-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .industry-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .industry-card h3 {
+        .timer-display {
             font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        /* About Section */
-        .about {
-            padding: 5rem 0;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-        }
-
-        .about-text p {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .expertise-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .expertise-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .expertise-item span {
-            color: var(--primary-color);
-            font-weight: bold;
+            font-family: monospace;
+            margin-top: 0.5rem;
         }
 
         /* Contact Section */
@@ -788,6 +921,98 @@
             background: #b91c1c;
         }
 
+        /* Exit Popup - NEW! */
+        .exit-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .exit-popup.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .exit-popup-content {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .exit-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .exit-popup h2 {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .exit-popup p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .exit-popup-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .exit-popup-btn {
+            flex: 1;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .exit-popup-btn.primary {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .exit-popup-btn.secondary {
+            background: #e5e7eb;
+            color: var(--text-dark);
+        }
+
         /* Footer */
         footer {
             background: var(--text-dark);
@@ -826,6 +1051,35 @@
             color: #9ca3af;
         }
 
+        /* WhatsApp Float Button - NEW! */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            z-index: 999;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -837,19 +1091,11 @@
                 gap: 1rem;
             }
 
-            .about-content {
+            .problem-list {
                 grid-template-columns: 1fr;
             }
 
-            .expertise-list {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .comparison-grid {
+            .tools-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -857,13 +1103,31 @@
                 grid-template-columns: 1fr;
             }
 
-            .portfolio-grid {
+            .calculator-inputs {
                 grid-template-columns: 1fr;
+            }
+
+            .sticky-cta-content {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Sticky CTA Bar -->
+    <div class="sticky-cta" id="stickyCta">
+        <div class="sticky-cta-content">
+            <div class="sticky-cta-text">
+                💡 Verpassen Sie keine Kunden mehr! Kostenlose Beratung anfragen
+            </div>
+            <div class="sticky-cta-buttons">
+                <a href="tel:+41786650253" class="sticky-cta-btn">📞 Anrufen</a>
+                <a href="#contact" class="sticky-cta-btn">✉️ Kontakt</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <nav class="container">
@@ -871,6 +1135,7 @@
             <ul class="nav-links">
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#services">Dienstleistungen</a></li>
+                <li><a href="tools.html" class="tools-link">🎯 Kostenlose Tools</a></li>
                 <li><a href="#pricing">Preise</a></li>
                 <li><a href="#testimonials">Referenzen</a></li>
                 <li><a href="#contact">Kontakt</a></li>
@@ -887,20 +1152,111 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="container">
+            <div class="badges-grid">
+                <div class="badge">
+                    <span class="badge-icon">✓</span>
+                    <span>15+ Jahre Erfahrung</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">✓</span>
+                    <span>50+ Erfolgreiche Projekte</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">✓</span>
+                    <span>100% Schweizer Unternehmen</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">✓</span>
+                    <span>24/7 Support verfügbar</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section - NEW! -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="problem-content">
+                <h2>🚨 Verlieren Sie gerade Kunden?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    Während Sie diesen Text lesen, verlieren Schweizer KMUs durchschnittlich:
+                </p>
+                
+                <div class="problem-list">
+                    <div class="problem-item">
+                        <div class="problem-icon">📞</div>
+                        <h3>Verpasste Anrufe</h3>
+                        <p>3-5 Anrufe während Sie im Gespräch sind</p>
+                        <div class="problem-cost">850 CHF/Tag</div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-icon">⏰</div>
+                        <h3>Zeitverschwendung</h3>
+                        <p>2-3 Stunden täglich für Terminkoordination</p>
+                        <div class="problem-cost">15h/Woche</div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-icon">😞</div>
+                        <h3>No-Shows</h3>
+                        <p>25% der Termine ohne Erinnerung</p>
+                        <div class="problem-cost">-30% Umsatz</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 1.5rem; font-weight: bold; margin: 2rem 0; color: var(--accent-color);">
+                    = 18'500 CHF Verlust pro Monat!
+                </p>
+
+                <a href="roi-rechner.html" class="cta-button">
+                    Berechnen Sie Ihren Verlust →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools CTA Banner - NEW! -->
+    <section class="tools-banner">
+        <div class="container">
+            <h2>💡 Kostenlose Tools - Testen Sie jetzt!</h2>
+            <p>Finden Sie in 2 Minuten heraus, wie viel Sie sparen können</p>
+            
+            <div class="tools-grid">
+                <a href="roi-rechner.html" class="tool-card-mini">
+                    <div class="tool-icon-mini">💰</div>
+                    <h3>ROI-Rechner</h3>
+                    <p>Berechnen Sie Ihr Spar-Potential</p>
+                </a>
+                <a href="booking-demo.html" class="tool-card-mini">
+                    <div class="tool-icon-mini">📅</div>
+                    <h3>Booking Demo</h3>
+                    <p>Testen Sie Live-Buchung</p>
+                </a>
+                <a href="digitalisierungs-check.html" class="tool-card-mini">
+                    <div class="tool-icon-mini">📊</div>
+                    <h3>Digitalisierungs-Check</h3>
+                    <p>2-Min Quiz: Wie digital sind Sie?</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section with Animated Counters -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">15+</div>
+                    <div class="stat-number" data-count="15">0</div>
                     <div class="stat-label">Jahre Erfahrung</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">50+</div>
+                    <div class="stat-number" data-count="50">0</div>
                     <div class="stat-label">Erfolgreich abgeschlossene Projekte</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">100%</div>
+                    <div class="stat-number" data-count="100">0</div>
                     <div class="stat-label">Kundenzufriedenheit</div>
                 </div>
                 <div class="stat-card">
@@ -1037,7 +1393,7 @@
         </div>
     </section>
 
-    <!-- Case Studies Section -->
+    <!-- Case Studies Section with Inline Calculator -->
     <section id="case-studies" class="case-studies">
         <div class="container">
             <h2 class="section-title">Erfolgsgeschichten</h2>
@@ -1096,6 +1452,27 @@
                         <div class="result-label">ROI erreicht in</div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Inline Calculator -->
+            <div class="inline-calculator">
+                <h3>🧮 Ihr Restaurant Verlust-Rechner</h3>
+                <div class="calculator-inputs">
+                    <div class="calc-input-group">
+                        <label>Verpasste Anrufe pro Tag:</label>
+                        <input type="number" id="missedCallsInline" value="5" min="0">
+                    </div>
+                    <div class="calc-input-group">
+                        <label>Ø Reservierungswert (CHF):</label>
+                        <input type="number" id="avgReservationInline" value="120" min="0">
+                    </div>
+                </div>
+                <div class="calc-result">
+                    <div>Ihr jährlicher Verlust:</div>
+                    <div class="calc-result-value" id="yearlyLossInline">21'600 CHF</div>
+                    <p style="margin-top: 1rem; opacity: 0.9;">Das könnten Sie mit unserem System sparen!</p>
+                </div>
+                <a href="roi-rechner.html" class="cta-button" style="margin-top: 1rem;">Detaillierte Berechnung →</a>
             </div>
 
             <!-- Case Study 2: Handwerker -->
@@ -1210,65 +1587,27 @@
         </div>
     </section>
 
-    <!-- Before/After Section -->
-    <section class="before-after">
-        <div class="container">
-            <h2 class="section-title">Vorher / Nachher</h2>
-            <p class="section-subtitle">Der Unterschied ist messbar</p>
-
-            <div class="comparison-grid">
-                <div class="comparison-card">
-                    <div class="comparison-header before">VORHER</div>
-                    <div class="comparison-content">
-                        <div class="comparison-visual">📞</div>
-                        <ul class="comparison-list before">
-                            <li>Manuelle Terminvereinbarungen am Telefon</li>
-                            <li>Verpasste Anrufe = verlorene Kunden</li>
-                            <li>Doppelbuchungen durch Excel-Tabellen</li>
-                            <li>Keine Übersicht über Auslastung</li>
-                            <li>2-3 Stunden täglich für Administration</li>
-                            <li>Hohe No-Show Rate ohne Erinnerungen</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="comparison-card">
-                    <div class="comparison-header after">NACHHER</div>
-                    <div class="comparison-content">
-                        <div class="comparison-visual">⚡</div>
-                        <ul class="comparison-list after">
-                            <li>Automatische Online-Buchung 24/7</li>
-                            <li>Jede Anfrage wird erfasst und bearbeitet</li>
-                            <li>Intelligente Kalender-Synchronisation</li>
-                            <li>Echtzeit-Übersicht aller Termine</li>
-                            <li>Nur 15 Minuten täglich für Verwaltung</li>
-                            <li>Automatische SMS/WhatsApp-Erinnerungen</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section with Video Placeholder -->
     <section id="testimonials" class="testimonials">
         <div class="container">
             <h2 class="section-title">Was unsere Kunden sagen</h2>
             <p class="section-subtitle">Echte Erfahrungen von echten Unternehmen</p>
 
             <div class="testimonials-grid">
+                <!-- Video Testimonial -->
                 <div class="testimonial-card">
-                    <div class="testimonial-quote">"</div>
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">
-                        Die neue Buchungsplattform hat unseren Alltag komplett verändert. Wir verlieren keine Reservierungen mehr und haben endlich Zeit für das Wesentliche – unsere Gäste.
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">MS</div>
-                        <div class="testimonial-info">
-                            <div class="testimonial-name">M. Schmidt</div>
-                            <div class="testimonial-position">Inhaber, Restaurant Bellevue, Zürich</div>
+                    <div class="video-testimonial">
+                        <div class="video-placeholder">
+                            <div class="play-button">▶</div>
+                            <div style="text-align: center;">
+                                <strong style="font-size: 1.2rem;">M. Schmidt</strong><br>
+                                <span>Inhaber, Restaurant Bellevue</span>
+                            </div>
                         </div>
+                    </div>
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p>"Die neue Buchungsplattform hat unseren Alltag komplett verändert!"</p>
                     </div>
                 </div>
 
@@ -1350,89 +1689,7 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Unsere Dienstleistungen</h2>
-            <p class="section-subtitle">Massgeschneiderte digitale Lösungen für Ihr Unternehmen</p>
-            
-            <div class="service-grid">
-                <div class="service-card">
-                    <div class="service-icon">🌐</div>
-                    <h3>Professionelle Websites</h3>
-                    <p>Modern, responsive und SEO-optimiert. Ihre digitale Visitenkarte, die Kunden überzeugt.</p>
-                    <ul>
-                        <li>Responsive Design</li>
-                        <li>SEO-Optimierung</li>
-                        <li>Content Management</li>
-                        <li>Mobile-First Ansatz</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
-                    <h3>Prozess-Automatisierung</h3>
-                    <p>Sparen Sie Zeit und Kosten durch intelligente Automatisierung Ihrer Geschäftsprozesse.</p>
-                    <ul>
-                        <li>Workflow-Automatisierung</li>
-                        <li>E-Mail Marketing Automation</li>
-                        <li>Datenverarbeitung</li>
-                        <li>Integration bestehender Systeme</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">💬</div>
-                    <h3>WhatsApp Business</h3>
-                    <p>Automatisierte Kundenkommunikation über WhatsApp. Termine, Anfragen und Support automatisiert.</p>
-                    <ul>
-                        <li>Automatische Antworten</li>
-                        <li>Terminbuchung</li>
-                        <li>FAQ-Bots</li>
-                        <li>Kundenservice 24/7</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">📱</div>
-                    <h3>Custom Web-Apps</h3>
-                    <p>Individuelle Webanwendungen für Ihre spezifischen Geschäftsanforderungen.</p>
-                    <ul>
-                        <li>Kundenverwaltung (CRM)</li>
-                        <li>Statistik-Dashboards</li>
-                        <li>Buchungssysteme</li>
-                        <li>Interne Tools</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Business Analytics</h3>
-                    <p>Datenbasierte Entscheidungen treffen mit professionellen Analyse-Tools.</p>
-                    <ul>
-                        <li>Echtzeit-Statistiken</li>
-                        <li>Reporting-Systeme</li>
-                        <li>KPI-Tracking</li>
-                        <li>Datenvisualisierung</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <h3>Wartung & Support</h3>
-                    <p>Zuverlässiger technischer Support und kontinuierliche Weiterentwicklung Ihrer Systeme.</p>
-                    <ul>
-                        <li>24/7 Monitoring</li>
-                        <li>Regelmässige Updates</li>
-                        <li>Sicherheits-Patches</li>
-                        <li>Technischer Support</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
+    <!-- Pricing Section with Urgency -->
     <section id="pricing" class="pricing">
         <div class="container">
             <h2 class="section-title">Transparente Preise</h2>
@@ -1455,9 +1712,14 @@
                 </div>
 
                 <div class="pricing-card featured">
+                    <div class="urgency-badge">⚠️ Nur 3 Plätze frei</div>
                     <h3>Digital Plus</h3>
                     <div class="price">4'500 CHF</div>
                     <p class="price-period">Einmalig</p>
+                    <div class="countdown-timer">
+                        ⏰ Angebot endet in:
+                        <div class="timer-display" id="countdown">5 Tage 12:34:56</div>
+                    </div>
                     <ul class="pricing-features">
                         <li>✓ Alles aus Digital Start</li>
                         <li>✓ WhatsApp Business Integration</li>
@@ -1488,90 +1750,6 @@
             <p style="text-align: center; margin-top: 2rem; color: var(--text-light);">
                 <strong>Wartungsvertrag:</strong> Ab 150 CHF/Monat für kontinuierliche Betreuung, Updates und Support
             </p>
-        </div>
-    </section>
-
-    <!-- Industries Section -->
-    <section id="industries" class="industries">
-        <div class="container">
-            <h2 class="section-title">Unsere Branchen-Expertise</h2>
-            <p class="section-subtitle">Spezialisierte Lösungen für verschiedene Industrien</p>
-            
-            <div class="industry-grid">
-                <div class="industry-card">
-                    <h3>🍽️ Restaurants & Gastro</h3>
-                    <p><strong>Digitale Menükarten</strong> - Online-Reservierungen - WhatsApp-Bestellung - Lieferdienst-Integration - Kundenbewertungen</p>
-                    <p style="margin-top: 1rem; font-style: italic; color: var(--text-light);">
-                        Steigern Sie Ihre Tischauslastung und vereinfachen Sie Reservierungen.
-                    </p>
-                </div>
-
-                <div class="industry-card">
-                    <h3>🔧 Handwerker & Dienstleister</h3>
-                    <p><strong>Online-Terminbuchung</strong> - Auftragsverwaltung - Kundenkommunikation - Angebotserstellung - Materialbeschaffung</p>
-                    <p style="margin-top: 1rem; font-style: italic; color: var(--text-light);">
-                        Weniger Telefonate, mehr Zeit für Ihr Handwerk.
-                    </p>
-                </div>
-
-                <div class="industry-card">
-                    <h3>🏭 Produktionsfirmen</h3>
-                    <p><strong>Produktionsplanung</strong> - Maschinenauslastung - Qualitätskontrolle - Materialverwaltung - Echtzeit-Statistiken</p>
-                    <p style="margin-top: 1rem; font-style: italic; color: var(--text-light);">
-                        Optimieren Sie Ihre Produktionsprozesse mit digitalen Tools.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Über SwissDigital Consulting</h2>
-                    <p>
-                        Mit über 15 Jahren Erfahrung in der Industrie und moderner Web-Entwicklung 
-                        verstehe ich die Herausforderungen von KMUs in der Schweiz.
-                    </p>
-                    <p>
-                        Meine Mission: Digitalisierung einfach, effizient und bezahlbar machen. 
-                        Keine komplexen IT-Projekte, sondern praktische Lösungen, die sofort Mehrwert schaffen.
-                    </p>
-                    <p>
-                        <strong>Serkan Aydin</strong> - Gründer & Digitalisierungs-Experte
-                    </p>
-
-                    <div class="expertise-list">
-                        <div class="expertise-item">
-                            <span>✓</span> 15+ Jahre Industrie-Erfahrung
-                        </div>
-                        <div class="expertise-item">
-                            <span>✓</span> Web-Entwicklung
-                        </div>
-                        <div class="expertise-item">
-                            <span>✓</span> Prozess-Automatisierung
-                        </div>
-                        <div class="expertise-item">
-                            <span>✓</span> Blockchain & Web3
-                        </div>
-                        <div class="expertise-item">
-                            <span>✓</span> CNC & Produktionstechnik
-                        </div>
-                        <div class="expertise-item">
-                            <span>✓</span> Business Analytics
-                        </div>
-                    </div>
-                </div>
-
-                <div class="about-image">
-                    <svg width="100%" height="400" viewBox="0 0 400 400" style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); border-radius: 15px;">
-                        <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="120" font-weight="bold" font-family="Arial">SD</text>
-                        <text x="50%" y="65%" text-anchor="middle" fill="white" font-size="20" font-family="Arial">SwissDigital</text>
-                    </svg>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1637,10 +1815,10 @@
                 </div>
 
                 <div class="footer-section">
-                    <h3>Branchen</h3>
-                    <a href="#industries">Restaurants</a>
-                    <a href="#industries">Handwerker</a>
-                    <a href="#industries">Produktionsfirmen</a>
+                    <h3>Tools</h3>
+                    <a href="roi-rechner.html">ROI-Rechner</a>
+                    <a href="booking-demo.html">Booking Demo</a>
+                    <a href="digitalisierungs-check.html">Digitalisierungs-Check</a>
                 </div>
 
                 <div class="footer-section">
@@ -1657,8 +1835,137 @@
         </div>
     </footer>
 
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/41786650253" class="whatsapp-float" target="_blank">
+        💬
+    </a>
+
+    <!-- Exit Intent Popup -->
+    <div class="exit-popup" id="exitPopup">
+        <div class="exit-popup-content">
+            <button class="exit-popup-close" id="exitClose">×</button>
+            <h2>⚠️ Warten Sie!</h2>
+            <p>Bevor Sie gehen: Testen Sie unseren kostenlosen ROI-Rechner und finden Sie in 2 Minuten heraus, wie viel Geld Sie durch ineffiziente Prozesse verlieren.</p>
+            <p><strong>Kein Risiko, keine Verpflichtung!</strong></p>
+            <div class="exit-popup-buttons">
+                <a href="roi-rechner.html" class="exit-popup-btn primary">Jetzt testen</a>
+                <button class="exit-popup-btn secondary" id="exitNo">Nein, danke</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Smooth scrolling for navigation links
+        // Animated Counter
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + (element.textContent.includes('%') ? '%' : '+');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + (element.textContent.includes('%') ? '%' : '+');
+                }
+            }, 20);
+        }
+
+        // Trigger counters on scroll
+        const stats = document.querySelectorAll('.stat-number[data-count]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    entry.target.classList.add('counted');
+                    const target = parseInt(entry.target.dataset.count);
+                    animateCounter(entry.target, target);
+                }
+            });
+        });
+
+        stats.forEach(stat => observer.observe(stat));
+
+        // Sticky CTA Bar
+        let lastScroll = 0;
+        const stickyCta = document.getElementById('stickyCta');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 500) {
+                stickyCta.classList.add('show');
+            } else {
+                stickyCta.classList.remove('show');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Inline Calculator
+        function calculateInlineLoss() {
+            const missedCalls = parseInt(document.getElementById('missedCallsInline').value) || 0;
+            const avgReservation = parseInt(document.getElementById('avgReservationInline').value) || 0;
+            const conversionRate = 0.6;
+            const workDaysPerYear = 260;
+            
+            const yearlyLoss = missedCalls * avgReservation * conversionRate * workDaysPerYear;
+            document.getElementById('yearlyLossInline').textContent = yearlyLoss.toLocaleString('de-CH') + ' CHF';
+        }
+
+        document.getElementById('missedCallsInline').addEventListener('input', calculateInlineLoss);
+        document.getElementById('avgReservationInline').addEventListener('input', calculateInlineLoss);
+        calculateInlineLoss();
+
+        // Countdown Timer
+        function updateCountdown() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 5);
+            endDate.setHours(23, 59, 59);
+            
+            const timer = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = endDate - now;
+                
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById('countdown').textContent = 'Angebot beendet!';
+                    return;
+                }
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('countdown').textContent = 
+                    `${days} Tage ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+        updateCountdown();
+
+        // Exit Intent Popup
+        let exitShown = false;
+        const exitPopup = document.getElementById('exitPopup');
+        
+        document.addEventListener('mouseleave', (e) => {
+            if (e.clientY < 50 && !exitShown && window.scrollY > 1000) {
+                exitPopup.classList.add('show');
+                exitShown = true;
+            }
+        });
+
+        document.getElementById('exitClose').addEventListener('click', () => {
+            exitPopup.classList.remove('show');
+        });
+
+        document.getElementById('exitNo').addEventListener('click', () => {
+            exitPopup.classList.remove('show');
+        });
+
+        exitPopup.addEventListener('click', (e) => {
+            if (e.target === exitPopup) {
+                exitPopup.classList.remove('show');
+            }
+        });
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1671,14 +1978,6 @@
                 }
             });
         });
-
-        // Form submission handler
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            // Formspree will handle the submission
-        });
     </script>
-    <script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="LJ7S3oqvJLYTp0BZAhczB";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
 </body>
 </html>
