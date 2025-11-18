@@ -388,6 +388,8 @@
         .portfolio-card:nth-child(2) { animation-delay: 0.2s; }
         .portfolio-card:nth-child(3) { animation-delay: 0.3s; }
         .portfolio-card:nth-child(4) { animation-delay: 0.4s; }
+        .portfolio-card:nth-child(5) { animation-delay: 0.5s; }
+        .portfolio-card:nth-child(6) { animation-delay: 0.6s; }
 
         .portfolio-card:hover {
             transform: translateY(-10px);
@@ -1389,6 +1391,64 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Project 5 - NEW! -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">📦</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Lagerverwaltung</span>
+                        <h3 class="portfolio-title">Smart Inventory Management</h3>
+                        <p class="portfolio-description">
+                            Intelligentes Lagerverwaltungssystem für Handwerksbetriebe. 
+                            Automatische Bestandsverfolgung, Lieferanten-Integration und Bestellvorschläge basierend auf Verbrauchsmustern.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Barcode Scanner</span>
+                            <span class="tech-tag">API Integration</span>
+                            <span class="tech-tag">Alerts</span>
+                        </div>
+                        <div class="portfolio-metrics">
+                            <div class="metric">
+                                <div class="metric-value">-50%</div>
+                                <div class="metric-label">Lagerkosten</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">100%</div>
+                                <div class="metric-label">Bestandstransparenz</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 - NEW! -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">🏪</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Multi-Standort</span>
+                        <h3 class="portfolio-title">Multi-Location Management Dashboard</h3>
+                        <p class="portfolio-description">
+                            Zentrale Verwaltungsplattform für Restaurant-Ketten mit mehreren Standorten. 
+                            Live-Übersicht aller Filialen, zentrales Reporting und standortübergreifende Analyse.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Cloud Dashboard</span>
+                            <span class="tech-tag">Multi-Tenant</span>
+                            <span class="tech-tag">Real-time Sync</span>
+                            <span class="tech-tag">Mobile App</span>
+                        </div>
+                        <div class="portfolio-metrics">
+                            <div class="metric">
+                                <div class="metric-value">5+</div>
+                                <div class="metric-label">Standorte zentral</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">-60%</div>
+                                <div class="metric-label">Admin-Zeit</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1823,7 +1883,7 @@
 
                 <div class="footer-section">
                     <h3>Kontakt</h3>
-                    <p>📧 serayd6161@gmail.com</p>
+                    <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="87f4e2f5e6fee3b1b6b1b6c7e0eae6eeeba9e4e8ea">[email&#160;protected]</a></p>
                     <p>📱 +41 78 665 02 53</p>
                     <p>📍 Aargau, Schweiz</p>
                 </div>
@@ -1854,7 +1914,7 @@
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Animated Counter
         function animateCounter(element, target) {
             let current = 0;
@@ -1970,14 +2030,4 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                if (target
