@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitalisierungs-Check - SwissDigital Consulting</title>
+    <meta name="description" content="Finden Sie in 2 Minuten heraus wie digital Ihr Unternehmen wirklich ist">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #dc2626;
+            --success-color: #059669;
+            --warning-color: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--white);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-section {
+            padding: 3rem 0;
+        }
+
+        .quiz-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            background: #e5e7eb;
+            height: 8px;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--primary-color);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .question {
+            display: none;
+        }
+
+        .question.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .question h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .option {
+            padding: 1.5rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .option:hover {
+            border-color: var(--primary-color);
+            background: var(--bg-light);
+        }
+
+        .option.selected {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .option-radio {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #e5e7eb;
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .option.selected .option-radio {
+            border-color: var(--white);
+        }
+
+        .option.selected .option-radio:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: var(--white);
+            border-radius: 50%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: var(--secondary-color);
+        }
+
+        .btn-secondary {
+            background: #e5e7eb;
+            color: var(--text-dark);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .results {
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            margin: 2rem auto;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: bold;
+            border: 8px solid;
+        }
+
+        .score-circle.low {
+            border-color: var(--accent-color);
+            background: #fef2f2;
+            color: var(--accent-color);
+        }
+
+        .score-circle.medium {
+            border-color: var(--warning-color);
+            background: #fffbeb;
+            color: var(--warning-color);
+        }
+
+        .score-circle.high {
+            border-color: var(--success-color);
+            background: #ecfdf5;
+            color: var(--success-color);
+        }
+
+        .score-label {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .result-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .result-description {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .problems {
+            background: #fef2f2;
+            border-left: 5px solid var(--accent-color);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .problems h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .problems ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .problems li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .problems li:before {
+            content: "❌";
+            position: absolute;
+            left: 0;
+        }
+
+        .solutions {
+            background: #ecfdf5;
+            border-left: 5px solid var(--success-color);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .solutions h3 {
+            color: var(--success-color);
+            margin-bottom: 1rem;
+        }
+
+        .solutions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .solutions li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .solutions li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .potential {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .potential h3 {
+            margin-bottom: 1rem;
+        }
+
+        .potential .big-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .score-circle {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">SwissDigital Consulting</a>
+                <a href="tools.html" class="back-link">← Zurück zu Tools</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>📊 Digitalisierungs-Check</h1>
+            <p>Wie digital ist Ihr Unternehmen? Finden Sie es in 2 Minuten heraus!</p>
+        </div>
+    </section>
+
+    <section class="quiz-section">
+        <div class="container">
+            <div class="quiz-card">
+                <div class="progress-text" id="progressText">Frage 1 von 5</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 20%"></div>
+                </div>
+
+                <div id="quizContent">
+                    <!-- Question 1 -->
+                    <div class="question active" data-question="1">
+                        <h2>Wie viel Zeit verbringen Sie täglich mit Terminkoordination am Telefon?</h2>
+                        <div class="options">
+                            <div class="option" data-score="10">
+                                <div class="option-radio"></div>
+                                <div>Weniger als 30 Minuten</div>
+                            </div>
+                            <div class="option" data-score="5">
+                                <div class="option-radio"></div>
+                                <div>30 Minuten bis 2 Stunden</div>
+                            </div>
+                            <div class="option" data-score="0">
+                                <div class="option-radio"></div>
+                                <div>Mehr als 2 Stunden</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question" data-question="2">
+                        <h2>Haben Sie ein Online-Buchungssystem für Termine/Reservierungen?</h2>
+                        <div class="options">
+                            <div class="option" data-score="10">
+                                <div class="option-radio"></div>
+                                <div>Ja, vollautomatisch mit Kalender-Integration</div>
+                            </div>
+                            <div class="option" data-score="5">
+                                <div class="option-radio"></div>
+                                <div>Teilweise - Kunden können anfragen, ich bestätige manuell</div>
+                            </div>
+                            <div class="option" data-score="0">
+                                <div class="option-radio"></div>
+                                <div>Nein, alles läuft über Telefon oder E-Mail</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question" data-question="3">
+                        <h2>Nutzen Sie WhatsApp Business für Kundenkommunikation?</h2>
+                        <div class="options">
+                            <div class="option" data-score="10">
+                                <div class="option-radio"></div>
+                                <div>Ja, mit automatischen Antworten und Integration</div>
+                            </div>
+                            <div class="option" data-score="5">
+                                <div class="option-radio"></div>
+                                <div>Ja, aber alles manuell</div>
+                            </div>
+                            <div class="option" data-score="0">
+                                <div class="option-radio"></div>
+                                <div>Nein, nutze ich nicht geschäftlich</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="question" data-question="4">
+                        <h2>Wie verwalten Sie Ihre Kundendaten und Aufträge?</h2>
+                        <div class="options">
+                            <div class="option" data-score="10">
+                                <div class="option-radio"></div>
+                                <div>Digitales CRM-System mit automatischen Workflows</div>
+                            </div>
+                            <div class="option" data-score="5">
+                                <div class="option-radio"></div>
+                                <div>Excel-Tabellen oder einfache Software</div>
+                            </div>
+                            <div class="option" data-score="0">
+                                <div class="option-radio"></div>
+                                <div>Papier, Notizbuch oder gar kein System</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="question" data-question="5">
+                        <h2>Haben Sie Echtzeit-Statistiken über Ihr Geschäft?</h2>
+                        <div class="options">
+                            <div class="option" data-score="10">
+                                <div class="option-radio"></div>
+                                <div>Ja, Dashboard mit Live-Daten (Umsatz, Auslastung, KPIs)</div>
+                            </div>
+                            <div class="option" data-score="5">
+                                <div class="option-radio"></div>
+                                <div>Teilweise - erstelle monatliche Reports manuell</div>
+                            </div>
+                            <div class="option" data-score="0">
+                                <div class="option-radio"></div>
+                                <div>Nein, habe keinen guten Überblick über die Zahlen</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results" id="results">
+                    <div class="score-circle" id="scoreCircle">
+                        <span id="scoreValue">0</span>
+                        <div class="score-label">von 50</div>
+                    </div>
+                    <h2 class="result-title" id="resultTitle"></h2>
+                    <p class="result-description" id="resultDescription"></p>
+
+                    <div class="problems" id="problems"></div>
+                    <div class="solutions" id="solutions"></div>
+                    <div class="potential" id="potential"></div>
+
+                    <div class="cta-box">
+                        <h3>Bereit, Ihr Digitalisierungs-Potential zu nutzen?</h3>
+                        <p>Lassen Sie uns gemeinsam Ihre digitale Transformation starten</p>
+                        <a href="/#contact" class="cta-button">Kostenlose Beratung anfragen</a>
+                    </div>
+                </div>
+
+                <div class="nav-buttons" id="navButtons">
+                    <button class="btn btn-secondary" id="prevBtn" style="display: none;">← Zurück</button>
+                    <button class="btn btn-primary" id="nextBtn" disabled>Weiter →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SwissDigital Consulting. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentQuestion = 1;
+        const totalQuestions = 5;
+        let answers = {};
+        let totalScore = 0;
+
+        // Option selection
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const question = this.closest('.question');
+                question.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                const questionNum = question.dataset.question;
+                const score = parseInt(this.dataset.score);
+                answers[questionNum] = score;
+                
+                document.getElementById('nextBtn').disabled = false;
+            });
+        });
+
+        // Navigation
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            } else {
+                showResults();
+            }
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            if (currentQuestion > 1) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        });
+
+        function showQuestion(num) {
+            document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+            document.querySelector(`.question[data-question="${num}"]`).classList.add('active');
+            
+            document.getElementById('progressText').textContent = `Frage ${num} von ${totalQuestions}`;
+            document.getElementById('progressFill').style.width = `${(num / totalQuestions) * 100}%`;
+            
+            document.getElementById('prevBtn').style.display = num > 1 ? 'block' : 'none';
+            document.getElementById('nextBtn').textContent = num === totalQuestions ? 'Ergebnis anzeigen' : 'Weiter →';
+            document.getElementById('nextBtn').disabled = !answers[num];
+        }
+
+        function showResults() {
+            totalScore = Object.values(answers).reduce((a, b) => a + b, 0);
+            
+            document.getElementById('quizContent').style.display = 'none';
+            document.getElementById('navButtons').style.display = 'none';
+            document.getElementById('results').classList.add('show');
+            
+            const scoreCircle = document.getElementById('scoreCircle');
+            document.getElementById('scoreValue').textContent = totalScore;
+            
+            let scoreClass, title, description, problems, solutions, savings;
+            
+            if (totalScore <= 15) {
+                scoreClass = 'low';
+                title = '🚨 Dringender Handlungsbedarf!';
+                description = 'Ihr Unternehmen hat enormes Digitalisierungs-Potential. Sie verlieren täglich Geld und Zeit durch ineffiziente Prozesse.';
+                problems = `
+                    <h3>Kritische Probleme:</h3>
+                    <ul>
+                        <li>Keine Online-Buchung → Sie verlieren 30-40% potentielle Kunden</li>
+                        <li>Keine Automatisierung → 15-20 Stunden Zeitverlust pro Woche</li>
+                        <li>Kein WhatsApp Business → 30% der Anfragen gehen verloren</li>
+                        <li>Keine digitale Verwaltung → Chaos und Ineffizienz</li>
+                        <li>Keine Statistiken → Entscheidungen ohne Daten</li>
+                    </ul>
+                `;
+                solutions = `
+                    <h3>Sofort-Massnahmen:</h3>
+                    <ul>
+                        <li>Online-Buchungssystem einführen (ROI: 2-3 Monate)</li>
+                        <li>WhatsApp Business automatisieren</li>
+                        <li>Digitales CRM-System implementieren</li>
+                        <li>Echtzeit-Dashboard für KPIs</li>
+                    </ul>
+                `;
+                savings = '25\'000 - 35\'000 CHF';
+            } else if (totalScore <= 35) {
+                scoreClass = 'medium';
+                title = '⚠️ Verbesserungspotential vorhanden';
+                description = 'Sie sind auf dem richtigen Weg, aber es gibt noch erhebliches Optimierungspotential.';
+                problems = `
+                    <h3>Verbesserungsbereiche:</h3>
+                    <ul>
+                        <li>Teilautomatisierung reicht nicht → Vollautomation möglich</li>
+                        <li>Manuelle Prozesse kosten Zeit → 10+ Stunden/Woche sparen</li>
+                        <li>Keine Echtzeit-Daten → Bessere Entscheidungen möglich</li>
+                        <li>Integration fehlt → Systeme arbeiten isoliert</li>
+                    </ul>
+                `;
+                solutions = `
+                    <h3>Nächste Schritte:</h3>
+                    <ul>
+                        <li>Vollständige Automatisierung der Buchungen</li>
+                        <li>WhatsApp Business mit Auto-Antworten</li>
+                        <li>Integriertes CRM-System</li>
+                        <li>Analytics Dashboard implementieren</li>
+                    </ul>
+                `;
+                savings = '12\'000 - 20\'000 CHF';
+            } else {
+                scoreClass = 'high';
+                title = '✅ Sehr gut digitalisiert!';
+                description = 'Ihr Unternehmen nutzt Digitalisierung bereits gut. Kleinere Optimierungen können aber noch mehr Effizienz bringen.';
+                problems = `
+                    <h3>Feintuning-Bereiche:</h3>
+                    <ul>
+                        <li>KI-Integration für noch bessere Automatisierung</li>
+                        <li>Erweiterte Analytics und Predictive Insights</li>
+                        <li>Multi-Channel Integration optimieren</li>
+                    </ul>
+                `;
+                solutions = `
+                    <h3>Premium-Optimierungen:</h3>
+                    <ul>
+                        <li>KI-gestützte Kundeninteraktion</li>
+                        <li>Predictive Analytics für Planung</li>
+                        <li>Advanced Automation Workflows</li>
+                        <li>Custom Integrations</li>
+                    </ul>
+                `;
+                savings = '5\'000 - 10\'000 CHF';
+            }
+            
+            scoreCircle.className = `score-circle ${scoreClass}`;
+            document.getElementById('resultTitle').textContent = title;
+            document.getElementById('resultDescription').textContent = description;
+            document.getElementById('problems').innerHTML = problems;
+            document.getElementById('solutions').innerHTML = solutions;
+            document.getElementById('potential').innerHTML = `
+                <h3>💰 Ihr Einspar-Potential pro Jahr:</h3>
+                <div class="big-number">${savings}</div>
+                <p>Basierend auf durchschnittlichen KMU-Daten</p>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buchungssystem Demo - SwissDigital Consulting</title>
+    <meta name="description" content="Testen Sie live wie einfach ein automatisches Online-Buchungssystem funktioniert">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #dc2626;
+            --success-color: #059669;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--white);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .demo-section {
+            padding: 3rem 0;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .demo-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .demo-card h2 {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .calendar-header {
+            text-align: center;
+            font-weight: 600;
+            padding: 0.5rem;
+            background: var(--bg-light);
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .calendar-day:hover:not(.disabled) {
+            border-color: var(--primary-color);
+            background: var(--bg-light);
+        }
+
+        .calendar-day.selected {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .calendar-day.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .time-slot {
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .time-slot:hover:not(.disabled) {
+            border-color: var(--primary-color);
+            background: var(--bg-light);
+        }
+
+        .time-slot.selected {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .time-slot.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .book-btn {
+            width: 100%;
+            background: var(--success-color);
+            color: var(--white);
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .book-btn:hover:not(:disabled) {
+            background: #047857;
+        }
+
+        .book-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .confirmation {
+            display: none;
+            background: #ecfdf5;
+            border: 2px solid var(--success-color);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .confirmation.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .confirmation h3 {
+            color: var(--success-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .confirmation-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .preview-panel {
+            background: var(--bg-light);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .preview-panel h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .preview-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .preview-item:last-child {
+            border-bottom: none;
+        }
+
+        .preview-label {
+            color: var(--text-light);
+        }
+
+        .preview-value {
+            font-weight: 600;
+        }
+
+        .benefits {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .benefits h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-box h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">SwissDigital Consulting</a>
+                <a href="tools.html" class="back-link">← Zurück zu Tools</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>📅 Buchungssystem Demo</h1>
+            <p>Erleben Sie, wie einfach Online-Buchung funktioniert</p>
+        </div>
+    </section>
+
+    <section class="demo-section">
+        <div class="container">
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <h2>1. Wählen Sie ein Datum</h2>
+                    <div class="calendar">
+                        <div class="calendar-header">Mo</div>
+                        <div class="calendar-header">Di</div>
+                        <div class="calendar-header">Mi</div>
+                        <div class="calendar-header">Do</div>
+                        <div class="calendar-header">Fr</div>
+                        <div class="calendar-header">Sa</div>
+                        <div class="calendar-header">So</div>
+                        
+                        <div class="calendar-day disabled">27</div>
+                        <div class="calendar-day disabled">28</div>
+                        <div class="calendar-day disabled">29</div>
+                        <div class="calendar-day disabled">30</div>
+                        <div class="calendar-day disabled">1</div>
+                        <div class="calendar-day disabled">2</div>
+                        <div class="calendar-day disabled">3</div>
+                        
+                        <div class="calendar-day" data-date="2024-12-04">4</div>
+                        <div class="calendar-day" data-date="2024-12-05">5</div>
+                        <div class="calendar-day" data-date="2024-12-06">6</div>
+                        <div class="calendar-day" data-date="2024-12-07">7</div>
+                        <div class="calendar-day" data-date="2024-12-08">8</div>
+                        <div class="calendar-day" data-date="2024-12-09">9</div>
+                        <div class="calendar-day" data-date="2024-12-10">10</div>
+                        
+                        <div class="calendar-day" data-date="2024-12-11">11</div>
+                        <div class="calendar-day" data-date="2024-12-12">12</div>
+                        <div class="calendar-day" data-date="2024-12-13">13</div>
+                        <div class="calendar-day" data-date="2024-12-14">14</div>
+                        <div class="calendar-day" data-date="2024-12-15">15</div>
+                        <div class="calendar-day" data-date="2024-12-16">16</div>
+                        <div class="calendar-day" data-date="2024-12-17">17</div>
+                    </div>
+
+                    <h2 style="margin-top: 2rem;">2. Wählen Sie eine Uhrzeit</h2>
+                    <div class="time-slots" id="timeSlots">
+                        <div class="time-slot" data-time="09:00">09:00</div>
+                        <div class="time-slot" data-time="10:00">10:00</div>
+                        <div class="time-slot disabled" data-time="11:00">11:00</div>
+                        <div class="time-slot" data-time="12:00">12:00</div>
+                        <div class="time-slot" data-time="13:00">13:00</div>
+                        <div class="time-slot" data-time="14:00">14:00</div>
+                        <div class="time-slot disabled" data-time="15:00">15:00</div>
+                        <div class="time-slot" data-time="16:00">16:00</div>
+                        <div class="time-slot" data-time="17:00">17:00</div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h2>3. Ihre Kontaktdaten</h2>
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" placeholder="Max Müller" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-Mail *</label>
+                            <input type="email" id="email" placeholder="max@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" placeholder="+41 79 123 45 67">
+                        </div>
+
+                        <div class="preview-panel">
+                            <h3>Ihre Buchung:</h3>
+                            <div class="preview-item">
+                                <span class="preview-label">Datum:</span>
+                                <span class="preview-value" id="previewDate">Nicht ausgewählt</span>
+                            </div>
+                            <div class="preview-item">
+                                <span class="preview-label">Uhrzeit:</span>
+                                <span class="preview-value" id="previewTime">Nicht ausgewählt</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="book-btn" id="bookBtn" disabled>
+                            Termin buchen
+                        </button>
+                    </form>
+
+                    <div class="confirmation" id="confirmation">
+                        <div class="confirmation-icon">✅</div>
+                        <h3>Buchung erfolgreich!</h3>
+                        <p>Sie erhalten in Kürze eine Bestätigung per E-Mail und SMS.</p>
+                        <p style="margin-top: 1rem; color: var(--text-light);">
+                            <strong>So einfach geht's für Ihre Kunden!</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefits">
+                <h2>Warum Online-Buchung?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📞</div>
+                        <div>
+                            <h3>70% weniger Telefon</h3>
+                            <p>Kunden buchen selbst, 24/7 verfügbar</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⏰</div>
+                        <div>
+                            <h3>Keine Doppelbuchungen</h3>
+                            <p>Automatische Kalender-Synchronisation</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📧</div>
+                        <div>
+                            <h3>Automatische Erinnerungen</h3>
+                            <p>SMS & E-Mail 24h vor Termin</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📊</div>
+                        <div>
+                            <h3>Statistiken & Insights</h3>
+                            <p>Sehen Sie Buchungstrends in Echtzeit</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <h2>Überzeugt?</h2>
+                <p>Implementieren Sie dieses System in Ihrem Unternehmen</p>
+                <p style="margin: 1rem 0; font-size: 1.1rem;">
+                    <strong>Ab 4'500 CHF einmalig</strong> (Digital Plus Paket)
+                </p>
+                <a href="/#contact" class="cta-button">Jetzt kostenlose Beratung anfragen</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SwissDigital Consulting. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        let selectedDate = null;
+        let selectedTime = null;
+
+        // Calendar functionality
+        document.querySelectorAll('.calendar-day:not(.disabled)').forEach(day => {
+            day.addEventListener('click', function() {
+                document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedDate = this.dataset.date;
+                
+                const date = new Date(selectedDate);
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                document.getElementById('previewDate').textContent = date.toLocaleDateString('de-CH', options);
+                
+                checkFormComplete();
+            });
+        });
+
+        // Time slot functionality
+        document.querySelectorAll('.time-slot:not(.disabled)').forEach(slot => {
+            slot.addEventListener('click', function() {
+                document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedTime = this.dataset.time;
+                document.getElementById('previewTime').textContent = selectedTime + ' Uhr';
+                
+                checkFormComplete();
+            });
+        });
+
+        function checkFormComplete() {
+            const bookBtn = document.getElementById('bookBtn');
+            if (selectedDate && selectedTime) {
+                bookBtn.disabled = false;
+            }
+        }
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Hide form, show confirmation
+            this.style.display = 'none';
+            document.getElementById('confirmation').classList.add('show');
+            
+            // Scroll to confirmation
+            document.getElementById('confirmation').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

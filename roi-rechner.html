@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI-Rechner - SwissDigital Consulting</title>
+    <meta name="description" content="Berechnen Sie wie viel Geld Sie durch verpasste Anrufe und ineffiziente Prozesse verlieren">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #dc2626;
+            --success-color: #059669;
+            --warning-color: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--white);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .calculator-section {
+            padding: 3rem 0;
+        }
+
+        .calculator-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .helper-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .calculate-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .results {
+            display: none;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: #fef2f2;
+            border-left: 5px solid var(--accent-color);
+            border-radius: 10px;
+        }
+
+        .results.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .results h2 {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .big-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 1rem 0;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .result-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .result-label {
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        .solution-box {
+            background: #ecfdf5;
+            border-left: 5px solid var(--success-color);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .solution-box h3 {
+            color: var(--success-color);
+            margin-bottom: 1rem;
+        }
+
+        .solution-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .solution-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .solution-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .cta-box h3 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .big-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">SwissDigital Consulting</a>
+                <a href="tools.html" class="back-link">← Zurück zu Tools</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>💰 ROI-Rechner</h1>
+            <p>Wie viel Geld verlieren Sie durch ineffiziente Prozesse?</p>
+        </div>
+    </section>
+
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calculator-card">
+                <form id="roiForm">
+                    <div class="form-group">
+                        <label for="branche">Ihre Branche</label>
+                        <select id="branche" required>
+                            <option value="">Bitte wählen...</option>
+                            <option value="restaurant">Restaurant / Gastronomie</option>
+                            <option value="handwerk">Handwerk / Dienstleistung</option>
+                            <option value="produktion">Produktion / Industrie</option>
+                            <option value="andere">Andere</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="avgValue">Durchschnittlicher Auftragswert (CHF)</label>
+                        <input type="number" id="avgValue" placeholder="z.B. 150" required>
+                        <div class="helper-text">Wie viel verdienen Sie durchschnittlich pro Auftrag/Reservierung?</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="missedCalls">Verpasste Anrufe pro Tag</label>
+                        <input type="number" id="missedCalls" placeholder="z.B. 5" required>
+                        <div class="helper-text">Wie viele Anrufe verpassen Sie durchschnittlich täglich?</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phoneTime">Zeit am Telefon (Stunden pro Tag)</label>
+                        <input type="number" id="phoneTime" step="0.5" placeholder="z.B. 2.5" required>
+                        <div class="helper-text">Wie viele Stunden verbringen Sie täglich mit Terminkoordination?</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="workDays">Arbeitstage pro Monat</label>
+                        <input type="number" id="workDays" value="22" required>
+                    </div>
+
+                    <button type="submit" class="calculate-btn">Jetzt berechnen →</button>
+                </form>
+
+                <div id="results" class="results">
+                    <h2>🚨 Ihre Analyse</h2>
+                    
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">Sie verlieren pro Jahr:</p>
+                    <div class="big-number" id="yearlyLoss">0 CHF</div>
+
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-value" id="monthlyLoss">0 CHF</div>
+                            <div class="result-label">Verlust pro Monat</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value" id="timeLoss">0h</div>
+                            <div class="result-label">Verschwendete Zeit/Monat</div>
+                        </div>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>💡 Die Lösung: Digitalisierung</h3>
+                        <p>Mit unseren Lösungen könnten Sie:</p>
+                        <ul id="solutions">
+                            <!-- Dynamically filled -->
+                        </ul>
+                    </div>
+
+                    <div class="cta-box">
+                        <h3>Bereit für die Veränderung?</h3>
+                        <p>Lassen Sie uns Ihr Spar-Potential realisieren</p>
+                        <a href="/#contact" class="cta-button">Kostenlose Beratung anfragen</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SwissDigital Consulting. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('roiForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get values
+            const branche = document.getElementById('branche').value;
+            const avgValue = parseFloat(document.getElementById('avgValue').value);
+            const missedCalls = parseFloat(document.getElementById('missedCalls').value);
+            const phoneTime = parseFloat(document.getElementById('phoneTime').value);
+            const workDays = parseFloat(document.getElementById('workDays').value);
+
+            // Calculate losses
+            const conversionRate = 0.6; // 60% of calls would convert
+            const dailyLoss = missedCalls * avgValue * conversionRate;
+            const monthlyCallLoss = dailyLoss * workDays;
+            
+            // Time value (assume 50 CHF/hour)
+            const hourlyRate = 50;
+            const monthlyTimeLoss = phoneTime * workDays * hourlyRate;
+            
+            const totalMonthlyLoss = monthlyCallLoss + monthlyTimeLoss;
+            const totalYearlyLoss = totalMonthlyLoss * 12;
+
+            // Display results
+            document.getElementById('yearlyLoss').textContent = totalYearlyLoss.toLocaleString('de-CH') + ' CHF';
+            document.getElementById('monthlyLoss').textContent = totalMonthlyLoss.toLocaleString('de-CH') + ' CHF';
+            document.getElementById('timeLoss').textContent = (phoneTime * workDays).toFixed(0) + 'h';
+
+            // Generate solutions based on branch
+            const solutions = {
+                restaurant: [
+                    `Sparen Sie ${(monthlyCallLoss * 0.7).toLocaleString('de-CH')} CHF/Monat durch Online-Buchung`,
+                    `Reduzieren Sie Telefon-Zeit um ${(phoneTime * 0.7).toFixed(1)} Stunden pro Tag`,
+                    'Steigern Sie Tischauslastung um 30-40%',
+                    'Reduzieren Sie No-Shows um 60%'
+                ],
+                handwerk: [
+                    `Sparen Sie ${(monthlyTimeLoss * 0.7).toLocaleString('de-CH')} CHF/Monat durch Automatisierung`,
+                    `Gewinnen Sie ${(phoneTime * workDays * 0.7).toFixed(0)} Stunden pro Monat zurück`,
+                    'Erhöhen Sie Auftragsvolumen um 35%',
+                    'Verbessern Sie Kundenzufriedenheit'
+                ],
+                produktion: [
+                    `Steigern Sie Effizienz um 18% = ${(totalMonthlyLoss * 0.4).toLocaleString('de-CH')} CHF/Monat`,
+                    'Reduzieren Sie Stillstandszeiten um 25%',
+                    'Echtzeit-Transparenz über alle Maschinen',
+                    'ROI in nur 4-6 Monaten'
+                ],
+                andere: [
+                    `Sparen Sie ${(totalMonthlyLoss * 0.6).toLocaleString('de-CH')} CHF/Monat`,
+                    `Gewinnen Sie ${(phoneTime * workDays * 0.6).toFixed(0)} Stunden zurück`,
+                    'Automatisieren Sie repetitive Aufgaben',
+                    'Fokussieren Sie auf Ihr Kerngeschäft'
+                ]
+            };
+
+            const solutionsList = document.getElementById('solutions');
+            solutionsList.innerHTML = '';
+            solutions[branche || 'andere'].forEach(solution => {
+                const li = document.createElement('li');
+                li.textContent = solution;
+                solutionsList.appendChild(li);
+            });
+
+            // Show results
+            document.getElementById('results').classList.add('show');
+            
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+    </script>
+</body>
+</html>

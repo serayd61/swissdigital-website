@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kostenlose Tools - SwissDigital Consulting</title>
+    <meta name="description" content="Kostenlose Digitalisierungs-Tools: ROI-Rechner, Buchungssystem Demo und Digitalisierungs-Check">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #dc2626;
+            --success-color: #059669;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--white);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .tools-section {
+            padding: 4rem 0;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .tool-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h2 {
+            font-size: 1.75rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .tool-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .tool-benefits {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .tool-benefits li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .tool-benefits li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .tool-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            width: 100%;
+            text-align: center;
+        }
+
+        .tool-button:hover {
+            background: var(--secondary-color);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">SwissDigital Consulting</a>
+                <a href="/" class="back-link">← Zurück zur Hauptseite</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Kostenlose Digitalisierungs-Tools</h1>
+            <p>Testen Sie unsere Tools und entdecken Sie Ihr Spar-Potential</p>
+        </div>
+    </section>
+
+    <section class="tools-section">
+        <div class="container">
+            <div class="tools-grid">
+                <!-- Tool 1: ROI Calculator -->
+                <div class="tool-card">
+                    <div class="tool-icon">💰</div>
+                    <h2>ROI-Rechner</h2>
+                    <p>Berechnen Sie, wie viel Geld Sie durch verpasste Anrufe und ineffiziente Prozesse verlieren.</p>
+                    <ul class="tool-benefits">
+                        <li>Exakte Kostenberechnung</li>
+                        <li>Personalisierte Analyse</li>
+                        <li>Konkrete Einsparpotentiale</li>
+                        <li>Sofortiges Ergebnis</li>
+                    </ul>
+                    <a href="roi-rechner.html" class="tool-button">Jetzt kostenlos berechnen →</a>
+                </div>
+
+                <!-- Tool 2: Booking Demo -->
+                <div class="tool-card">
+                    <div class="tool-icon">📅</div>
+                    <h2>Buchungssystem Demo</h2>
+                    <p>Testen Sie live, wie einfach ein automatisches Online-Buchungssystem funktioniert.</p>
+                    <ul class="tool-benefits">
+                        <li>Interaktive Live-Demo</li>
+                        <li>Echte Benutzer-Erfahrung</li>
+                        <li>Siehe wie Ihre Kunden buchen</li>
+                        <li>100% unverbindlich</li>
+                    </ul>
+                    <a href="booking-demo.html" class="tool-button">Demo jetzt testen →</a>
+                </div>
+
+                <!-- Tool 3: Digitalisierungs-Check -->
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h2>Digitalisierungs-Check</h2>
+                    <p>Finden Sie in 2 Minuten heraus, wie digital Ihr Unternehmen wirklich ist.</p>
+                    <ul class="tool-benefits">
+                        <li>5 einfache Fragen</li>
+                        <li>Persönlicher Score</li>
+                        <li>Konkrete Verbesserungsvorschläge</li>
+                        <li>Branchenvergleich</li>
+                    </ul>
+                    <a href="digitalisierungs-check.html" class="tool-button">Check starten →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Überzeugt von unseren Tools?</h2>
+            <p>Lassen Sie uns gemeinsam Ihr Unternehmen digitalisieren</p>
+            <a href="/#contact" class="cta-button">Kostenlose Beratung anfragen</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SwissDigital Consulting. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+</body>
+</html>
