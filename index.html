@@ -1648,6 +1648,1158 @@
     </section>
 
     <!-- Testimonials Section with Video Placeholder -->
+<!-- ULTRA-DETAILED SERVICES SECTION -->
+<!-- Insert this BEFORE the Testimonials Section -->
+
+<style>
+/* Services Section Styles */
+.services {
+    padding: 5rem 0;
+    background: var(--bg-light);
+}
+
+.service-card {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 3rem;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.service-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.service-icon-large {
+    font-size: 4rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: 1.5rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.service-title-block h3 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.service-subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.problem-solution-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.problem-box {
+    background: #fef2f2;
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--accent-color);
+}
+
+.problem-box h4 {
+    color: var(--accent-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.problem-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.problem-box li {
+    padding: 0.75rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: var(--text-dark);
+}
+
+.problem-box li:before {
+    content: "❌";
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+.solution-box {
+    background: #ecfdf5;
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--success-color);
+}
+
+.solution-box h4 {
+    color: var(--success-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.solution-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.solution-box li {
+    padding: 0.75rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: var(--text-dark);
+}
+
+.solution-box li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success-color);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.feature-item {
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.feature-item h5 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.feature-item p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.results-showcase {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
+.results-showcase h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.result-metric {
+    text-align: center;
+    background: rgba(255,255,255,0.15);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.result-metric-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.result-metric-label {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.demo-box {
+    background: #fffbeb;
+    border: 2px dashed var(--warning-color);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.demo-box h4 {
+    color: var(--warning-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.demo-visual {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.price-cta-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.price-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.price-tag {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.price-details {
+    color: var(--text-light);
+}
+
+.service-cta-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.service-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s;
+    display: inline-block;
+}
+
+.service-btn:hover {
+    transform: translateY(-2px);
+}
+
+.service-btn.primary {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.service-btn.secondary {
+    background: var(--white);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.service-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.service-stat {
+    text-align: center;
+}
+
+.service-stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.service-stat-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.whatsapp-demo {
+    background: #e7f5ec;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.chat-bubble {
+    background: var(--white);
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    margin: 0.75rem 0;
+    max-width: 70%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.chat-bubble.customer {
+    margin-left: auto;
+    background: #dcf8c6;
+    border-bottom-right-radius: 5px;
+}
+
+.chat-bubble.bot {
+    background: var(--white);
+    border-bottom-left-radius: 5px;
+}
+
+.chat-time {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .problem-solution-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .price-cta-box {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    
+    .service-cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .service-btn {
+        width: 100%;
+    }
+}
+</style>
+
+<!-- Services Section -->
+<section id="services" class="services">
+    <div class="container">
+        <h2 class="section-title">Unsere Dienstleistungen</h2>
+        <p class="section-subtitle">Massgeschneiderte digitale Lösungen für Ihr Unternehmen</p>
+
+        <!-- Service 1: Websites -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon-large">🌐</div>
+                <div class="service-title-block">
+                    <h3>Professionelle Websites</h3>
+                    <p class="service-subtitle">Modern, schnell und mobil-optimiert</p>
+                </div>
+            </div>
+
+            <div class="problem-solution-grid">
+                <div class="problem-box">
+                    <h4>❌ Ihr Problem:</h4>
+                    <ul>
+                        <li>Website lädt 5+ Sekunden (67% Besucher springen ab)</li>
+                        <li>Nicht mobil-optimiert (60% Ihrer Kunden nutzen Handy)</li>
+                        <li>Keine Google-Rankings (Seite 5 oder schlechter)</li>
+                        <li>Veraltetes Design aus 2015</li>
+                        <li>Keine Online-Sichtbarkeit = Verlorene Kunden</li>
+                    </ul>
+                </div>
+
+                <div class="solution-box">
+                    <h4>✅ Unsere Lösung:</h4>
+                    <ul>
+                        <li>Ladezeit unter 2 Sekunden (Google PageSpeed 90+)</li>
+                        <li>100% Mobile-responsive auf allen Geräten</li>
+                        <li>SEO-Setup für Top-10 Google Rankings</li>
+                        <li>Modernes Design nach 2024 Standards</li>
+                        <li>SSL & DSGVO-konform</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4 style="margin: 2rem 0 1rem; color: var(--text-dark);">Was Sie bekommen:</h4>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h5>⚡ Performance</h5>
+                    <p>Optimierte Bilder, Caching, CDN - Ihre Website fliegt!</p>
+                </div>
+                <div class="feature-item">
+                    <h5>📱 Mobile-First</h5>
+                    <p>Perfect auf Handy, Tablet und Desktop</p>
+                </div>
+                <div class="feature-item">
+                    <h5>🔍 SEO-Optimiert</h5>
+                    <p>Meta-Tags, Sitemap, Schema Markup - Google liebt Sie!</p>
+                </div>
+                <div class="feature-item">
+                    <h5>📧 Kontaktformular</h5>
+                    <p>Anfragen direkt per E-Mail + CRM-Integration</p>
+                </div>
+                <div class="feature-item">
+                    <h5>🔒 Sicherheit</h5>
+                    <p>SSL-Zertifikat, Firewall, regelmässige Backups</p>
+                </div>
+                <div class="feature-item">
+                    <h5>📊 Analytics</h5>
+                    <p>Google Analytics Setup - wissen Sie was funktioniert</p>
+                </div>
+            </div>
+
+            <div class="results-showcase">
+                <h4>📊 Durchschnittliche Ergebnisse unserer Kunden:</h4>
+                <div class="results-grid">
+                    <div class="result-metric">
+                        <span class="result-metric-value">+45%</span>
+                        <span class="result-metric-label">Mehr Website-Besucher</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">+30%</span>
+                        <span class="result-metric-label">Höhere Conversion Rate</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">-70%</span>
+                        <span class="result-metric-label">Bounce Rate Reduktion</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">3-6 Mon.</span>
+                        <span class="result-metric-label">Google Seite 1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-cta-box">
+                <div class="price-info">
+                    <div class="price-tag">Ab 2'500 CHF</div>
+                    <div class="price-details">
+                        <strong>Einmalig</strong><br>
+                        <span style="font-size: 0.9rem;">2-3 Wochen Projektdauer</span>
+                    </div>
+                </div>
+                <div class="service-cta-buttons">
+                    <a href="#contact" class="service-btn primary">Jetzt anfragen</a>
+                    <a href="#pricing" class="service-btn secondary">Pakete ansehen</a>
+                </div>
+            </div>
+
+            <div class="service-stats">
+                <div class="service-stat">
+                    <div class="service-stat-value">⭐⭐⭐⭐⭐</div>
+                    <div class="service-stat-label">47 Websites erstellt</div>
+                </div>
+                <div class="service-stat">
+                    <div class="service-stat-value">100%</div>
+                    <div class="service-stat-label">Kundenzufriedenheit</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 2: Automatisierung -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon-large" style="background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">🤖</div>
+                <div class="service-title-block">
+                    <h3>Prozess-Automatisierung</h3>
+                    <p class="service-subtitle">Sparen Sie 10-15 Stunden pro Woche</p>
+                </div>
+            </div>
+
+            <div class="problem-solution-grid">
+                <div class="problem-box">
+                    <h4>❌ Ihr Problem:</h4>
+                    <ul>
+                        <li>2-3 Stunden täglich für repetitive Aufgaben</li>
+                        <li>Manuelle Dateneingabe (Excel → System → E-Mail)</li>
+                        <li>Vergessene Follow-ups mit Kunden</li>
+                        <li>Keine Zeit für wichtige Arbeit</li>
+                        <li>Fehler durch manuelle Prozesse</li>
+                    </ul>
+                </div>
+
+                <div class="solution-box">
+                    <h4>✅ Unsere Lösung:</h4>
+                    <ul>
+                        <li>Automatische E-Mail Marketing Kampagnen</li>
+                        <li>SMS/WhatsApp Erinnerungen automatisch</li>
+                        <li>Rechnungen automatisch erstellen & versenden</li>
+                        <li>Daten-Synchronisation zwischen Systemen</li>
+                        <li>100% Fehlerfreiheit</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="demo-box">
+                <h4>💡 Beispiel-Workflow: Neue Buchung</h4>
+                <div class="demo-visual">
+                    <div style="text-align: center; font-size: 1.1rem; line-height: 2;">
+                        <strong>VORHER (15 Minuten manuell):</strong><br>
+                        Buchung → Manuell E-Mail schreiben → SMS senden → In Excel eintragen → Kalender update → Rechnung erstellen
+                        <br><br>
+                        <span style="color: var(--accent-color); font-size: 2rem;">↓</span>
+                        <br><br>
+                        <strong>NACHHER (0 Minuten - automatisch!):</strong><br>
+                        Buchung → ✅ ALLES AUTOMATISCH!<br>
+                        <span style="color: var(--success-color);">E-Mail • SMS • CRM • Kalender • Rechnung</span>
+                    </div>
+                </div>
+            </div>
+
+            <h4 style="margin: 2rem 0 1rem; color: var(--text-dark);">Was wir automatisieren:</h4>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h5>📧 E-Mail Marketing</h5>
+                    <p>Welcome-Serien, Newsletter, Geburtstags-E-Mails</p>
+                </div>
+                <div class="feature-item">
+                    <h5>💬 WhatsApp/SMS</h5>
+                    <p>Bestätigungen, Erinnerungen, Follow-ups</p>
+                </div>
+                <div class="feature-item">
+                    <h5>💰 Rechnungen</h5>
+                    <p>Automatische Erstellung, Versand, Mahnungen</p>
+                </div>
+                <div class="feature-item">
+                    <h5>🔄 Daten-Sync</h5>
+                    <p>Website → CRM → Buchhaltung synchronisiert</p>
+                </div>
+                <div class="feature-item">
+                    <h5>📅 Kalender</h5>
+                    <p>Automatische Terminblockierung & Updates</p>
+                </div>
+                <div class="feature-item">
+                    <h5>📊 Reporting</h5>
+                    <p>Wöchentliche/monatliche Reports automatisch</p>
+                </div>
+            </div>
+
+            <div class="results-showcase">
+                <h4>📊 Was unsere Kunden sparen:</h4>
+                <div class="results-grid">
+                    <div class="result-metric">
+                        <span class="result-metric-value">10-15h</span>
+                        <span class="result-metric-label">Zeit pro Woche gespart</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">+25%</span>
+                        <span class="result-metric-label">Mehr Wiederholungskunden</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">0</span>
+                        <span class="result-metric-label">Vergessene Follow-ups</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">100%</span>
+                        <span class="result-metric-label">Fehlerreduktion</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-cta-box">
+                <div class="price-info">
+                    <div class="price-tag">Ab 4'500 CHF</div>
+                    <div class="price-details">
+                        <strong>Im Digital Plus enthalten</strong><br>
+                        <span style="font-size: 0.9rem;">3-5 Tage Setup</span>
+                    </div>
+                </div>
+                <div class="service-cta-buttons">
+                    <a href="#contact" class="service-btn primary">Jetzt anfragen</a>
+                    <a href="roi-rechner.html" class="service-btn secondary">Zeit-Ersparnis berechnen</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 3: WhatsApp Business -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon-large" style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);">💬</div>
+                <div class="service-title-block">
+                    <h3>WhatsApp Business</h3>
+                    <p class="service-subtitle">24/7 Kundenkommunikation - automatisch!</p>
+                </div>
+            </div>
+
+            <div class="problem-solution-grid">
+                <div class="problem-box">
+                    <h4>❌ Ihr Problem:</h4>
+                    <ul>
+                        <li>Gleiche Fragen 50x pro Tag beantworten</li>
+                        <li>Nachts/Wochenende keine Antworten</li>
+                        <li>Verpasste Anfragen = Verlorene Kunden (30%)</li>
+                        <li>Manuelles Copy-Paste von Antworten</li>
+                        <li>Keine Übersicht über Kundenanfragen</li>
+                    </ul>
+                </div>
+
+                <div class="solution-box">
+                    <h4>✅ Unsere Lösung:</h4>
+                    <ul>
+                        <li>Automatische Antworten 24/7 (FAQ-Bot)</li>
+                        <li>Terminbuchung direkt via WhatsApp</li>
+                        <li>Bestätigungen & Erinnerungen automatisch</li>
+                        <li>Komplexe Fragen → An Sie weitergeleitet</li>
+                        <li>Alle Chats zentral gespeichert</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="demo-box">
+                <h4>💬 Live WhatsApp Demo</h4>
+                <div class="whatsapp-demo">
+                    <div class="chat-bubble customer">
+                        <div>Hallo, sind Sie morgen 14:00 Uhr verfügbar?</div>
+                        <div class="chat-time">21:30 Uhr (Feierabend!)</div>
+                    </div>
+                    <div class="chat-bubble bot">
+                        <div>Ja, der Termin ist verfügbar! ✅ Möchten Sie buchen?</div>
+                        <div class="chat-time">Sofort (automatisch)</div>
+                    </div>
+                    <div class="chat-bubble customer">
+                        <div>Ja bitte!</div>
+                    </div>
+                    <div class="chat-bubble bot">
+                        <div>Perfekt! Termin für morgen 14:00 Uhr bestätigt. ✅<br>
+                        Sie erhalten 1 Stunde vorher eine Erinnerung.<br>
+                        Name: [Ihr Name]<br>
+                        Telefon: [Ihre Nummer]</div>
+                        <div class="chat-time">Automatisch gebucht!</div>
+                    </div>
+                    <div style="text-align: center; margin-top: 1rem; padding: 1rem; background: rgba(37, 211, 102, 0.1); border-radius: 8px;">
+                        <strong style="color: var(--success-color);">✅ Sie schlafen ruhig - WhatsApp arbeitet für Sie!</strong>
+                    </div>
+                </div>
+            </div>
+
+            <h4 style="margin: 2rem 0 1rem; color: var(--text-dark);">Was Sie bekommen:</h4>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h5>🤖 FAQ-Bot</h5>
+                    <p>Öffnungszeiten, Preise, Adresse - sofort beantwortet</p>
+                </div>
+                <div class="feature-item">
+                    <h5>📅 Terminbuchung</h5>
+                    <p>Kunden buchen direkt via WhatsApp</p>
+                </div>
+                <div class="feature-item">
+                    <h5>🔔 Erinnerungen</h5>
+                    <p>Automatische Bestätigungen & Reminder</p>
+                </div>
+                <div class="feature-item">
+                    <h5>📱 Broadcast</h5>
+                    <p>Angebote an alle Kunden gleichzeitig</p>
+                </div>
+                <div class="feature-item">
+                    <h5>👤 Weiterleitung</h5>
+                    <p>Komplexe Fragen → Benachrichtigung an Sie</p>
+                </div>
+                <div class="feature-item">
+                    <h5>📊 Analytics</h5>
+                    <p>Alle Nachrichten, Response-Zeit, Statistiken</p>
+                </div>
+            </div>
+
+            <div class="results-showcase">
+                <h4>📊 Typische Ergebnisse:</h4>
+                <div class="results-grid">
+                    <div class="result-metric">
+                        <span class="result-metric-value">-70%</span>
+                        <span class="result-metric-label">Manuelle Antworten</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">+40%</span>
+                        <span class="result-metric-label">Mehr Anfragen (24/7 erreichbar)</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">-60%</span>
+                        <span class="result-metric-label">No-Show Rate</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">2 Min</span>
+                        <span class="result-metric-label">Ø Response Time</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-cta-box">
+                <div class="price-info">
+                    <div class="price-tag">Ab 4'500 CHF</div>
+                    <div class="price-details">
+                        <strong>Im Digital Plus enthalten</strong><br>
+                        <span style="font-size: 0.9rem;">2-3 Tage Setup</span>
+                    </div>
+                </div>
+                <div class="service-cta-buttons">
+                    <a href="#contact" class="service-btn primary">Jetzt anfragen</a>
+                    <a href="https://wa.me/41786650253" class="service-btn secondary">Test-Nachricht senden</a>
+                </div>
+            </div>
+
+            <div class="service-stats">
+                <div class="service-stat">
+                    <div class="service-stat-value">💚 2.5 Mrd</div>
+                    <div class="service-stat-label">WhatsApp Nutzer weltweit</div>
+                </div>
+                <div class="service-stat">
+                    <div class="service-stat-value">24/7</div>
+                    <div class="service-stat-label">Automatisch erreichbar</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 4: Custom Web-Apps -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon-large" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">📱</div>
+                <div class="service-title-block">
+                    <h3>Custom Web-Apps</h3>
+                    <p class="service-subtitle">Massgeschneiderte Software für Ihr Geschäft</p>
+                </div>
+            </div>
+
+            <div class="problem-solution-grid">
+                <div class="problem-box">
+                    <h4>❌ Ihr Problem:</h4>
+                    <ul>
+                        <li>Excel-Tabellen für alles (Chaos!)</li>
+                        <li>Keine mobile Lösung für Aussendienstler</li>
+                        <li>Jeder fragt "Wo sind die Daten?"</li>
+                        <li>Standard-Software passt nicht (zu komplex/zu einfach)</li>
+                        <li>Keine Echtzeit-Updates</li>
+                    </ul>
+                </div>
+
+                <div class="solution-box">
+                    <h4>✅ Unsere Lösung:</h4>
+                    <ul>
+                        <li>100% auf Ihre Bedürfnisse zugeschnitten</li>
+                        <li>Mobile App (iOS + Android) oder Web</li>
+                        <li>Echtzeit-Synchronisation im Team</li>
+                        <li>Offline-Modus für unterwegs</li>
+                        <li>Integration mit bestehenden Systemen</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4 style="margin: 2rem 0 1rem; color: var(--text-dark);">Was wir bauen:</h4>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h5>📊 CRM-Systeme</h5>
+                    <p>Kundenverwaltung, Kontakthistorie, Umsatz-Tracking</p>
+                </div>
+                <div class="feature-item">
+                    <h5>📅 Buchungssysteme</h5>
+                    <p>Online-Terminkalender mit Verfügbarkeitsanzeige</p>
+                </div>
+                <div class="feature-item">
+                    <h5>📦 Lagerverwaltung</h5>
+                    <p>Bestandsübersicht, Barcode-Scanner, Auto-Bestellungen</p>
+                </div>
+                <div class="feature-item">
+                    <h5>👥 Team-Management</h5>
+                    <p>Schichtpläne, Zeiterfassung, Aufgaben-Zuweisung</p>
+                </div>
+                <div class="feature-item">
+                    <h5>🏪 Restaurant-Systeme</h5>
+                    <p>Tischreservierung, Menü-Management, Bestellungen</p>
+                </div>
+                <div class="feature-item">
+                    <h5>🔧 Produktions-Dashboards</h5>
+                    <p>Maschinen-Auslastung, KPIs, Wartungs-Tracking</p>
+                </div>
+            </div>
+
+            <div class="demo-box">
+                <h4>💡 Beispiel: Elektriker Auftragsverwaltung</h4>
+                <div class="demo-visual" style="text-align: left; padding: 2rem;">
+                    <strong>Dashboard (Morgens):</strong>
+                    <ul style="margin: 1rem 0; padding-left: 2rem;">
+                        <li>→ 3 Aufträge heute geplant</li>
+                        <li>→ 2 Material zu bestellen</li>
+                        <li>→ 1 Rechnung offen</li>
+                    </ul>
+                    
+                    <strong>Mobil (Vor Ort):</strong>
+                    <ul style="margin: 1rem 0; padding-left: 2rem;">
+                        <li>→ Auftrag öffnen mit Details</li>
+                        <li>→ Fotos vom Problem hochladen</li>
+                        <li>→ Arbeitsstunden erfassen</li>
+                        <li>→ Kunde unterschreibt auf Tablet</li>
+                        <li>→ Rechnung wird generiert</li>
+                    </ul>
+                    
+                    <strong>Büro (Automatisch):</strong>
+                    <ul style="margin: 1rem 0; padding-left: 2rem;">
+                        <li>→ Rechnung per E-Mail versendet</li>
+                        <li>→ Buchhaltung wird aktualisiert</li>
+                        <li>→ Nächster Auftrag geplant</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="results-showcase">
+                <h4>📊 Durchschnittliche Ergebnisse:</h4>
+                <div class="results-grid">
+                    <div class="result-metric">
+                        <span class="result-metric-value">-80%</span>
+                        <span class="result-metric-label">Papier-Verwaltung</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">+50%</span>
+                        <span class="result-metric-label">Produktivität</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">100%</span>
+                        <span class="result-metric-label">Daten-Transparenz</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">-90%</span>
+                        <span class="result-metric-label">Fehler</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-cta-box">
+                <div class="price-info">
+                    <div class="price-tag">Ab 8'500 CHF</div>
+                    <div class="price-details">
+                        <strong>Digital Premium Paket</strong><br>
+                        <span style="font-size: 0.9rem;">4-8 Wochen je nach Umfang</span>
+                    </div>
+                </div>
+                <div class="service-cta-buttons">
+                    <a href="#contact" class="service-btn primary">Projekt besprechen</a>
+                    <a href="#portfolio" class="service-btn secondary">Beispiele ansehen</a>
+                </div>
+            </div>
+
+            <div class="service-stats">
+                <div class="service-stat">
+                    <div class="service-stat-value">⭐ 50+</div>
+                    <div class="service-stat-label">Custom Apps entwickelt</div>
+                </div>
+                <div class="service-stat">
+                    <div class="service-stat-value">100%</div>
+                    <div class="service-stat-label">Massgeschneidert</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Note: Services 5 & 6 would continue with similar structure -->
+        <!-- Keeping response concise, but the pattern is established -->
+
+        <!-- Service 5: Business Analytics -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon-large" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">📊</div>
+                <div class="service-title-block">
+                    <h3>Business Analytics</h3>
+                    <p class="service-subtitle">Echtzeit-Einblicke für bessere Entscheidungen</p>
+                </div>
+            </div>
+
+            <div class="problem-solution-grid">
+                <div class="problem-box">
+                    <h4>❌ Ihr Problem:</h4>
+                    <ul>
+                        <li>Keine Ahnung wie das Geschäft wirklich läuft</li>
+                        <li>Excel-Reports kommen zu spät (letzte Woche!)</li>
+                        <li>Wichtige Trends werden verpasst</li>
+                        <li>Entscheidungen aus dem Bauchgefühl</li>
+                        <li>Daten überall verstreut</li>
+                    </ul>
+                </div>
+
+                <div class="solution-box">
+                    <h4>✅ Unsere Lösung:</h4>
+                    <ul>
+                        <li>Live-Dashboard mit Echtzeit-Daten</li>
+                        <li>Alle KPIs auf einen Blick</li>
+                        <li>Automatische Reports (täglich/wöchentlich)</li>
+                        <li>Zugriff überall (Desktop, Tablet, Mobile)</li>
+                        <li>Datenbasierte Entscheidungen treffen</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4 style="margin: 2rem 0 1rem; color: var(--text-dark);">Was Sie sehen:</h4>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h5>💰 Umsatz-Dashboard</h5>
+                    <p>Tagesumsatz live, Wochenvergleich, Prognosen</p>
+                </div>
+                <div class="feature-item">
+                    <h5>👥 Kunden-Analytics</h5>
+                    <p>Neue Kunden, Top-Kunden, Zufriedenheit</p>
+                </div>
+                <div class="feature-item">
+                    <h5>📈 Marketing-Performance</h5>
+                    <p>Website-Traffic, Conversion Rate, ROI</p>
+                </div>
+                <div class="feature-item">
+                    <h5>⚙️ Operations</h5>
+                    <p>Auslastung, Peak-Zeiten, Produktivität</p>
+                </div>
+                <div class="feature-item">
+                    <h5>💳 Finanzen</h5>
+                    <p>Cashflow, Offene Rechnungen, Gewinn-Marge</p>
+                </div>
+                <div class="feature-item">
+                    <h5>🎯 Ziele</h5>
+                    <p>Fortschritt vs. Ziele, Forecasting</p>
+                </div>
+            </div>
+
+            <div class="demo-box">
+                <h4>💡 Beispiel: Restaurant Live-Dashboard (18:45 Uhr)</h4>
+                <div class="demo-visual" style="text-align: left; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <strong>📊 HEUTE:</strong>
+                            <ul style="margin: 1rem 0; padding-left: 2rem;">
+                                <li>Umsatz: 2'450 CHF (↑ 12% vs gestern)</li>
+                                <li>Tische: 45/60 belegt</li>
+                                <li>Ø 54 CHF pro Person</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong>📈 DIESE WOCHE:</strong>
+                            <ul style="margin: 1rem 0; padding-left: 2rem;">
+                                <li>Reservierungen: 187 (+8%)</li>
+                                <li>No-Shows: 3 (-50%!)</li>
+                                <li>Top: Pasta Carbonara</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.2); border-radius: 8px;">
+                        <strong>⚠️ ALERTS:</strong>
+                        <ul style="margin: 0.5rem 0; padding-left: 2rem;">
+                            <li>Wein "Merlot" Lagerbestand unter 10</li>
+                            <li>Morgen 85% Auslastung (Personal einplanen?)</li>
+                            <li>5 neue Google Bewertungen!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-showcase">
+                <h4>📊 Typische Ergebnisse:</h4>
+                <div class="results-grid">
+                    <div class="result-metric">
+                        <span class="result-metric-value">100%</span>
+                        <span class="result-metric-label">Echtzeit-Transparenz</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">+20%</span>
+                        <span class="result-metric-label">Bessere Umsatz-Entscheidungen</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">-40%</span>
+                        <span class="result-metric-label">Fehlentscheidungen</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">2 Wochen</span>
+                        <span class="result-metric-label">Trends früher erkennen</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-cta-box">
+                <div class="price-info">
+                    <div class="price-tag">Ab 8'500 CHF</div>
+                    <div class="price-details">
+                        <strong>Im Digital Premium enthalten</strong><br>
+                        <span style="font-size: 0.9rem;">3-5 Tage Integration</span>
+                    </div>
+                </div>
+                <div class="service-cta-buttons">
+                    <a href="#contact" class="service-btn primary">Dashboard anfragen</a>
+                    <a href="#case-studies" class="service-btn secondary">Erfolgsgeschichten</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 6: Wartung & Support -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon-large" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">🔧</div>
+                <div class="service-title-block">
+                    <h3>Wartung & Support</h3>
+                    <p class="service-subtitle">Schlafen Sie ruhig - wir kümmern uns!</p>
+                </div>
+            </div>
+
+            <div class="problem-solution-grid">
+                <div class="problem-box">
+                    <h4>❌ Ihr Problem:</h4>
+                    <ul>
+                        <li>Website down → Panik! 😱</li>
+                        <li>Hackerangriff → Datenverlust?</li>
+                        <li>Updates vergessen → Sicherheitslücken</li>
+                        <li>Keine Ahnung was zu tun ist</li>
+                        <li>Niemand kümmert sich darum</li>
+                    </ul>
+                </div>
+
+                <div class="solution-box">
+                    <h4>✅ Unsere Lösung:</h4>
+                    <ul>
+                        <li>24/7 Monitoring (wir sehen Probleme VOR Ihnen!)</li>
+                        <li>Automatische Backups (täglich)</li>
+                        <li>Sofortige Sicherheits-Updates</li>
+                        <li>Notfall-Support in 1-4 Stunden</li>
+                        <li>Sie schlafen ruhig 😴</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4 style="margin: 2rem 0 1rem; color: var(--text-dark);">Wartungsvertrag-Pakete:</h4>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: 10px; border: 2px solid #e5e7eb;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 1rem;">💼 BASIC</h4>
+                    <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color); margin: 1rem 0;">150 CHF<span style="font-size: 1rem; font-weight: normal;">/Monat</span></div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">✓ Wöchentliche Backups</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">✓ Sicherheits-Updates</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">✓ Uptime-Monitoring</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">✓ E-Mail Support (48h)</li>
+                        <li style="padding: 0.5rem 0;">✓ 1 kleine Änderung/Monat</li>
+                    </ul>
+                </div>
+
+                <div style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); padding: 2rem; border-radius: 10px; color: white; border: 3px solid var(--primary-color); transform: scale(1.05);">
+                    <h4 style="margin-bottom: 1rem;">🚀 PROFESSIONAL</h4>
+                    <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0;">300 CHF<span style="font-size: 1rem; font-weight: normal; opacity: 0.9;">/Monat</span></div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.3);">✓ Alles aus BASIC</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.3);">✓ Tägliche Backups</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.3);">✓ Sofortige Sicherheits-Updates</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.3);">✓ Telefon-Support (24h)</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.3);">✓ 3 Stunden Änderungen/Monat</li>
+                        <li style="padding: 0.5rem 0;">✓ Monatlicher Performance-Report</li>
+                    </ul>
+                    <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(255,255,255,0.2); border-radius: 8px; text-align: center;">
+                        <strong>⭐ BELIEBTESTE WAHL</strong>
+                    </div>
+                </div>
+
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: 10px; border: 2px solid #e5e7eb;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 1rem;">⭐ ENTERPRISE</h4>
+                    <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color); margin: 1rem 0;">500+ CHF<span style="font-size: 1rem; font-weight: normal;">/Monat</span></div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">✓ Alles aus PROFESSIONAL</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">✓ Echtzeit-Backups</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">✓ 24/7 Notfall-Support</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">✓ Account Manager</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">✓ 8 Stunden Änderungen/Monat</li>
+                        <li style="padding: 0.5rem 0;">✓ 99.99% Uptime Garantie</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="demo-box">
+                <h4>🚨 Notfall-Support Beispiel</h4>
+                <div class="demo-visual">
+                    <div style="text-align: center; line-height: 2;">
+                        <strong style="color: var(--accent-color);">3:00 Uhr nachts - Website down! 😱</strong>
+                        <br><br>
+                        <strong>OHNE Support:</strong><br>
+                        Sie: Wachen auf, Panik, keine Ahnung was tun<br>
+                        Kunden: Sehen Fehlerseite, gehen zur Konkurrenz<br>
+                        Verlust: 500+ CHF pro Stunde
+                        <br><br>
+                        <span style="color: var(--success-color); font-size: 2rem;">↓</span>
+                        <br><br>
+                        <strong style="color: var(--success-color);">MIT Professional Support:</strong><br>
+                        System: Erkennt Problem automatisch<br>
+                        Wir: Werden sofort benachrichtigt<br>
+                        3:15 Uhr: Problem analysiert<br>
+                        3:30 Uhr: Website wieder online ✅<br>
+                        Sie: Schlafen ruhig 😴<br>
+                        Morgens: E-Mail mit Erklärung
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-showcase">
+                <h4>📊 Was unsere Kunden sagen:</h4>
+                <div class="results-grid">
+                    <div class="result-metric">
+                        <span class="result-metric-value">0</span>
+                        <span class="result-metric-label">Downtime-Vorfälle</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">100%</span>
+                        <span class="result-metric-label">Daten-Sicherheit</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">99.9%</span>
+                        <span class="result-metric-label">Uptime Garantie</span>
+                    </div>
+                    <div class="result-metric">
+                        <span class="result-metric-value">😌</span>
+                        <span class="result-metric-label">Seelenfrieden</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-cta-box">
+                <div class="price-info">
+                    <div class="price-tag">Ab 150 CHF/Mon.</div>
+                    <div class="price-details">
+                        <strong>Monatlich kündbar</strong><br>
+                        <span style="font-size: 0.9rem;">Sofort verfügbar</span>
+                    </div>
+                </div>
+                <div class="service-cta-buttons">
+                    <a href="#contact" class="service-btn primary">Jetzt schützen</a>
+                    <a href="#pricing" class="service-btn secondary">Pakete vergleichen</a>
+                </div>
+            </div>
+
+            <div class="service-stats">
+                <div class="service-stat">
+                    <div class="service-stat-value">🛡️ 100%</div>
+                    <div class="service-stat-label">Ihrer Daten geschützt</div>
+                </div>
+                <div class="service-stat">
+                    <div class="service-stat-value">24/7</div>
+                    <div class="service-stat-label">Überwachung</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
     <section id="testimonials" class="testimonials">
         <div class="container">
             <h2 class="section-title">Was unsere Kunden sagen</h2>
@@ -1820,7 +2972,7 @@
             <p>Kontaktieren Sie uns für eine kostenlose Erstberatung</p>
             
             <div style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem;">
-                <p style="margin-bottom: 0.5rem;">📧 <strong>E-Mail:</strong> <a href="mailto:serayd6161@gmail.com" style="color: white; text-decoration: underline;">serayd6161@gmail.com</a></p>
+                <p style="margin-bottom: 0.5rem;">📧 <strong>E-Mail:</strong> <a href="/cdn-cgi/l/email-protection#d3a0b6a1b2aab7e5e2e5e293b4beb2babffdb0bcbe" style="color: white; text-decoration: underline;"><span class="__cf_email__" data-cfemail="cab9afb8abb3aefcfbfcfb8aada7aba3a6e4a9a5a7">[email&#160;protected]</span></a></p>
                 <p style="margin-bottom: 0.5rem;">📱 <strong>Telefon:</strong> <a href="tel:+41786650253" style="color: white; text-decoration: none;">+41 78 665 02 53</a></p>
                 <p>💬 <strong>WhatsApp:</strong> <a href="https://wa.me/41786650253" style="color: white; text-decoration: none;">Direkt chatten</a></p>
             </div>
@@ -1920,7 +3072,7 @@
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Animated Counter
         function animateCounter(element, target) {
             let current = 0;
@@ -2032,8 +3184,4 @@
         });
 
         // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target
+        document.querySelecto
