@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über uns - Serkan Aydin | SwissDigital Consulting</title>
+    <meta name="description" content="Erfahren Sie mehr über Serkan Aydin: 15+ Jahre Industrie-Erfahrung, Web3-Entwickler und Digitalisierungs-Experte für Schweizer KMUs.">
+    <meta name="keywords" content="Serkan Aydin, SwissDigital, CNC Techniker, Web3 Developer, Blockchain, Digitalisierung Schweiz">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #dc2626;
+            --success-color: #059669;
+            --warning-color: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero-about {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero-about h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .profile-card {
+            background: var(--bg-light);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            position: sticky;
+            top: 100px;
+        }
+
+        .profile-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--white);
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .profile-title {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .profile-stat {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .profile-stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .profile-stat-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        .profile-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .profile-content h3 {
+            font-size: 1.75rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--primary-color);
+        }
+
+        .profile-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box {
+            background: #eff6ff;
+            border-left: 5px solid var(--primary-color);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Journey Timeline */
+        .journey-section {
+            padding: 5rem 0;
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--primary-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 1;
+        }
+
+        .timeline-item:nth-child(even) .timeline-empty {
+            grid-column: 2;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-empty {
+            grid-column: 1;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            grid-column: 2;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
+            z-index: 1;
+        }
+
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .timeline-company {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-level {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .skill-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e5e7eb;
+        }
+
+        .skill-dot.filled {
+            background: var(--primary-color);
+        }
+
+        /* Certifications */
+        .certifications-section {
+            padding: 5rem 0;
+            background: var(--bg-light);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .cert-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .cert-issuer {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .cert-badge {
+            display: inline-block;
+            background: var(--success-color);
+            color: var(--white);
+            padding: 0.25rem 1rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .value-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .value-card p {
+            color: var(--text-light);
+        }
+
+        /* Personal Section */
+        .personal-section {
+            padding: 5rem 0;
+            background: var(--bg-light);
+        }
+
+        .personal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .personal-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .personal-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #9ca3af;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-about h1 {
+                font-size: 2rem;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card {
+                position: relative;
+                top: 0;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                padding-left: 60px;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content {
+                grid-column: 1;
+            }
+
+            .timeline-empty {
+                display: none;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">SwissDigital Consulting</a>
+            <ul class="nav-links">
+                <li><a href="/#portfolio">Portfolio</a></li>
+                <li><a href="/#services">Dienstleistungen</a></li>
+                <li><a href="/tools.html">Tools</a></li>
+                <li><a href="/#pricing">Preise</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-about">
+        <div class="container">
+            <h1>Über SwissDigital Consulting</h1>
+            <p class="hero-subtitle">
+                Von der Produktionshalle ins digitale Zeitalter: Wie ein CNC-Techniker Schweizer KMUs digitalisiert
+            </p>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="container">
+            <div class="profile-grid">
+                <!-- Left: Profile Card -->
+                <div class="profile-card">
+                    <div class="profile-avatar">SA</div>
+                    <h2 class="profile-name">Serkan Aydin</h2>
+                    <p class="profile-title">Founder & Digitalisierungs-Experte</p>
+
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <div class="profile-stat-value">15+</div>
+                            <div class="profile-stat-label">Jahre Industrie</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="profile-stat-value">50+</div>
+                            <div class="profile-stat-label">Projekte</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="profile-stat-value">7</div>
+                            <div class="profile-stat-label">Jahre SwissDigital</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="profile-stat-value">100%</div>
+                            <div class="profile-stat-label">Schweiz 🇨🇭</div>
+                        </div>
+                    </div>
+
+                    <div class="profile-social">
+                        <a href="https://www.linkedin.com/in/serkan-aydin-70458a217" class="social-link" target="_blank">💼</a>
+                        <a href="https://wa.me/41786650253" class="social-link" style="background: #25D366;">💬</a>
+                        <a href="mailto:serayd6161@gmail.com" class="social-link">✉️</a>
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="profile-content">
+                    <h2>Die einzigartige Kombination: Industrie + Technologie</h2>
+                    
+                    <p>
+                        Mein Name ist Serkan Aydin, und ich bin nicht der typische Web-Entwickler. Während andere Entwickler 
+                        direkt von der Uni kommen, bringe ich <strong>15+ Jahre Erfahrung aus der Industrie</strong> mit – genauer gesagt 
+                        aus der CNC-Fertigung und Präzisionstechnik.
+                    </p>
+
+                    <p>
+                        Diese einzigartige Kombination macht den Unterschied: Ich verstehe nicht nur Code, sondern auch 
+                        <strong>die täglichen Herausforderungen von KMUs</strong> – weil ich sie selbst gelebt habe.
+                    </p>
+
+                    <div class="highlight-box">
+                        <p>
+                            💡 <strong>Meine Mission:</strong> Schweizer KMUs dabei zu helfen, ihre Prozesse zu digitalisieren 
+                            und zu automatisieren – ohne komplexe IT-Projekte, sondern mit praktischen Lösungen, 
+                            die sofort Mehrwert schaffen.
+                        </p>
+                    </div>
+
+                    <h3>🏭 Von der Produktionshalle zur Digitalisierung</h3>
+                    
+                    <p>
+                        Von 2006 bis 2020 arbeitete ich bei <strong>Stellba AG</strong> als CNC-Schleiftechniker. 
+                        Dort bediente ich täglich Hochpräzisionsmaschinen wie:
+                    </p>
+
+                    <ul style="margin-left: 2rem; margin-bottom: 1.5rem; line-height: 2;">
+                        <li>Kellenberger 1500 U (Konventionelles Schleifen)</li>
+                        <li>Cetos BUC mit K51 NC Steuerung</li>
+                        <li>Böhringer DUS 560/3 mit Keller CNC Steuerung</li>
+                        <li>Ziersch u. Baltrusch (Flachschleifen)</li>
+                    </ul>
+
+                    <p>
+                        Ich arbeitete mit <strong>Toleranzen im Mikrometerbereich</strong> und war spezialisiert auf die 
+                        Bearbeitung von Stellit für Gas- und Dampfturbinenteile. Diese Präzisionsarbeit lehrte mich:
+                    </p>
+
+                    <ul style="margin-left: 2rem; margin-bottom: 1.5rem; line-height: 2;">
+                        <li>✓ Höchste Qualitätsansprüche</li>
+                        <li>✓ Prozessoptimierung unter Zeitdruck</li>
+                        <li>✓ Problemlösungskompetenz bei komplexen Herausforderungen</li>
+                        <li>✓ Effizienz und Präzision in jedem Schritt</li>
+                    </ul>
+
+                    <p>
+                        Seit 2021 arbeite ich bei der <strong>SCHNEEBERGER Group</strong> – einem weltweit führenden 
+                        Unternehmen in Lineartechnik. Hier erlebe ich täglich die Herausforderungen moderner Produktion 
+                        und bringe dieses Wissen in meine Digitalisierungsprojekte ein.
+                    </p>
+
+                    <h3>💻 Der Weg in die Tech-Welt</h3>
+
+                    <p>
+                        Parallel zu meiner Arbeit in der Industrie erkannte ich das <strong>enorme Potential der Digitalisierung</strong>. 
+                        2018 gründete ich <strong>SwissDigital Consulting</strong> und begann, Schweizer KMUs bei ihrer 
+                        digitalen Transformation zu unterstützen.
+                    </p>
+
+                    <p>
+                        Meine Reise führte mich tief in moderne Technologien:
+                    </p>
+
+                    <ul style="margin-left: 2rem; margin-bottom: 1.5rem; line-height: 2;">
+                        <li>📚 Business Administration Studium an der Anadolu Üniversitesi (2008-2012)</li>
+                        <li>🔗 Blockchain Manager Ausbildung bei BITBRAIN ACADEMY (2020-2021)</li>
+                        <li>✅ Zertifizierungen: CBP, CBBF, PSM1, CBM</li>
+                        <li>🎓 edX: Introduction to Blockchain and Web3</li>
+                    </ul>
+
+                    <h3>🌐 Web3 & Blockchain Expertise</h3>
+
+                    <p>
+                        Neben klassischer Web-Entwicklung bin ich auch tief in der <strong>Web3 und Blockchain-Welt</strong> 
+                        verwurzelt. Ich entwickle Smart Contracts, DeFi-Anwendungen und NFT-Projekte auf der Base-Blockchain 
+                        und habe bereits mehrere erfolgreiche Web3-Projekte lanciert:
+                    </p>
+
+                    <ul style="margin-left: 2rem; margin-bottom: 1.5rem; line-height: 2;">
+                        <li>🎮 RelationNFT - Social Connection NFT Platform</li>
+                        <li>🌱 EcoHunt - AI-powered Environmental Rewards System</li>
+                        <li>📚 LearnFrame - Educational Quiz Platform mit Token-Rewards</li>
+                        <li>💳 CrossPay Bridge - Micropayment Solution</li>
+                    </ul>
+
+                    <p>
+                        Meine <strong>Base ENS Adresse: seayd61.base.eth</strong>
+                    </p>
+
+                    <h3>⚽ Mehr als nur Technik</h3>
+
+                    <p>
+                        Abseits der Technologie bin ich <strong>SFV-zertifizierter Fussballtrainer</strong> beim FC Villmergen. 
+                        Das Training von Jugendmannschaften hat mir wertvolle Fähigkeiten vermittelt:
+                    </p>
+
+                    <ul style="margin-left: 2rem; margin-bottom: 1.5rem; line-height: 2;">
+                        <li>🎯 Klare Kommunikation und Geduld</li>
+                        <li>👥 Teamführung und Motivation</li>
+                        <li>📈 Langfristige Entwicklungsplanung</li>
+                        <li>💪 Durchhaltevermögen und Engagement</li>
+                    </ul>
+
+                    <div class="highlight-box" style="background: #ecfdf5; border-left-color: var(--success-color);">
+                        <p>
+                            🎨 <strong>Kreativ und vielseitig:</strong> In meiner Freizeit beschäftige ich mich mit 3D-Design 
+                            in Blender, DJing und Krypto-Trading. Diese Vielseitigkeit hilft mir, kreative und innovative 
+                            Lösungen für meine Kunden zu entwickeln.
+                        </p>
+                    </div>
+
+                    <h3>🗣️ Sprachen</h3>
+
+                    <p>
+                        Ich spreche fließend <strong>Deutsch</strong> und <strong>Türkisch</strong> (Muttersprache) sowie 
+                        grundlegendes Englisch. Das ermöglicht mir, auch türkischsprachige KMUs in der Schweiz optimal zu betreuen.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Timeline -->
+    <section class="journey-section">
+        <div class="container">
+            <h2 class="section-title">Meine Reise</h2>
+            <p class="section-subtitle">Von der CNC-Maschine zur Code-Zeile</p>
+
+            <div class="timeline">
+                <!-- 2006 -->
+                <div class="timeline-item">
+                    <div class="timeline-empty"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2006</div>
+                        <h3 class="timeline-title">Start in der Industrie</h3>
+                        <p class="timeline-company">Stellba AG, Dottikon</p>
+                        <p class="timeline-description">
+                            Einstieg als CNC-Schleiftechniker. Spezialisierung auf Hochpräzisions-Fertigung 
+                            für Gas- und Dampfturbinenteile mit Toleranzen im Mikrometerbereich.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2008 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2008 - 2012</div>
+                        <h3 class="timeline-title">Business Administration Studium</h3>
+                        <p class="timeline-company">Anadolu Üniversitesi</p>
+                        <p class="timeline-description">
+                            Parallel zur Arbeit absolvierte ich ein Fernstudium in Betriebswirtschaft 
+                            und lernte die Grundlagen der Unternehmensführung.
+                        </p>
+                    </div>
+                    <div class="timeline-empty"></div>
+                </div>
+
+                <!-- 2018 -->
+                <div class="timeline-item">
+                    <div class="timeline-empty"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2018</div>
+                        <h3 class="timeline-title">Gründung SwissDigital Consulting</h3>
+                        <p class="timeline-company">Selbstständig</p>
+                        <p class="timeline-description">
+                            Start als Full-Stack-Entwickler und Digitalisierungs-Experte für Schweizer KMUs. 
+                            Fokus auf praktische, sofort umsetzbare Lösungen.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2020-2021 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2020 - 2021</div>
+                        <h3 class="timeline-title">Blockchain Manager Ausbildung</h3>
+                        <p class="timeline-company">BITBRAIN ACADEMY</p>
+                        <p class="timeline-description">
+                            Intensive Weiterbildung in Blockchain-Technologie, Smart Contracts und Web3. 
+                            Zertifizierungen: CBP, CBBF, PSM1, CBM.
+                        </p>
+                    </div>
+                    <div class="timeline-empty"></div>
+                </div>
+
+                <!-- 2021 -->
+                <div class="timeline-item">
+                    <div class="timeline-empty"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2021 - Heute</div>
+                        <h3 class="timeline-title">SCHNEEBERGER Group</h3>
+                        <p class="timeline-company">Mechaniker - Lineartechnik</p>
+                        <p class="timeline-description">
+                            Wechsel zur SCHNEEBERGER Group, einem weltweit führenden Unternehmen in Lineartechnik. 
+                            Täglicher Einblick in moderne Produktion und Industrie 4.0.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2024 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2024</div>
+                        <h3 class="timeline-title">SwissDigital heute</h3>
+                        <p class="timeline-company">50+ erfolgreiche Projekte</p>
+                        <p class="timeline-description">
+                            Über 50 KMUs erfolgreich digitalisiert. Spezialisierung auf Restaurant, Handwerk 
+                            und Produktion. Expansion in Web3 und Blockchain-Lösungen.
+                        </p>
+                    </div>
+                    <div class="timeline-empty"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Meine Expertise</h2>
+            <p class="section-subtitle">Technologie-Stack und Kompetenzen</p>
+
+            <div class="skills-grid">
+                <!-- Frontend -->
+                <div class="skill-category">
+                    <h3><span class="skill-icon">🎨</span> Frontend Development</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <span>React & Next.js</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>HTML5 & CSS3</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>JavaScript/TypeScript</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Tailwind CSS</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Backend -->
+                <div class="skill-category">
+                    <h3><span class="skill-icon">⚙️</span> Backend Development</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <span>Node.js</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Python</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>PHP</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>REST APIs</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Database -->
+                <div class="skill-category">
+                    <h3><span class="skill-icon">💾</span> Datenbanken</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <span>PostgreSQL</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>MySQL</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>MongoDB</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Automation -->
+                <div class="skill-category">
+                    <h3><span class="skill-icon">🤖</span> Automatisierung</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <span>n8n Workflows</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Zapier / Make</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>WhatsApp Business API</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Blockchain -->
+                <div class="skill-category">
+                    <h3><span class="skill-icon">🔗</span> Blockchain & Web3</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <span>Smart Contracts (Solidity)</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Base / Ethereum</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Web3.js / Ethers.js</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>DeFi & NFTs</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Industry -->
+                <div class="skill-category">
+                    <h3><span class="skill-icon">🏭</span> Industrie-Erfahrung</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <span>CNC-Technologie</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Produktionsplanung</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Qualitätsmanagement</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Industrie 4.0</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="certifications-section">
+        <div class="container">
+            <h2 class="section-title">Zertifizierungen & Ausbildungen</h2>
+            <p class="section-subtitle">Kontinuierliche Weiterbildung für beste Ergebnisse</p>
+
+            <div class="cert-grid">
+                <!-- Cert 1 -->
+                <div class="cert-card">
+                    <div class="cert-icon">🎓</div>
+                    <h3>Blockchain Manager (CBM)</h3>
+                    <p class="cert-issuer">BITBRAIN ACADEMY</p>
+                    <p>Umfassende Ausbildung in Blockchain-Technologie, Smart Contracts und dezentralen Anwendungen.</p>
+                    <span class="cert-badge">2020-2021</span>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="cert-card">
+                    <div class="cert-icon">✅</div>
+                    <h3>Certified Bitcoin Professional (CBP)</h3>
+                    <p class="cert-issuer">BITBRAIN ACADEMY</p>
+                    <p>Zertifizierung in Bitcoin-Technologie, Kryptographie und Blockchain-Grundlagen.</p>
+                    <span class="cert-badge">2021</span>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="cert-card">
+                    <div class="cert-icon">🔗</div>
+                    <h3>Blockchain Business Foundations (CBBF)</h3>
+                    <p class="cert-issuer">BITBRAIN ACADEMY</p>
+                    <p>Business-Aspekte von Blockchain und praktische Anwendungsfälle in Unternehmen.</p>
+                    <span class="cert-badge">2021</span>
+                </div>
+
+                <!-- Cert 4 -->
+                <div class="cert-card">
+                    <div class="cert-icon">🏃</div>
+                    <h3>Professional SCRUM Master (PSM1)</h3>
+                    <p class="cert-issuer">Scrum.org</p>
+                    <p>Agile Projektmanagement mit SCRUM Framework für effiziente Teamarbeit.</p>
+                    <span class="cert-badge">2021</span>
+                </div>
+
+                <!-- Cert 5 -->
+                <div class="cert-card">
+                    <div class="cert-icon">🌐</div>
+                    <h3>Introduction to Blockchain and Web3</h3>
+                    <p class="cert-issuer">edX / The Linux Foundation</p>
+                    <p>Einführung in Web3-Technologien und dezentralisierte Anwendungen.</p>
+                    <span class="cert-badge">2022</span>
+                </div>
+
+                <!-- Cert 6 -->
+                <div class="cert-card">
+                    <div class="cert-icon">⚽</div>
+                    <h3>SFV-Zertifizierter Fussballtrainer</h3>
+                    <p class="cert-issuer">Schweizerischer Fussballverband</p>
+                    <p>Lizenz für Jugendtraining und Teamführung im Breitensport.</p>
+                    <span class="cert-badge">Aktiv</span>
+                </div>
+
+                <!-- Cert 7 -->
+                <div class="cert-card">
+                    <div class="cert-icon">📚</div>
+                    <h3>Business Administration</h3>
+                    <p class="cert-issuer">Anadolu Üniversitesi</p>
+                    <p>Betriebswirtschaftslehre mit Fokus auf Unternehmensführung und Management.</p>
+                    <span class="cert-badge">2008-2012</span>
+                </div>
+
+                <!-- Cert 8 -->
+                <div class="cert-card">
+                    <div class="cert-icon">🔧</div>
+                    <h3>CNC-Fachmann</h3>
+                    <p class="cert-issuer">15+ Jahre Praxiserfahrung</p>
+                    <p>Expertise in Hochpräzisions-CNC-Fertigung mit verschiedenen Maschinentypen.</p>
+                    <span class="cert-badge">2006-Heute</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">Meine Werte</h2>
+            <p class="section-subtitle">Was SwissDigital Consulting ausmacht</p>
+
+            <div class="values-grid">
+                <!-- Value 1 -->
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h3>Praxisnähe</h3>
+                    <p>Keine theoretischen Konzepte, sondern praktische Lösungen die sofort funktionieren.</p>
+                </div>
+
+                <!-- Value 2 -->
+                <div class="value-card">
+                    <div class="value-icon">💎</div>
+                    <h3>Qualität</h3>
+                    <p>Wie bei Präzisionsteilen: Höchste Qualitätsansprüche an Code und Umsetzung.</p>
+                </div>
+
+                <!-- Value 3 -->
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Partnerschaft</h3>
+                    <p>Langfristige Beziehungen statt One-Time-Projekte. Ich bin Ihr digitaler Partner.</p>
+                </div>
+
+                <!-- Value 4 -->
+                <div class="value-card">
+                    <div class="value-icon">💰</div>
+                    <h3>Transparenz</h3>
+                    <p>Klare Preise, keine versteckten Kosten, ehrliche Kommunikation.</p>
+                </div>
+
+                <!-- Value 5 -->
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Effizienz</h3>
+                    <p>Schnelle Umsetzung ohne lange Projektlaufzeiten. Ihr ROI ist meine Priorität.</p>
+                </div>
+
+                <!-- Value 6 -->
+                <div class="value-card">
+                    <div class="value-icon">🇨🇭</div>
+                    <h3>Swiss Made</h3>
+                    <p>100% Schweizer Unternehmen mit Schweizer Qualitätsstandards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Section -->
+    <section class="personal-section">
+        <div class="container">
+            <h2 class="section-title">Persönliches</h2>
+            <p class="section-subtitle">Was mich neben der Arbeit bewegt</p>
+
+            <div class="personal-grid">
+                <!-- Football -->
+                <div class="personal-card">
+                    <h3>⚽ Fussball & Training</h3>
+                    <p>
+                        Als SFV-zertifizierter Trainer beim <strong>FC Villmergen</strong> trainiere ich 
+                        Jugendmannschaften und gebe meine Leidenschaft für Fussball weiter. Das Training 
+                        lehrt mich Geduld, Kommunikation und Teamführung – Fähigkeiten die auch in der 
+                        Projektarbeit unverzichtbar sind.
+                    </p>
+                </div>
+
+                <!-- 3D Design -->
+                <div class="personal-card">
+                    <h3>🎨 3D-Design & Blender</h3>
+                    <p>
+                        In meiner Freizeit erstelle ich 3D-Modelle und Animationen mit <strong>Blender</strong>. 
+                        Diese kreative Arbeit hilft mir, auch bei technischen Projekten "outside the box" 
+                        zu denken und innovative Lösungen zu finden.
+                    </p>
+                </div>
+
+                <!-- DJ -->
+                <div class="personal-card">
+                    <h3>🎵 DJing & Musik</h3>
+                    <p>
+                        Musik war schon immer ein wichtiger Teil meines Lebens. Als Hobby-DJ experimentiere 
+                        ich mit verschiedenen Sounds und Techniken. Das Gefühl für Rhythmus und Timing 
+                        überträgt sich auch auf meine Arbeit – perfektes Timing ist überall wichtig!
+                    </p>
+                </div>
+
+                <!-- Crypto -->
+                <div class="personal-card">
+                    <h3>📈 Krypto & Trading</h3>
+                    <p>
+                        Seit Jahren beschäftige ich mich intensiv mit <strong>Kryptowährungen</strong> 
+                        und Trading. Diese Leidenschaft führte mich zur Blockchain-Entwicklung und 
+                        ermöglicht mir, KMUs auch in Web3 und dezentralen Technologien zu beraten.
+                    </p>
+                </div>
+
+                <!-- Languages -->
+                <div class="personal-card">
+                    <h3>🗣️ Sprachen & Kultur</h3>
+                    <p>
+                        Als <strong>türkischstämmiger Schweizer</strong> spreche ich fließend Deutsch und 
+                        Türkisch (Muttersprache). Das ermöglicht mir, auch türkischsprachige KMUs in der 
+                        Schweiz optimal zu betreuen und kulturelle Brücken zu bauen.
+                    </p>
+                </div>
+
+                <!-- Location -->
+                <div class="personal-card">
+                    <h3>📍 Standort Schweiz</h3>
+                    <p>
+                        Wohnhaft in <strong>Pratteln, Basel-Landschaft</strong>. Zentral gelegen für 
+                        persönliche Meetings in der ganzen Schweiz. Ich schätze den persönlichen 
+                        Kontakt und bin gerne vor Ort bei meinen Kunden.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2>Lassen Sie uns zusammenarbeiten!</h2>
+            <p>Bereit für die digitale Transformation Ihres Unternehmens?</p>
+            <a href="mailto:serayd6161@gmail.com" class="cta-button">Jetzt Kontakt aufnehmen</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SwissDigital Consulting</h3>
+                    <p>Digitalisierung für Schweizer KMUs</p>
+                    <p>Von Praktiker für Praktiker</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <a href="/#services">Web-Entwicklung</a>
+                    <a href="/#services">Automatisierung</a>
+                    <a href="/#services">WhatsApp Business</a>
+                    <a href="/#services">Industrie 4.0</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Branchen</h3>
+                    <a href="/gastro-digitalisierung.html">Gastronomie</a>
+                    <a href="/handwerk-digitalisierung.html">Handwerk</a>
+                    <a href="/produktion-digitalisierung.html">Produktion</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <p>📧 serayd6161@gmail.com</p>
+                    <p>📱 +41 78 665 02 53</p>
+                    <p>📍 Pratteln, Basel-Landschaft</p>
+                    <p>🔗 seayd61.base.eth</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 SwissDigital Consulting - Serkan Aydin. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/41786650253" class="whatsapp-float" target="_blank">💬</a>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
