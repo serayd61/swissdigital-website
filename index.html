@@ -102,6 +102,32 @@
             z-index: 1000;
         }
 
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-switcher a {
+            text-decoration: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .lang-switcher a:hover {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .lang-switcher a.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
         nav {
             display: flex;
             justify-content: space-between;
@@ -909,6 +935,17 @@
                 display: none;
             }
 
+            .lang-switcher {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            nav {
+                position: relative;
+            }
+
             .problem-list {
                 grid-template-columns: 1fr;
             }
@@ -971,12 +1008,16 @@
                     </div>
                 </li>
                 <li><a href="#services">Dienstleistungen</a></li>
-                <li><a href="tools.html" class="tools-link">🎯 Tools</a></li>
-                <li><a href="demos.html">Live Demos</a></li>
+                <li><a href="demos.html" class="tools-link">🎯 Tools</a></li>
                 <li><a href="#pricing">Preise</a></li>
                 <li><a href="about.html">Über mich</a></li>
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
+            <div class="lang-switcher">
+                <a href="/" class="active">DE</a>
+                <a href="/tr/">TR</a>
+                <a href="/en/">EN</a>
+            </div>
         </nav>
     </header>
 
