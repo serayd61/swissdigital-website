@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digitalisierung für Handwerker | Mehr Zeit für Aufträge - SwissDigital</title>
-    <meta name="description" content="Digitalisierung für Schweizer Handwerker und Dienstleister. Online-Terminbuchung, Mobile Apps, Automatisierung. Sparen Sie 10-15 Stunden pro Woche!">
-    <meta name="keywords" content="Handwerk Digitalisierung, Handwerker Schweiz, Online Terminbuchung, Elektriker Digital, Sanitär Digital">
+    <title>Handwerker Digitalisierung | Terminbuchung & Mobile App | SwissDigital</title>
+    <meta name="description" content="Digitalisierung für Handwerker: Online-Terminbuchung, Mobile Apps, automatische Rechnungen. Mehr Aufträge, weniger Büroarbeit.">
     <style>
         * {
             margin: 0;
@@ -14,12 +13,10 @@
         }
 
         :root {
-            --primary-color: #2563eb;
+            --primary-color: #f59e0b;
+            --primary-dark: #d97706;
             --secondary-color: #1e40af;
-            --accent-color: #dc2626;
             --success-color: #059669;
-            --handwerk-color: #f59e0b;
-            --handwerk-dark: #d97706;
             --text-dark: #1f2937;
             --text-light: #6b7280;
             --bg-light: #f9fafb;
@@ -27,7 +24,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
         }
@@ -78,502 +75,294 @@
             color: var(--primary-color);
         }
 
-        /* Hero Section */
-        .hero-handwerk {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
             color: var(--white);
-            padding: 6rem 0 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-handwerk::before {
-            content: "🔧";
-            position: absolute;
-            font-size: 20rem;
-            opacity: 0.1;
-            right: -5rem;
-            top: -5rem;
+            padding: 5rem 0;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .breadcrumb {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-
-        .breadcrumb a {
-            color: var(--white);
-            text-decoration: none;
-        }
-
-        .hero-handwerk h1 {
+        .hero h1 {
             font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
+        .hero p {
+            font-size: 1.25rem;
             margin-bottom: 2rem;
             opacity: 0.95;
         }
 
         .hero-stats {
             display: flex;
-            gap: 3rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
         .hero-stat {
             text-align: center;
         }
 
-        .hero-stat-number {
-            font-size: 3rem;
+        .hero-stat-value {
+            font-size: 2.5rem;
             font-weight: bold;
-            display: block;
         }
 
         .hero-stat-label {
-            font-size: 1rem;
+            font-size: 0.9rem;
             opacity: 0.9;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
         }
 
         .cta-button {
             display: inline-block;
             background: var(--white);
-            color: var(--handwerk-color);
+            color: var(--primary-dark);
             padding: 1rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
             transition: transform 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
         }
 
-        .cta-button.secondary {
-            background: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
+        .hero-visual {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .hero-visual-icon {
+            font-size: 8rem;
         }
 
         /* Problem Section */
         .problem-section {
+            padding: 5rem 0;
             background: #fffbeb;
-            padding: 4rem 0;
-            border-top: 5px solid var(--handwerk-color);
         }
 
-        .section-title {
+        .problem-section h2 {
             text-align: center;
             font-size: 2.5rem;
-            color: var(--handwerk-dark);
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--text-light);
             margin-bottom: 3rem;
+            color: var(--primary-dark);
         }
 
         .problems-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
         }
 
         .problem-card {
             background: var(--white);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border-left: 5px solid var(--handwerk-color);
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         .problem-icon {
-            font-size: 3rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
         }
 
         .problem-card h3 {
-            color: var(--handwerk-dark);
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-        }
-
-        .problem-cost {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--handwerk-color);
-            margin: 1rem 0;
-        }
-
-        /* Solution Section */
-        .solution-section {
-            padding: 5rem 0;
-            background: var(--white);
-        }
-
-        .solution-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-            align-items: center;
-        }
-
-        .mobile-preview {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 3rem;
-            border-radius: 20px;
-            color: var(--white);
-            text-align: center;
-        }
-
-        .phone-mockup {
-            background: var(--white);
             color: var(--text-dark);
-            padding: 2rem 1.5rem;
-            border-radius: 30px;
-            margin: 2rem auto;
-            max-width: 300px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
-        .phone-screen {
-            background: var(--bg-light);
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: left;
-            font-size: 0.9rem;
+        .problem-card p {
+            color: var(--text-light);
         }
 
-        .app-header {
-            background: var(--handwerk-color);
-            color: var(--white);
-            padding: 1rem;
-            border-radius: 10px 10px 0 0;
-            margin: -1.5rem -1.5rem 1rem;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .task-item {
-            background: var(--white);
-            padding: 1rem;
-            margin: 0.75rem 0;
-            border-radius: 8px;
-            border-left: 4px solid var(--success-color);
-        }
-
-        .solution-features {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .feature-item {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            padding: 1.5rem;
-            background: var(--bg-light);
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .feature-item:hover {
-            transform: translateX(10px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            flex-shrink: 0;
-        }
-
-        .feature-content h4 {
-            color: var(--handwerk-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Case Study */
-        .case-study {
-            background: var(--bg-light);
+        /* Solutions Section */
+        .solutions-section {
             padding: 5rem 0;
         }
 
-        .case-study-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .case-study-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .case-study-badge {
-            background: var(--handwerk-color);
-            color: var(--white);
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-        }
-
-        .case-study-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .case-block {
-            background: var(--bg-light);
-            padding: 2rem;
-            border-radius: 10px;
-        }
-
-        .case-block h4 {
-            color: var(--handwerk-dark);
+        .solutions-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
-        .case-block ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .case-block li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .case-block li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--handwerk-dark);
-            font-weight: bold;
-        }
-
-        .results-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 3px solid var(--handwerk-color);
-        }
-
-        .result-metric {
+        .solutions-subtitle {
             text-align: center;
-        }
-
-        .result-value {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--success-color);
-        }
-
-        .result-label {
-            font-size: 0.9rem;
+            font-size: 1.2rem;
             color: var(--text-light);
-            margin-top: 0.5rem;
+            margin-bottom: 3rem;
         }
 
-        /* Pricing Section */
-        .pricing-section {
-            padding: 5rem 0;
-            background: var(--white);
-        }
-
-        .pricing-grid {
+        .solutions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
         }
 
-        .pricing-card {
+        .solution-card {
             background: var(--white);
-            border: 3px solid #e5e7eb;
+            border: 2px solid #e5e7eb;
             border-radius: 20px;
             padding: 2.5rem;
-            text-align: center;
             transition: all 0.3s;
         }
 
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--handwerk-color);
-            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.2);
+        .solution-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.1);
         }
 
-        .pricing-card.featured {
-            border-color: var(--handwerk-color);
-            border-width: 5px;
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.3);
-        }
-
-        .recommended-badge {
-            background: var(--handwerk-color);
-            color: var(--white);
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: inline-block;
+        .solution-icon {
+            font-size: 3.5rem;
             margin-bottom: 1rem;
         }
 
-        .pricing-card h3 {
+        .solution-card h3 {
             font-size: 1.75rem;
             margin-bottom: 1rem;
+            color: var(--text-dark);
         }
 
-        .price {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: var(--handwerk-color);
-            margin: 1rem 0;
-        }
-
-        .price-period {
-            font-size: 1rem;
+        .solution-card p {
             color: var(--text-light);
+            margin-bottom: 1.5rem;
         }
 
-        .pricing-features {
+        .solution-features {
             list-style: none;
-            margin: 2rem 0;
-            text-align: left;
         }
 
-        .pricing-features li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #f3f4f6;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .solution-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-dark);
         }
 
-        .pricing-features li:before {
+        .solution-features li::before {
             content: "✓";
+            position: absolute;
+            left: 0;
             color: var(--success-color);
             font-weight: bold;
-            font-size: 1.2rem;
         }
 
-        .price-cta {
-            width: 100%;
-            background: var(--handwerk-color);
-            color: var(--white);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background 0.3s;
+        .solution-price {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
         }
 
-        .price-cta:hover {
-            background: var(--handwerk-dark);
+        .solution-price-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
         }
 
-        /* FAQ */
-        .faq-section {
+        .solution-price-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
             padding: 5rem 0;
             background: var(--bg-light);
         }
 
-        .faq-item {
+        .benefits-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
             background: var(--white);
             padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-            border-left: 5px solid var(--handwerk-color);
-        }
-
-        .faq-item h3 {
-            color: var(--handwerk-dark);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        /* Final CTA */
-        .final-cta {
-            background: linear-gradient(135deg, var(--handwerk-color) 0%, var(--handwerk-dark) 100%);
-            color: var(--white);
-            padding: 5rem 0;
+            border-radius: 15px;
             text-align: center;
         }
 
-        .final-cta h2 {
+        .benefit-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
         }
 
-        .final-cta p {
-            font-size: 1.3rem;
+        .benefit-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-light);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.95;
         }
 
-        .contact-options {
+        .cta-options {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
         }
 
-        .contact-option {
+        .cta-option {
             background: var(--white);
-            color: var(--handwerk-color);
-            padding: 1.5rem 2rem;
+            color: var(--text-dark);
+            padding: 1.5rem 2.5rem;
             border-radius: 15px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.2rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             transition: transform 0.3s;
         }
 
-        .contact-option:hover {
-            transform: translateY(-5px);
+        .cta-option:hover {
+            transform: translateY(-3px);
+        }
+
+        .cta-option-icon {
+            font-size: 1.5rem;
         }
 
         /* Footer */
@@ -585,7 +374,7 @@
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
@@ -613,462 +402,318 @@
             color: #9ca3af;
         }
 
-        /* WhatsApp Float */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-            cursor: pointer;
-            z-index: 999;
-            text-decoration: none;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero-handwerk h1 { font-size: 2rem; }
-            .solution-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-            .hero-stats { flex-direction: column; gap: 1.5rem; }
-            .pricing-card.featured { transform: scale(1); }
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <nav class="container">
-            <a href="/" class="logo">SwissDigital Consulting</a>
+            <a href="index.html" class="logo">SwissDigital</a>
             <ul class="nav-links">
-                <li><a href="/#portfolio">Portfolio</a></li>
-                <li><a href="/#services">Dienstleistungen</a></li>
-                <li><a href="/tools.html">Tools</a></li>
-                <li><a href="/#pricing">Preise</a></li>
-                <li><a href="/#contact">Kontakt</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gastro-digitalisierung.html">Gastronomie</a></li>
+                <li><a href="handwerk-digitalisierung.html" style="color: var(--primary-color);">Handwerk</a></li>
+                <li><a href="produktion-digitalisierung.html">Produktion</a></li>
+                <li><a href="index.html#pricing">Preise</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero-handwerk">
+    <!-- Hero -->
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="breadcrumb">
-                    <a href="/">Home</a> / <a href="/#services">Dienstleistungen</a> / Handwerk Digitalisierung
-                </div>
-                <h1>🔧 Digitalisierung für Handwerker</h1>
-                <p class="hero-subtitle">Mehr Zeit für Aufträge. Weniger Telefon-Stress. Zufriedenere Kunden.</p>
-                
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <span class="hero-stat-number">12h</span>
-                        <span class="hero-stat-label">Zeit gespart pro Woche</span>
+                <div>
+                    <h1>Weniger Büro, mehr Handwerk</h1>
+                    <p>
+                        Online-Terminbuchung, Mobile App für unterwegs, automatische Rechnungen - 
+                        damit Sie sich auf Ihr Handwerk konzentrieren können.
+                    </p>
+
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">10h+</div>
+                            <div class="hero-stat-label">Zeit gespart/Woche</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">📱</div>
+                            <div class="hero-stat-label">Mobile App</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">0</div>
+                            <div class="hero-stat-label">Papierkram</div>
+                        </div>
                     </div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-number">-70%</span>
-                        <span class="hero-stat-label">Weniger Telefon</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-number">+35%</span>
-                        <span class="hero-stat-label">Mehr Aufträge</span>
-                    </div>
+
+                    <a href="#contact" class="cta-button">Kostenlose Beratung →</a>
                 </div>
 
-                <div class="cta-buttons">
-                    <a href="#contact" class="cta-button">Kostenlose Beratung anfragen</a>
-                    <a href="roi-rechner.html" class="cta-button secondary">Zeit-Ersparnis berechnen</a>
+                <div class="hero-visual">
+                    <div class="hero-visual-icon">🔧</div>
+                    <h3 style="margin-top: 1rem; color: var(--text-dark);">Handwerk Digital</h3>
+                    <p style="color: var(--text-light);">Termine • Dokumente • Rechnungen</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Problem Section -->
     <section class="problem-section">
         <div class="container">
-            <h2 class="section-title">🚨 Kennen Sie diese Probleme?</h2>
-            <p class="section-subtitle">Täglich verlieren Schweizer Handwerker Zeit und Geld</p>
-            
+            <h2>🚨 Der tägliche Kampf</h2>
+
             <div class="problems-grid">
                 <div class="problem-card">
                     <div class="problem-icon">📞</div>
-                    <h3>Ständige Unterbrechungen</h3>
-                    <p>Sie sind auf der Baustelle und das Telefon klingelt ununterbrochen. Kunden wollen Termine vereinbaren.</p>
-                    <div class="problem-cost">2-3 Std</div>
-                    <p>täglich für Terminkoordination</p>
+                    <h3>Ständig erreichbar?</h3>
+                    <p>
+                        Kunden rufen an, während Sie auf der Baustelle sind. 
+                        Abends stapeln sich die Rückrufe.
+                    </p>
                 </div>
 
                 <div class="problem-card">
                     <div class="problem-icon">📝</div>
-                    <h3>Papierchaos</h3>
-                    <p>Auftragszettel, handgeschriebene Notizen, verlorene Dokumente. Wo war nochmal die Adresse?</p>
-                    <div class="problem-cost">💥</div>
-                    <p>Ineffizienz und Fehler</p>
+                    <h3>Zettelwirtschaft</h3>
+                    <p>
+                        Aufträge auf Papier, Fotos im Handy, Rechnungen in Excel - 
+                        keine Übersicht, verlorene Infos.
+                    </p>
                 </div>
 
                 <div class="problem-card">
-                    <div class="problem-icon">💰</div>
-                    <h3>Verpasste Aufträge</h3>
-                    <p>Kunden können nicht sofort buchen und gehen zur Konkurrenz mit Online-Terminbuchung.</p>
-                    <div class="problem-cost">30%</div>
-                    <p>Potentielle Kunden verloren</p>
+                    <div class="problem-icon">🧾</div>
+                    <h3>Rechnungen schreiben</h3>
+                    <p>
+                        Abends und am Wochenende Rechnungen tippen, 
+                        statt Zeit mit der Familie zu verbringen.
+                    </p>
                 </div>
 
                 <div class="problem-card">
-                    <div class="problem-icon">📊</div>
-                    <h3>Keine Übersicht</h3>
-                    <p>Wann kommt die Zahlung? Welche Aufträge sind offen? Wo sind die Fotos vom letzten Job?</p>
-                    <div class="problem-cost">❌</div>
-                    <p>Kein System, keine Kontrolle</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="solution-section">
-        <div class="container">
-            <h2 class="section-title" style="color: var(--handwerk-dark);">✅ Die Lösung: Digitaler Handwerksbetrieb</h2>
-            <p class="section-subtitle">Alles was Sie brauchen - auf Ihrem Smartphone</p>
-
-            <div class="solution-grid">
-                <div class="mobile-preview">
-                    <h3>Ihre Mobile App</h3>
-                    <div class="phone-mockup">
-                        <div class="phone-screen">
-                            <div class="app-header">
-                                🔧 Meine Aufträge
-                            </div>
-                            <div class="task-item">
-                                <strong>09:00 - Elektroinstallation</strong><br>
-                                Max Müller, Zürich<br>
-                                📍 Navigation starten
-                            </div>
-                            <div class="task-item">
-                                <strong>14:00 - Wartung</strong><br>
-                                Firma AG, Basel<br>
-                                ✓ Bestätigt
-                            </div>
-                            <div class="task-item" style="border-left-color: #f59e0b;">
-                                <strong>🔔 Neue Anfrage</strong><br>
-                                Notfall Reparatur<br>
-                                → Annehmen / Ablehnen
-                            </div>
-                        </div>
-                    </div>
-                    <p style="margin-top: 1rem; font-size: 1.1rem;">
-                        <strong>Alles auf einen Blick:</strong><br>
-                        Termine • Navigation • Fotos • Unterschriften • Rechnungen
-                    </p>
-                </div>
-
-                <div class="solution-features">
-                    <div class="feature-item">
-                        <div class="feature-icon">📅</div>
-                        <div class="feature-content">
-                            <h4>Online-Terminbuchung 24/7</h4>
-                            <p>Kunden buchen selbst auf Ihrer Website. Automatische Kalender-Integration. Sie sehen sofort alle Termine auf dem Handy.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-item">
-                        <div class="feature-icon">📱</div>
-                        <div class="feature-content">
-                            <h4>Mobile App für unterwegs</h4>
-                            <p>Alle Auftragsdaten, Kundeninfo, Fotos vom Problem - alles auf dem Smartphone. Auch offline verfügbar!</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-item">
-                        <div class="feature-icon">💬</div>
-                        <div class="feature-content">
-                            <h4>WhatsApp Automatisierung</h4>
-                            <p>Automatische Bestätigungen, Erinnerungen 24h vorher, Statusupdates. Kunden sind immer informiert.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-item">
-                        <div class="feature-icon">📄</div>
-                        <div class="feature-content">
-                            <h4>Digitale Unterschrift & Rechnungen</h4>
-                            <p>Kunde unterschreibt auf Ihrem Tablet. Rechnung wird sofort generiert und per E-Mail versendet. Buchhaltung freut sich!</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-item">
-                        <div class="feature-icon">📸</div>
-                        <div class="feature-content">
-                            <h4>Foto-Dokumentation</h4>
-                            <p>Fotos vom Problem und der fertigen Arbeit direkt im System. Alles dokumentiert für Garantiefälle.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="case-study">
-        <div class="container">
-            <h2 class="section-title" style="color: var(--handwerk-dark);">📈 Erfolgsgeschichte: Elektriker Keller</h2>
-            <p class="section-subtitle">Wie ein Schweizer Elektriker mit Digitalisierung 35% mehr Aufträge schafft</p>
-
-            <div class="case-study-card">
-                <div class="case-study-header">
-                    <h3 style="font-size: 2rem; color: var(--text-dark);">Keller Elektro GmbH, Luzern</h3>
-                    <span class="case-study-badge">Handwerk</span>
-                </div>
-
-                <div class="case-study-content">
-                    <div class="case-block">
-                        <h4>Herausforderung</h4>
-                        <ul>
-                            <li>2-3 Stunden täglich für Terminkoordination</li>
-                            <li>Ständige Unterbrechungen auf der Baustelle</li>
-                            <li>Doppelbuchungen durch manuelle Planung</li>
-                            <li>Verpasste Anrufe = verlorene Kunden</li>
-                            <li>Papierchaos bei Aufträgen</li>
-                        </ul>
-                    </div>
-
-                    <div class="case-block">
-                        <h4>Lösung</h4>
-                        <ul>
-                            <li>Self-Service Online-Terminbuchung</li>
-                            <li>Mobile App für Baustelle</li>
-                            <li>Automatische SMS-Erinnerungen</li>
-                            <li>Digitale Unterschrift auf Tablet</li>
-                            <li>Google Calendar Synchronisation</li>
-                        </ul>
-                    </div>
-
-                    <div class="case-block">
-                        <h4>Technologie</h4>
-                        <ul>
-                            <li>Custom Booking System</li>
-                            <li>Progressive Web App (iOS + Android)</li>
-                            <li>SMS-Gateway Integration</li>
-                            <li>Cloud-Synchronisation</li>
-                            <li>Offline-Modus</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="results-bar">
-                    <div class="result-metric">
-                        <div class="result-value">-70%</div>
-                        <div class="result-label">Weniger Telefon-Anrufe</div>
-                    </div>
-                    <div class="result-metric">
-                        <div class="result-value">12h</div>
-                        <div class="result-label">Zeit gespart pro Woche</div>
-                    </div>
-                    <div class="result-metric">
-                        <div class="result-value">+35%</div>
-                        <div class="result-label">Mehr Aufträge</div>
-                    </div>
-                    <div class="result-metric">
-                        <div class="result-value">2 Mon.</div>
-                        <div class="result-label">Amortisation</div>
-                    </div>
-                </div>
-
-                <div style="margin-top: 3rem; padding: 2rem; background: #ecfdf5; border-radius: 15px; text-align: center;">
-                    <p style="font-size: 1.2rem; color: var(--text-dark); line-height: 1.8;">
-                        <em>"Früher habe ich jeden Tag 2-3 Stunden am Telefon verbracht. Jetzt buchen die Kunden selbst online. Ich spare Zeit und kann mehr Aufträge annehmen. Die Investition hat sich in 2 Monaten gelohnt!"</em>
-                    </p>
-                    <p style="margin-top: 1rem; font-weight: 600; color: var(--text-dark);">
-                        - P. Keller, Elektriker, Keller Elektro GmbH, Luzern
+                    <div class="problem-icon">🚗</div>
+                    <h3>Ineffiziente Routen</h3>
+                    <p>
+                        Kreuz und quer durch den Kanton fahren, 
+                        weil die Termine nicht optimiert sind.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="pricing-section">
+    <!-- Solutions Section -->
+    <section class="solutions-section">
         <div class="container">
-            <h2 class="section-title" style="color: var(--handwerk-dark);">💰 Transparente Preise für Handwerker</h2>
-            <p class="section-subtitle">Wählen Sie das passende Paket für Ihren Betrieb</p>
+            <h2>Die Lösung für Ihr Handwerk</h2>
+            <p class="solutions-subtitle">Für Elektriker, Sanitär, Schreiner, Maler und alle Handwerker</p>
 
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Handwerk Start</h3>
-                    <div class="price">2'500 CHF</div>
-                    <p class="price-period">Einmalig</p>
-                    <ul class="pricing-features">
-                        <li>Professionelle Website</li>
-                        <li>Mobile-responsive</li>
-                        <li>Kontaktformular</li>
-                        <li>Google My Business Setup</li>
-                        <li>Portfolio/Referenzen Seite</li>
-                        <li>SEO Grundoptimierung</li>
-                        <li>1 Monat Support</li>
+            <div class="solutions-grid">
+                <!-- Solution 1 -->
+                <div class="solution-card">
+                    <div class="solution-icon">📅</div>
+                    <h3>Online-Terminbuchung</h3>
+                    <p>Kunden buchen selbst - Sie sehen neue Termine direkt auf dem Handy.</p>
+                    
+                    <ul class="solution-features">
+                        <li>24/7 Online-Buchung</li>
+                        <li>Automatische Bestätigungen</li>
+                        <li>SMS/WhatsApp Reminder</li>
+                        <li>Kalender-Sync (Google, Outlook)</li>
+                        <li>Fahrtzeit-Puffer automatisch</li>
+                        <li>Notfall-Slots definieren</li>
                     </ul>
-                    <a href="#contact" class="price-cta">Jetzt anfragen</a>
+
+                    <div class="solution-price">
+                        <span class="solution-price-value">Ab 4'500 CHF</span>
+                        <span class="solution-price-label">einmalig</span>
+                    </div>
                 </div>
 
-                <div class="pricing-card featured">
-                    <div class="recommended-badge">⭐ Empfohlen</div>
-                    <h3>Handwerk Plus</h3>
-                    <div class="price">4'500 CHF</div>
-                    <p class="price-period">Einmalig</p>
-                    <ul class="pricing-features">
-                        <li>Alles aus Handwerk Start</li>
-                        <li>Online-Terminbuchung 24/7</li>
-                        <li>WhatsApp Business Integration</li>
-                        <li>Automatische Erinnerungen</li>
-                        <li>Google Calendar Sync</li>
-                        <li>Kundenverwaltung (Mini-CRM)</li>
-                        <li>SMS-Benachrichtigungen</li>
-                        <li>3 Monate Premium Support</li>
-                    </ul>
-                    <a href="#contact" class="price-cta">Jetzt anfragen</a>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--success-color); font-weight: 600;">
-                        ROI in 2-3 Monaten!
-                    </p>
-                </div>
-
-                <div class="pricing-card">
-                    <h3>Handwerk Premium</h3>
-                    <div class="price">8'500 CHF</div>
-                    <p class="price-period">Einmalig</p>
-                    <ul class="pricing-features">
-                        <li>Alles aus Handwerk Plus</li>
-                        <li>Mobile App (iOS + Android)</li>
-                        <li>Offline-Funktionalität</li>
-                        <li>Digitale Unterschrift</li>
-                        <li>Automatische Rechnungen</li>
+                <!-- Solution 2 -->
+                <div class="solution-card">
+                    <div class="solution-icon">📱</div>
+                    <h3>Mobile Handwerker-App</h3>
+                    <p>Alles auf dem Handy: Aufträge, Fotos, Zeiten, Materialien.</p>
+                    
+                    <ul class="solution-features">
+                        <li>Auftrags-Übersicht</li>
                         <li>Foto-Dokumentation</li>
-                        <li>Echtzeit-Dashboard</li>
-                        <li>6 Monate Premium Support</li>
+                        <li>Arbeitszeit-Erfassung</li>
+                        <li>Material-Liste</li>
+                        <li>Kunden-Unterschrift digital</li>
+                        <li>Offline-Funktionalität</li>
                     </ul>
-                    <a href="#contact" class="price-cta">Jetzt anfragen</a>
+
+                    <div class="solution-price">
+                        <span class="solution-price-value">Ab 8'500 CHF</span>
+                        <span class="solution-price-label">einmalig</span>
+                    </div>
+                </div>
+
+                <!-- Solution 3 -->
+                <div class="solution-card">
+                    <div class="solution-icon">🧾</div>
+                    <h3>Automatische Rechnungen</h3>
+                    <p>Auftrag abschliessen, Rechnung geht automatisch raus.</p>
+                    
+                    <ul class="solution-features">
+                        <li>Aus Auftrag generiert</li>
+                        <li>QR-Rechnung Schweiz</li>
+                        <li>PDF per E-Mail</li>
+                        <li>Zahlungs-Tracking</li>
+                        <li>Mahnwesen automatisch</li>
+                        <li>Buchhaltungs-Export</li>
+                    </ul>
+
+                    <div class="solution-price">
+                        <span class="solution-price-value">Ab 4'500 CHF</span>
+                        <span class="solution-price-label">einmalig</span>
+                    </div>
+                </div>
+
+                <!-- Solution 4 -->
+                <div class="solution-card">
+                    <div class="solution-icon">🌐</div>
+                    <h3>Handwerker-Website</h3>
+                    <p>Professioneller Auftritt mit Buchung und Google-Sichtbarkeit.</p>
+                    
+                    <ul class="solution-features">
+                        <li>Mobile-optimiert</li>
+                        <li>Lokale SEO</li>
+                        <li>Referenz-Galerie</li>
+                        <li>Online-Buchung integriert</li>
+                        <li>Kontaktformular</li>
+                        <li>Google My Business</li>
+                    </ul>
+
+                    <div class="solution-price">
+                        <span class="solution-price-value">Ab 2'500 CHF</span>
+                        <span class="solution-price-label">einmalig</span>
+                    </div>
                 </div>
             </div>
-
-            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--bg-light); border-radius: 15px;">
-                <p style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 0.5rem;">
-                    <strong>Wartung & Support:</strong>
-                </p>
-                <p style="color: var(--text-light);">
-                    Ab 150 CHF/Monat für Updates, Backups und Support
-                </p>
-            </div>
         </div>
     </section>
 
-    <section class="faq-section">
+    <!-- Benefits Section -->
+    <section class="benefits-section">
         <div class="container">
-            <h2 class="section-title" style="color: var(--handwerk-dark);">❓ Häufig gestellte Fragen</h2>
-            
-            <div class="faq-item">
-                <h3>Brauche ich technische Kenntnisse?</h3>
-                <p>Nein! Wenn Sie WhatsApp bedienen können, können Sie auch unser System nutzen. Wir schulen Sie persönlich (1-2 Stunden) und Sie sind sofort produktiv.</p>
-            </div>
+            <h2>Was Sie gewinnen</h2>
 
-            <div class="faq-item">
-                <h3>Funktioniert die App auch ohne Internet?</h3>
-                <p>Ja! Die Mobile App funktioniert auch offline. Alle Daten werden automatisch synchronisiert, sobald Sie wieder Online sind. Perfekt für Baustellen ohne WLAN!</p>
-            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⏰</div>
+                    <h3>10+ Stunden/Woche</h3>
+                    <p>Weniger Admin, mehr produktive Arbeit auf der Baustelle</p>
+                </div>
 
-            <div class="faq-item">
-                <h3>Wie lange dauert die Umsetzung?</h3>
-                <p>Handwerk Start (Website) in <strong>2 Wochen</strong>, Handwerk Plus (mit Booking) in <strong>3 Wochen</strong>, Handwerk Premium (mit App) in <strong>4-5 Wochen</strong>. Schnell und effizient!</p>
-            </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Schneller bezahlt</h3>
+                    <p>Rechnung sofort raus = schneller Geldeingang</p>
+                </div>
 
-            <div class="faq-item">
-                <h3>Was passiert bei Problemen?</h3>
-                <p>Sie haben <strong>direkten WhatsApp-Zugang zu mir</strong>. Bei dringenden Problemen antworte ich innerhalb 1-4 Stunden. Alle Pakete inkludieren Support.</p>
-            </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Volle Übersicht</h3>
+                    <p>Alle Aufträge, Termine und Finanzen auf einen Blick</p>
+                </div>
 
-            <div class="faq-item">
-                <h3>Kann ich das System mit meiner Buchhaltung verbinden?</h3>
-                <p>Ja! Wir können das System mit gängigen Buchhaltungssoftwares (Bexio, Abacus, Banana, etc.) integrieren. Das besprechen wir bei der Beratung.</p>
+                <div class="benefit-card">
+                    <div class="benefit-icon">😊</div>
+                    <h3>Work-Life-Balance</h3>
+                    <p>Feierabend ist Feierabend - keine Büroarbeit mehr abends</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="final-cta">
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
         <div class="container">
-            <h2>Bereit für mehr Effizienz?</h2>
-            <p>Sparen Sie 10-15 Stunden pro Woche und nehmen Sie mehr Aufträge an</p>
-            
-            <div class="contact-options">
-                <a href="tel:+41786650253" class="contact-option">
-                    📞 +41 78 665 02 53
+            <h2>Bereit für weniger Bürokram?</h2>
+            <p>Kostenlose Erstberatung - unverbindlich und persönlich</p>
+
+            <div class="cta-options">
+                <a href="tel:+41786650253" class="cta-option">
+                    <span class="cta-option-icon">📞</span>
+                    <span>+41 78 665 02 53</span>
                 </a>
-                <a href="mailto:serayd6161@gmail.com" class="contact-option">
-                    ✉️ E-Mail senden
+
+                <a href="mailto:info@swissdigital.life" class="cta-option">
+                    <span class="cta-option-icon">✉️</span>
+                    <span>info@swissdigital.life</span>
                 </a>
-                <a href="https://wa.me/41786650253" class="contact-option">
-                    💬 WhatsApp Chat
+
+                <a href="https://wa.me/41786650253" class="cta-option">
+                    <span class="cta-option-icon">💬</span>
+                    <span>WhatsApp</span>
                 </a>
             </div>
-
-            <p style="margin-top: 2rem; font-size: 1.1rem; opacity: 0.9;">
-                Kostenlose Beratung • Transparente Preise • Schnelle Umsetzung
-            </p>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>SwissDigital Consulting</h3>
-                    <p>Digitalisierung für Handwerker</p>
-                    <p>Von der Praxis für die Praxis</p>
+                    <p>Digitalisierung für Schweizer KMUs</p>
+                    <p>Spezialisiert auf Handwerk</p>
                 </div>
 
                 <div class="footer-section">
-                    <h3>Handwerk Services</h3>
-                    <a href="roi-rechner.html">ROI-Rechner</a>
-                    <a href="booking-demo.html">Booking Demo</a>
-                    <a href="#pricing">Preise</a>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Andere Branchen</h3>
+                    <h3>Branchen</h3>
                     <a href="gastro-digitalisierung.html">Gastronomie</a>
+                    <a href="handwerk-digitalisierung.html">Handwerk</a>
                     <a href="produktion-digitalisierung.html">Produktion</a>
-                    <a href="/#services">Alle Services</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <a href="index.html#services">Online-Buchung</a>
+                    <a href="index.html#services">Mobile Apps</a>
+                    <a href="index.html#services">Automatisierung</a>
                 </div>
 
                 <div class="footer-section">
                     <h3>Kontakt</h3>
-                    <p>📧 serayd6161@gmail.com</p>
+                    <p>📧 info@swissdigital.life</p>
                     <p>📱 +41 78 665 02 53</p>
                     <p>📍 Dottikon, Aargau</p>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 SwissDigital Consulting. Alle Rechte vorbehalten.</p>
+                <p>&copy; 2024 SwissDigital Consulting - Serkan Aydin. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
-
-    <a href="https://wa.me/41786650253" class="whatsapp-float" target="_blank">💬</a>
-
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
