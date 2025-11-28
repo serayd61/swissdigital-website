@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROI-Rechner - SwissDigital Consulting</title>
-    <meta name="description" content="Berechnen Sie wie viel Geld Sie durch verpasste Anrufe und ineffiziente Prozesse verlieren">
+    <title>Digitalisierungs-ROI-Rechner | SwissDigital Consulting</title>
+    <meta name="description" content="Berechnen Sie kostenlos, wie viel Zeit und Geld Sie durch Digitalisierung sparen können. Interaktiver ROI-Rechner für Schweizer KMUs.">
+    <meta property="og:title" content="Digitalisierungs-ROI-Rechner | SwissDigital">
+    <meta property="og:description" content="Berechnen Sie in 2 Minuten Ihr Einsparpotenzial durch Digitalisierung">
     <style>
         * {
             margin: 0;
@@ -13,59 +15,67 @@
         }
 
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --accent-color: #dc2626;
-            --success-color: #059669;
-            --warning-color: #f59e0b;
-            --text-dark: #1f2937;
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --success: #059669;
+            --warning: #f59e0b;
+            --danger: #dc2626;
+            --text: #1f2937;
             --text-light: #6b7280;
-            --bg-light: #f9fafb;
+            --bg: #f9fafb;
             --white: #ffffff;
+            --border: #e5e7eb;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            color: var(--text-dark);
-            background: var(--bg-light);
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
+        /* Header */
+        .header {
             background: var(--white);
-            padding: 1.5rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
             text-decoration: none;
         }
 
         .back-link {
-            color: var(--primary-color);
+            color: var(--text-light);
             text-decoration: none;
-            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        /* Hero */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: var(--white);
-            padding: 3rem 0;
+            padding: 4rem 2rem;
             text-align: center;
         }
 
@@ -75,378 +85,1103 @@
         }
 
         .hero p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .calculator-section {
-            padding: 3rem 0;
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
         }
 
+        /* Main Container */
+        .main-container {
+            max-width: 900px;
+            margin: -3rem auto 4rem;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Calculator Card */
         .calculator-card {
             background: var(--white);
-            border-radius: 15px;
-            padding: 3rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
 
-        .form-group {
+        /* Progress Bar */
+        .progress-container {
+            background: var(--bg);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: var(--border);
+            z-index: 1;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .step-circle.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .step-circle.completed {
+            background: var(--success);
+            color: var(--white);
+        }
+
+        .step-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* Calculator Form */
+        .calculator-form {
+            padding: 2.5rem;
+        }
+
+        .step-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .step-description {
+            color: var(--text-light);
             margin-bottom: 2rem;
         }
 
-        .form-group label {
+        /* Form Groups */
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        .form-label {
             display: block;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            color: var(--text-dark);
+            color: var(--text);
         }
 
-        .form-group input,
-        .form-group select {
+        .form-hint {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Slider Input */
+        .slider-container {
+            position: relative;
+        }
+
+        .slider-value {
+            position: absolute;
+            right: 0;
+            top: -30px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        input[type="range"] {
             width: 100%;
-            padding: 1rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
+            height: 8px;
+            border-radius: 4px;
+            background: var(--border);
             outline: none;
-            border-color: var(--primary-color);
+            -webkit-appearance: none;
         }
 
-        .helper-text {
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
+            transition: transform 0.2s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        /* Radio Cards */
+        .radio-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .radio-card {
+            position: relative;
+        }
+
+        .radio-card input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .radio-card label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .radio-card label:hover {
+            border-color: var(--primary);
+        }
+
+        .radio-card input:checked + label {
+            border-color: var(--primary);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        .radio-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .radio-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Checkbox List */
+        .checkbox-list {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .checkbox-item:hover {
+            border-color: var(--primary);
+        }
+
+        .checkbox-item.selected {
+            border-color: var(--primary);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        .checkbox-item input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+        }
+
+        .checkbox-label {
+            flex: 1;
+        }
+
+        .checkbox-label strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .checkbox-label span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Navigation Buttons */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Results Section */
+        .results-container {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        .results-header {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--success) 0%, #047857 100%);
+            color: var(--white);
+        }
+
+        .results-header h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .results-body {
+            padding: 2.5rem;
+        }
+
+        /* Big Numbers */
+        .big-numbers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .big-number-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg);
+            border-radius: 15px;
+        }
+
+        .big-number-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .big-number-value.success {
+            color: var(--success);
+        }
+
+        .big-number-label {
             font-size: 0.9rem;
             color: var(--text-light);
             margin-top: 0.5rem;
         }
 
-        .calculate-btn {
-            width: 100%;
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 1.2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .calculate-btn:hover {
-            background: var(--secondary-color);
-        }
-
-        .results {
-            display: none;
-            margin-top: 3rem;
+        /* ROI Chart */
+        .roi-chart {
+            background: var(--bg);
+            border-radius: 15px;
             padding: 2rem;
-            background: #fef2f2;
-            border-left: 5px solid var(--accent-color);
-            border-radius: 10px;
+            margin-bottom: 2rem;
         }
 
-        .results.show {
-            display: block;
-            animation: slideIn 0.5s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .results h2 {
-            color: var(--accent-color);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .big-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--accent-color);
-            margin: 1rem 0;
-        }
-
-        .results-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .result-item {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 8px;
+        .roi-chart h3 {
+            margin-bottom: 1.5rem;
             text-align: center;
         }
 
-        .result-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary-color);
+        .chart-bars {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 200px;
+            gap: 2rem;
         }
 
-        .result-label {
-            color: var(--text-light);
-            margin-top: 0.5rem;
+        .chart-bar-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 120px;
         }
 
-        .solution-box {
-            background: #ecfdf5;
-            border-left: 5px solid var(--success-color);
-            padding: 2rem;
-            border-radius: 10px;
-            margin-top: 2rem;
-        }
-
-        .solution-box h3 {
-            color: var(--success-color);
-            margin-bottom: 1rem;
-        }
-
-        .solution-box ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .solution-box li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
+        .chart-bar {
+            width: 60px;
+            background: var(--primary);
+            border-radius: 8px 8px 0 0;
+            transition: height 1s ease;
             position: relative;
         }
 
-        .solution-box li:before {
-            content: "✓";
+        .chart-bar.savings {
+            background: var(--success);
+        }
+
+        .chart-bar-value {
             position: absolute;
-            left: 0;
-            color: var(--success-color);
-            font-weight: bold;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            white-space: nowrap;
         }
 
-        .cta-box {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
+        .chart-bar-label {
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
             text-align: center;
-            margin-top: 2rem;
         }
 
-        .cta-box h3 {
+        /* Recommendations */
+        .recommendations {
+            margin-bottom: 2rem;
+        }
+
+        .recommendations h3 {
             margin-bottom: 1rem;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: var(--accent-color);
-            color: var(--white);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1rem;
+        .recommendation-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg);
+            border-radius: 10px;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid var(--primary);
         }
 
-        footer {
-            background: var(--text-dark);
-            color: var(--white);
-            padding: 2rem 0;
+        .recommendation-icon {
+            font-size: 1.5rem;
+        }
+
+        .recommendation-content h4 {
+            margin-bottom: 0.25rem;
+        }
+
+        .recommendation-content p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* CTA Section */
+        .results-cta {
             text-align: center;
-            margin-top: 4rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 15px;
+            color: var(--white);
         }
 
+        .results-cta h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .results-cta p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        /* Email Gate (optional) */
+        .email-gate {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .email-gate.active {
+            display: block;
+        }
+
+        .email-gate h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .email-gate p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .email-form input {
+            flex: 1;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .email-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .skip-email {
+            margin-top: 1rem;
+            color: var(--text-light);
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .results-grid {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .big-numbers {
                 grid-template-columns: 1fr;
             }
-            
-            .big-number {
-                font-size: 2.5rem;
+
+            .chart-bars {
+                height: 150px;
+            }
+
+            .email-form {
+                flex-direction: column;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .trust-badges {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="/" class="logo">SwissDigital Consulting</a>
-                <a href="tools.html" class="back-link">← Zurück zu Tools</a>
-            </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">SwissDigital</a>
+            <a href="index.html" class="back-link">← Zurück zur Startseite</a>
         </div>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
-        <div class="container">
-            <h1>💰 ROI-Rechner</h1>
-            <p>Wie viel Geld verlieren Sie durch ineffiziente Prozesse?</p>
-        </div>
+        <h1>💰 Digitalisierungs-ROI-Rechner</h1>
+        <p>Berechnen Sie in 2 Minuten, wie viel Zeit und Geld Sie durch Digitalisierung sparen können</p>
+        <span class="hero-badge">✓ Kostenlos • ✓ Unverbindlich • ✓ Sofortergebnis</span>
     </section>
 
-    <section class="calculator-section">
-        <div class="container">
-            <div class="calculator-card">
-                <form id="roiForm">
-                    <div class="form-group">
-                        <label for="branche">Ihre Branche</label>
-                        <select id="branche" required>
-                            <option value="">Bitte wählen...</option>
-                            <option value="restaurant">Restaurant / Gastronomie</option>
-                            <option value="handwerk">Handwerk / Dienstleistung</option>
-                            <option value="produktion">Produktion / Industrie</option>
-                            <option value="andere">Andere</option>
-                        </select>
+    <!-- Main Container -->
+    <main class="main-container">
+        <div class="calculator-card">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-steps">
+                    <div class="progress-step">
+                        <div class="step-circle active" id="step-circle-1">1</div>
+                        <span class="step-label">Branche</span>
                     </div>
-
-                    <div class="form-group">
-                        <label for="avgValue">Durchschnittlicher Auftragswert (CHF)</label>
-                        <input type="number" id="avgValue" placeholder="z.B. 150" required>
-                        <div class="helper-text">Wie viel verdienen Sie durchschnittlich pro Auftrag/Reservierung?</div>
+                    <div class="progress-step">
+                        <div class="step-circle" id="step-circle-2">2</div>
+                        <span class="step-label">Grösse</span>
                     </div>
-
-                    <div class="form-group">
-                        <label for="missedCalls">Verpasste Anrufe pro Tag</label>
-                        <input type="number" id="missedCalls" placeholder="z.B. 5" required>
-                        <div class="helper-text">Wie viele Anrufe verpassen Sie durchschnittlich täglich?</div>
+                    <div class="progress-step">
+                        <div class="step-circle" id="step-circle-3">3</div>
+                        <span class="step-label">Prozesse</span>
                     </div>
-
-                    <div class="form-group">
-                        <label for="phoneTime">Zeit am Telefon (Stunden pro Tag)</label>
-                        <input type="number" id="phoneTime" step="0.5" placeholder="z.B. 2.5" required>
-                        <div class="helper-text">Wie viele Stunden verbringen Sie täglich mit Terminkoordination?</div>
+                    <div class="progress-step">
+                        <div class="step-circle" id="step-circle-4">4</div>
+                        <span class="step-label">Ergebnis</span>
                     </div>
+                </div>
+            </div>
 
-                    <div class="form-group">
-                        <label for="workDays">Arbeitstage pro Monat</label>
-                        <input type="number" id="workDays" value="22" required>
-                    </div>
+            <!-- Calculator Form -->
+            <div class="calculator-form">
+                <!-- Step 1: Industry -->
+                <div class="step-content active" id="step-1">
+                    <h2 class="step-title">In welcher Branche sind Sie tätig?</h2>
+                    <p class="step-description">Wählen Sie Ihre Branche für eine massgeschneiderte Analyse</p>
 
-                    <button type="submit" class="calculate-btn">Jetzt berechnen →</button>
-                </form>
-
-                <div id="results" class="results">
-                    <h2>🚨 Ihre Analyse</h2>
-                    
-                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">Sie verlieren pro Jahr:</p>
-                    <div class="big-number" id="yearlyLoss">0 CHF</div>
-
-                    <div class="results-grid">
-                        <div class="result-item">
-                            <div class="result-value" id="monthlyLoss">0 CHF</div>
-                            <div class="result-label">Verlust pro Monat</div>
+                    <div class="radio-cards">
+                        <div class="radio-card">
+                            <input type="radio" name="industry" id="gastro" value="gastro">
+                            <label for="gastro">
+                                <span class="radio-icon">🍽️</span>
+                                <span class="radio-label">Gastronomie</span>
+                            </label>
                         </div>
-                        <div class="result-item">
-                            <div class="result-value" id="timeLoss">0h</div>
-                            <div class="result-label">Verschwendete Zeit/Monat</div>
+                        <div class="radio-card">
+                            <input type="radio" name="industry" id="handwerk" value="handwerk">
+                            <label for="handwerk">
+                                <span class="radio-icon">🔧</span>
+                                <span class="radio-label">Handwerk</span>
+                            </label>
+                        </div>
+                        <div class="radio-card">
+                            <input type="radio" name="industry" id="produktion" value="produktion">
+                            <label for="produktion">
+                                <span class="radio-icon">🏭</span>
+                                <span class="radio-label">Produktion</span>
+                            </label>
+                        </div>
+                        <div class="radio-card">
+                            <input type="radio" name="industry" id="dienstleistung" value="dienstleistung">
+                            <label for="dienstleistung">
+                                <span class="radio-icon">💼</span>
+                                <span class="radio-label">Dienstleistung</span>
+                            </label>
+                        </div>
+                        <div class="radio-card">
+                            <input type="radio" name="industry" id="retail" value="retail">
+                            <label for="retail">
+                                <span class="radio-icon">🛒</span>
+                                <span class="radio-label">Retail</span>
+                            </label>
+                        </div>
+                        <div class="radio-card">
+                            <input type="radio" name="industry" id="andere" value="andere">
+                            <label for="andere">
+                                <span class="radio-icon">📋</span>
+                                <span class="radio-label">Andere</span>
+                            </label>
                         </div>
                     </div>
 
-                    <div class="solution-box">
-                        <h3>💡 Die Lösung: Digitalisierung</h3>
-                        <p>Mit unseren Lösungen könnten Sie:</p>
-                        <ul id="solutions">
-                            <!-- Dynamically filled -->
-                        </ul>
+                    <div class="form-navigation">
+                        <div></div>
+                        <button class="btn btn-primary" onclick="nextStep()" id="next-1" disabled>Weiter →</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Company Size -->
+                <div class="step-content" id="step-2">
+                    <h2 class="step-title">Wie gross ist Ihr Unternehmen?</h2>
+                    <p class="step-description">Diese Informationen helfen uns, Ihr Einsparpotenzial genauer zu berechnen</p>
+
+                    <div class="form-group">
+                        <label class="form-label">Anzahl Mitarbeiter</label>
+                        <div class="slider-container">
+                            <span class="slider-value" id="employees-value">5</span>
+                            <input type="range" id="employees" min="1" max="100" value="5" oninput="updateSlider('employees')">
+                        </div>
                     </div>
 
-                    <div class="cta-box">
-                        <h3>Bereit für die Veränderung?</h3>
-                        <p>Lassen Sie uns Ihr Spar-Potential realisieren</p>
-                        <a href="/#contact" class="cta-button">Kostenlose Beratung anfragen</a>
+                    <div class="form-group">
+                        <label class="form-label">Durchschnittlicher Stundenlohn (CHF)</label>
+                        <p class="form-hint">Inkl. Sozialleistungen</p>
+                        <div class="slider-container">
+                            <span class="slider-value" id="hourlyRate-value">45 CHF</span>
+                            <input type="range" id="hourlyRate" min="25" max="150" value="45" oninput="updateSlider('hourlyRate')">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Jahresumsatz (ungefähr)</label>
+                        <div class="radio-cards">
+                            <div class="radio-card">
+                                <input type="radio" name="revenue" id="rev1" value="500000">
+                                <label for="rev1">
+                                    <span class="radio-label">&lt; 500k</span>
+                                </label>
+                            </div>
+                            <div class="radio-card">
+                                <input type="radio" name="revenue" id="rev2" value="1000000">
+                                <label for="rev2">
+                                    <span class="radio-label">500k - 1M</span>
+                                </label>
+                            </div>
+                            <div class="radio-card">
+                                <input type="radio" name="revenue" id="rev3" value="3000000">
+                                <label for="rev3">
+                                    <span class="radio-label">1M - 5M</span>
+                                </label>
+                            </div>
+                            <div class="radio-card">
+                                <input type="radio" name="revenue" id="rev4" value="10000000">
+                                <label for="rev4">
+                                    <span class="radio-label">&gt; 5M</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Zurück</button>
+                        <button class="btn btn-primary" onclick="nextStep()" id="next-2">Weiter →</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Pain Points -->
+                <div class="step-content" id="step-3">
+                    <h2 class="step-title">Welche Aufgaben kosten Sie am meisten Zeit?</h2>
+                    <p class="step-description">Wählen Sie alle zutreffenden Punkte</p>
+
+                    <div class="checkbox-list" id="painPoints">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="pain" value="termine">
+                            <div class="checkbox-label">
+                                <strong>📅 Terminplanung & Koordination</strong>
+                                <span>Telefonate, E-Mails, Kalender abstimmen</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="pain" value="rechnungen">
+                            <div class="checkbox-label">
+                                <strong>📄 Rechnungen & Buchhaltung</strong>
+                                <span>Rechnungen schreiben, Mahnungen, Zahlungen verfolgen</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="pain" value="kommunikation">
+                            <div class="checkbox-label">
+                                <strong>💬 Kundenkommunikation</strong>
+                                <span>Anfragen beantworten, Bestätigungen senden</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="pain" value="dokumentation">
+                            <div class="checkbox-label">
+                                <strong>📋 Dokumentation & Berichte</strong>
+                                <span>Reports erstellen, Daten zusammentragen</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="pain" value="lager">
+                            <div class="checkbox-label">
+                                <strong>📦 Lager & Bestellungen</strong>
+                                <span>Bestandskontrolle, Nachbestellungen</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="pain" value="produktion">
+                            <div class="checkbox-label">
+                                <strong>🏭 Produktionsplanung</strong>
+                                <span>Aufträge planen, Auslastung optimieren</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 2rem;">
+                        <label class="form-label">Geschätzte Stunden pro Woche für diese Aufgaben</label>
+                        <div class="slider-container">
+                            <span class="slider-value" id="hoursWasted-value">10 Std.</span>
+                            <input type="range" id="hoursWasted" min="2" max="40" value="10" oninput="updateSlider('hoursWasted')">
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Zurück</button>
+                        <button class="btn btn-primary" onclick="calculateROI()">Ergebnis berechnen 🎯</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="results-container" id="results">
+                <div class="results-header">
+                    <h2>🎉 Ihr Einsparpotenzial</h2>
+                    <p>Basierend auf Ihren Angaben haben wir Ihr Digitalisierungspotenzial berechnet</p>
+                </div>
+
+                <div class="results-body">
+                    <div class="big-numbers">
+                        <div class="big-number-card">
+                            <div class="big-number-value success" id="result-hours">--</div>
+                            <div class="big-number-label">Stunden/Monat gespart</div>
+                        </div>
+                        <div class="big-number-card">
+                            <div class="big-number-value success" id="result-money">--</div>
+                            <div class="big-number-label">CHF/Jahr gespart</div>
+                        </div>
+                        <div class="big-number-card">
+                            <div class="big-number-value" id="result-roi">--</div>
+                            <div class="big-number-label">ROI im 1. Jahr</div>
+                        </div>
+                    </div>
+
+                    <div class="roi-chart">
+                        <h3>📊 Kostenvergleich: Heute vs. Digitalisiert</h3>
+                        <div class="chart-bars">
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" id="bar-current" style="height: 0px;">
+                                    <span class="chart-bar-value" id="bar-current-value">--</span>
+                                </div>
+                                <div class="chart-bar-label">Aktuelle<br>Kosten/Jahr</div>
+                            </div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" id="bar-investment" style="height: 0px;">
+                                    <span class="chart-bar-value" id="bar-investment-value">--</span>
+                                </div>
+                                <div class="chart-bar-label">Einmalige<br>Investition</div>
+                            </div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar savings" id="bar-savings" style="height: 0px;">
+                                    <span class="chart-bar-value" id="bar-savings-value">--</span>
+                                </div>
+                                <div class="chart-bar-label">Jährliche<br>Ersparnis</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recommendations">
+                        <h3>💡 Unsere Empfehlungen für Sie</h3>
+                        <div id="recommendations-list">
+                            <!-- Filled by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="results-cta">
+                        <h3>Bereit für den nächsten Schritt?</h3>
+                        <p>Lassen Sie uns in 30 Minuten besprechen, wie wir diese Einsparungen für Sie realisieren</p>
+                        <div class="cta-buttons">
+                            <a href="contact.html" class="btn btn-white">Kostenlose Beratung →</a>
+                            <a href="https://wa.me/41786650253?text=Hallo%2C%20ich%20habe%20den%20ROI-Rechner%20genutzt%20und%20möchte%20mehr%20erfahren" class="btn btn-outline-white" target="_blank">WhatsApp Chat</a>
+                        </div>
+                    </div>
+
+                    <div class="trust-badges">
+                        <div class="trust-badge">🔒 Ihre Daten sind sicher</div>
+                        <div class="trust-badge">✓ 19 Jahre Industrie-Erfahrung</div>
+                        <div class="trust-badge">🇨🇭 100% Schweizer Qualität</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 SwissDigital Consulting. Alle Rechte vorbehalten.</p>
-        </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 <a href="index.html">SwissDigital Consulting</a> • <a href="contact.html">Kontakt</a> • Dottikon, Aargau</p>
     </footer>
 
     <script>
-        document.getElementById('roiForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        let currentStep = 1;
+        const totalSteps = 3;
 
-            // Get values
-            const branche = document.getElementById('branche').value;
-            const avgValue = parseFloat(document.getElementById('avgValue').value);
-            const missedCalls = parseFloat(document.getElementById('missedCalls').value);
-            const phoneTime = parseFloat(document.getElementById('phoneTime').value);
-            const workDays = parseFloat(document.getElementById('workDays').value);
-
-            // Calculate losses
-            const conversionRate = 0.6; // 60% of calls would convert
-            const dailyLoss = missedCalls * avgValue * conversionRate;
-            const monthlyCallLoss = dailyLoss * workDays;
-            
-            // Time value (assume 50 CHF/hour)
-            const hourlyRate = 50;
-            const monthlyTimeLoss = phoneTime * workDays * hourlyRate;
-            
-            const totalMonthlyLoss = monthlyCallLoss + monthlyTimeLoss;
-            const totalYearlyLoss = totalMonthlyLoss * 12;
-
-            // Display results
-            document.getElementById('yearlyLoss').textContent = totalYearlyLoss.toLocaleString('de-CH') + ' CHF';
-            document.getElementById('monthlyLoss').textContent = totalMonthlyLoss.toLocaleString('de-CH') + ' CHF';
-            document.getElementById('timeLoss').textContent = (phoneTime * workDays).toFixed(0) + 'h';
-
-            // Generate solutions based on branch
-            const solutions = {
-                restaurant: [
-                    `Sparen Sie ${(monthlyCallLoss * 0.7).toLocaleString('de-CH')} CHF/Monat durch Online-Buchung`,
-                    `Reduzieren Sie Telefon-Zeit um ${(phoneTime * 0.7).toFixed(1)} Stunden pro Tag`,
-                    'Steigern Sie Tischauslastung um 30-40%',
-                    'Reduzieren Sie No-Shows um 60%'
-                ],
-                handwerk: [
-                    `Sparen Sie ${(monthlyTimeLoss * 0.7).toLocaleString('de-CH')} CHF/Monat durch Automatisierung`,
-                    `Gewinnen Sie ${(phoneTime * workDays * 0.7).toFixed(0)} Stunden pro Monat zurück`,
-                    'Erhöhen Sie Auftragsvolumen um 35%',
-                    'Verbessern Sie Kundenzufriedenheit'
-                ],
-                produktion: [
-                    `Steigern Sie Effizienz um 18% = ${(totalMonthlyLoss * 0.4).toLocaleString('de-CH')} CHF/Monat`,
-                    'Reduzieren Sie Stillstandszeiten um 25%',
-                    'Echtzeit-Transparenz über alle Maschinen',
-                    'ROI in nur 4-6 Monaten'
-                ],
-                andere: [
-                    `Sparen Sie ${(totalMonthlyLoss * 0.6).toLocaleString('de-CH')} CHF/Monat`,
-                    `Gewinnen Sie ${(phoneTime * workDays * 0.6).toFixed(0)} Stunden zurück`,
-                    'Automatisieren Sie repetitive Aufgaben',
-                    'Fokussieren Sie auf Ihr Kerngeschäft'
-                ]
-            };
-
-            const solutionsList = document.getElementById('solutions');
-            solutionsList.innerHTML = '';
-            solutions[branche || 'andere'].forEach(solution => {
-                const li = document.createElement('li');
-                li.textContent = solution;
-                solutionsList.appendChild(li);
+        // Enable/disable next button based on selection
+        document.querySelectorAll('input[name="industry"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                document.getElementById('next-1').disabled = false;
             });
-
-            // Show results
-            document.getElementById('results').classList.add('show');
-            
-            // Scroll to results
-            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
+
+        // Checkbox styling
+        document.querySelectorAll('.checkbox-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (e.target.tagName !== 'INPUT') {
+                    const checkbox = this.querySelector('input');
+                    checkbox.checked = !checkbox.checked;
+                }
+                this.classList.toggle('selected', this.querySelector('input').checked);
+            });
+        });
+
+        function updateSlider(id) {
+            const slider = document.getElementById(id);
+            const valueDisplay = document.getElementById(id + '-value');
+            
+            if (id === 'hourlyRate') {
+                valueDisplay.textContent = slider.value + ' CHF';
+            } else if (id === 'hoursWasted') {
+                valueDisplay.textContent = slider.value + ' Std.';
+            } else {
+                valueDisplay.textContent = slider.value;
+            }
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                document.getElementById('step-' + currentStep).classList.remove('active');
+                document.getElementById('step-circle-' + currentStep).classList.remove('active');
+                document.getElementById('step-circle-' + currentStep).classList.add('completed');
+                document.getElementById('step-circle-' + currentStep).textContent = '✓';
+                
+                currentStep++;
+                
+                document.getElementById('step-' + currentStep).classList.add('active');
+                document.getElementById('step-circle-' + currentStep).classList.add('active');
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById('step-' + currentStep).classList.remove('active');
+                document.getElementById('step-circle-' + currentStep).classList.remove('active');
+                
+                currentStep--;
+                
+                document.getElementById('step-' + currentStep).classList.add('active');
+                document.getElementById('step-circle-' + currentStep).classList.add('active');
+                document.getElementById('step-circle-' + currentStep).classList.remove('completed');
+                document.getElementById('step-circle-' + currentStep).textContent = currentStep;
+            }
+        }
+
+        function calculateROI() {
+            // Get values
+            const industry = document.querySelector('input[name="industry"]:checked')?.value || 'andere';
+            const employees = parseInt(document.getElementById('employees').value);
+            const hourlyRate = parseInt(document.getElementById('hourlyRate').value);
+            const hoursWasted = parseInt(document.getElementById('hoursWasted').value);
+            
+            // Calculate savings (assuming 60% efficiency gain)
+            const efficiencyGain = 0.6;
+            const hoursSavedPerWeek = hoursWasted * efficiencyGain;
+            const hoursSavedPerMonth = hoursSavedPerWeek * 4.33;
+            const hoursSavedPerYear = hoursSavedPerWeek * 52;
+            const moneySavedPerYear = hoursSavedPerYear * hourlyRate;
+            
+            // Estimate investment based on company size
+            let investmentEstimate = 3500;
+            if (employees > 10) investmentEstimate = 7500;
+            if (employees > 25) investmentEstimate = 15000;
+            if (employees > 50) investmentEstimate = 25000;
+            
+            // Calculate ROI
+            const roi = ((moneySavedPerYear - investmentEstimate) / investmentEstimate * 100).toFixed(0);
+            
+            // Current costs
+            const currentCosts = hoursWasted * 52 * hourlyRate;
+            
+            // Display results
+            document.getElementById('result-hours').textContent = Math.round(hoursSavedPerMonth);
+            document.getElementById('result-money').textContent = "CHF " + moneySavedPerYear.toLocaleString('de-CH');
+            document.getElementById('result-roi').textContent = roi + '%';
+            
+            // Animate chart bars
+            const maxHeight = 180;
+            const maxValue = Math.max(currentCosts, moneySavedPerYear, investmentEstimate);
+            
+            setTimeout(() => {
+                document.getElementById('bar-current').style.height = (currentCosts / maxValue * maxHeight) + 'px';
+                document.getElementById('bar-current-value').textContent = 'CHF ' + currentCosts.toLocaleString('de-CH');
+                
+                document.getElementById('bar-investment').style.height = (investmentEstimate / maxValue * maxHeight) + 'px';
+                document.getElementById('bar-investment-value').textContent = 'CHF ' + investmentEstimate.toLocaleString('de-CH');
+                
+                document.getElementById('bar-savings').style.height = (moneySavedPerYear / maxValue * maxHeight) + 'px';
+                document.getElementById('bar-savings-value').textContent = 'CHF ' + moneySavedPerYear.toLocaleString('de-CH');
+            }, 300);
+            
+            // Generate recommendations based on selected pain points
+            const painPoints = document.querySelectorAll('input[name="pain"]:checked');
+            const recommendations = [];
+            
+            const recommendationMap = {
+                'termine': {
+                    icon: '📅',
+                    title: 'Online-Buchungssystem',
+                    desc: 'Lassen Sie Kunden selbst Termine buchen - 24/7, ohne Telefonate'
+                },
+                'rechnungen': {
+                    icon: '📄',
+                    title: 'Automatische Rechnungsstellung',
+                    desc: 'Rechnungen werden automatisch erstellt und mit QR-Code versendet'
+                },
+                'kommunikation': {
+                    icon: '💬',
+                    title: 'WhatsApp Business Automation',
+                    desc: 'Automatische Antworten und Bestätigungen rund um die Uhr'
+                },
+                'dokumentation': {
+                    icon: '📊',
+                    title: 'Digitale Dashboards',
+                    desc: 'Echtzeit-Reports und KPIs auf einen Blick'
+                },
+                'lager': {
+                    icon: '📦',
+                    title: 'Bestandsmanagement',
+                    desc: 'Automatische Nachbestellungen bei niedrigem Lagerbestand'
+                },
+                'produktion': {
+                    icon: '🏭',
+                    title: 'OEE-Monitoring',
+                    desc: 'Maschinenverfügbarkeit und Stillstände in Echtzeit überwachen'
+                }
+            };
+            
+            painPoints.forEach(pain => {
+                if (recommendationMap[pain.value]) {
+                    recommendations.push(recommendationMap[pain.value]);
+                }
+            });
+            
+            // If no specific pain points, show general recommendations
+            if (recommendations.length === 0) {
+                recommendations.push(
+                    { icon: '🚀', title: 'Prozessanalyse', desc: 'Wir identifizieren gemeinsam Ihre grössten Zeitfresser' },
+                    { icon: '⚡', title: 'Quick Wins', desc: 'Schnelle Erfolge durch einfache Automatisierungen' }
+                );
+            }
+            
+            // Render recommendations
+            const recList = document.getElementById('recommendations-list');
+            recList.innerHTML = recommendations.map(rec => `
+                <div class="recommendation-item">
+                    <span class="recommendation-icon">${rec.icon}</span>
+                    <div class="recommendation-content">
+                        <h4>${rec.title}</h4>
+                        <p>${rec.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Show results
+            document.querySelector('.calculator-form').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            document.getElementById('results').classList.add('active');
+            
+            // Update step indicator
+            document.getElementById('step-circle-3').classList.remove('active');
+            document.getElementById('step-circle-3').classList.add('completed');
+            document.getElementById('step-circle-3').textContent = '✓';
+            document.getElementById('step-circle-4').classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
