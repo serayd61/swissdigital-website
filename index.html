@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SwissDigital Consulting - Digitalisierung für KMUs | Restaurant, Handwerk, Produktion</title>
-    <meta name="description" content="Professionelle Digitalisierungslösungen für Restaurants, Handwerker und Produktionsfirmen in der Schweiz. 15+ Jahre Erfahrung, transparente Preise ab 2'500 CHF.">
+    <meta name="description" content="Professionelle Digitalisierungslösungen für Restaurants, Handwerker und Produktionsfirmen in der Schweiz. 19 Jahre Industrie-Erfahrung, transparente Preise ab 2'500 CHF.">
     <meta name="keywords" content="Digitalisierung Schweiz, Web Entwicklung, Restaurant Software, Handwerk Digitalisierung, Industrie 4.0">
-    <link rel="canonical" href="https://swissdigital-consulting.ch/">
+    <link rel="canonical" href="https://swissdigital.life/">
     <style>
         * {
             margin: 0;
@@ -522,10 +522,10 @@
             font-size: 3rem;
         }
 
-        /* Portfolio Section */
-        .portfolio {
+        /* Services Section */
+        .services {
             padding: 5rem 0;
-            background: var(--bg-light);
+            background: var(--white);
         }
 
         .section-title {
@@ -540,91 +540,6 @@
             font-size: 1.2rem;
             color: var(--text-light);
             margin-bottom: 3rem;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .portfolio-card {
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-        }
-
-        .portfolio-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-        }
-
-        .portfolio-content {
-            padding: 2rem;
-        }
-
-        .portfolio-badge {
-            display: inline-block;
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 0.25rem 1rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .portfolio-card p {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-results {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 1.5rem 0;
-            padding-top: 1.5rem;
-            border-top: 2px solid var(--bg-light);
-        }
-
-        .portfolio-result {
-            text-align: center;
-        }
-
-        .portfolio-result-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--success-color);
-        }
-
-        .portfolio-result-label {
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        /* Services Section - Compact Version */
-        .services {
-            padding: 5rem 0;
-            background: var(--white);
         }
 
         .services-grid {
@@ -690,68 +605,63 @@
             margin: 1rem 0;
         }
 
-        /* Testimonials Section */
-        .testimonials {
+        /* About/Expertise Section - NEW */
+        .expertise-section {
             padding: 5rem 0;
             background: var(--bg-light);
         }
 
-        .testimonials-grid {
+        .expertise-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .testimonial-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .testimonial-header {
-            display: flex;
-            gap: 1.5rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             align-items: center;
+        }
+
+        .expertise-content h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
             margin-bottom: 1.5rem;
         }
 
-        .testimonial-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        .testimonial-info h4 {
-            margin-bottom: 0.25rem;
-            color: var(--text-dark);
-        }
-
-        .testimonial-position {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        .testimonial-rating {
-            color: #fbbf24;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-text {
-            font-size: 1.05rem;
+        .expertise-content p {
+            font-size: 1.1rem;
             line-height: 1.8;
-            font-style: italic;
             color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-highlight {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-color);
+            margin: 2rem 0;
+        }
+
+        .expertise-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .expertise-stat {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .expertise-stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .expertise-stat-label {
+            color: var(--text-light);
+            margin-top: 0.5rem;
         }
 
         /* Pricing Section */
@@ -1024,6 +934,10 @@
             .pricing-card.featured {
                 transform: scale(1);
             }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -1032,7 +946,7 @@
     <div class="sticky-cta" id="stickyCta">
         <div class="sticky-cta-content">
             <div class="sticky-cta-text">
-                💡 Verpassen Sie keine Kunden mehr! Kostenlose Beratung anfragen
+                💡 Kostenlose Erstberatung für Ihr Digitalisierungsprojekt
             </div>
             <div class="sticky-cta-buttons">
                 <a href="tel:+41786650253" class="sticky-cta-btn">📞 Anrufen</a>
@@ -1056,11 +970,10 @@
                         <a href="produktion-digitalisierung.html">🏭 Produktion & Industrie</a>
                     </div>
                 </li>
-                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#services">Dienstleistungen</a></li>
                 <li><a href="tools.html" class="tools-link">🎯 Tools</a></li>
                 <li><a href="#pricing">Preise</a></li>
-                <li><a href="#testimonials">Referenzen</a></li>
+                <li><a href="about.html">Über mich</a></li>
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
         </nav>
@@ -1070,7 +983,7 @@
     <section class="hero">
         <div class="container">
             <h1>Digitalisierung für Schweizer KMUs</h1>
-            <p>Professionelle Web-Lösungen, Automatisierung und digitale Transformation für Ihr Unternehmen</p>
+            <p>Industrie-Erfahrung trifft Web-Entwicklung: Praktische Lösungen von jemandem, der beide Welten kennt</p>
             <a href="#industries" class="cta-button">Ihre Branche wählen →</a>
         </div>
     </section>
@@ -1081,11 +994,11 @@
             <div class="badges-grid">
                 <div class="badge">
                     <span class="badge-icon">✓</span>
-                    <span>15+ Jahre Erfahrung</span>
+                    <span>19 Jahre CNC-Erfahrung</span>
                 </div>
                 <div class="badge">
                     <span class="badge-icon">✓</span>
-                    <span>50+ Erfolgreiche Projekte</span>
+                    <span>Web3 & Blockchain Expertise</span>
                 </div>
                 <div class="badge">
                     <span class="badge-icon">✓</span>
@@ -1093,7 +1006,7 @@
                 </div>
                 <div class="badge">
                     <span class="badge-icon">✓</span>
-                    <span>24/7 Support verfügbar</span>
+                    <span>Transparente Preise</span>
                 </div>
             </div>
         </div>
@@ -1114,12 +1027,12 @@
                     
                     <div class="industry-stats">
                         <div class="industry-stat">
-                            <div class="industry-stat-value">+40%</div>
-                            <div class="industry-stat-label">Mehr Reservierungen</div>
+                            <div class="industry-stat-value">24/7</div>
+                            <div class="industry-stat-label">Online buchbar</div>
                         </div>
                         <div class="industry-stat">
-                            <div class="industry-stat-value">-60%</div>
-                            <div class="industry-stat-label">No-Shows</div>
+                            <div class="industry-stat-value">-70%</div>
+                            <div class="industry-stat-label">Weniger Telefon</div>
                         </div>
                     </div>
                     
@@ -1134,12 +1047,12 @@
                     
                     <div class="industry-stats">
                         <div class="industry-stat">
-                            <div class="industry-stat-value">12h</div>
+                            <div class="industry-stat-value">10h+</div>
                             <div class="industry-stat-label">Zeit gespart/Woche</div>
                         </div>
                         <div class="industry-stat">
-                            <div class="industry-stat-value">+35%</div>
-                            <div class="industry-stat-label">Mehr Aufträge</div>
+                            <div class="industry-stat-value">📱</div>
+                            <div class="industry-stat-label">Mobile App</div>
                         </div>
                     </div>
                     
@@ -1150,16 +1063,16 @@
                 <a href="produktion-digitalisierung.html" class="industry-card produktion">
                     <span class="industry-icon">🏭</span>
                     <h3>Produktion & Industrie</h3>
-                    <p>Echtzeit-Dashboards, IoT-Integration, Prozessautomatisierung. Von jemandem mit 15+ Jahren CNC-Erfahrung.</p>
+                    <p>Echtzeit-Dashboards, IoT-Integration, Prozessautomatisierung. Von jemandem mit 19 Jahren CNC-Erfahrung.</p>
                     
                     <div class="industry-stats">
                         <div class="industry-stat">
-                            <div class="industry-stat-value">+18%</div>
-                            <div class="industry-stat-label">Effizienz</div>
+                            <div class="industry-stat-value">19 J.</div>
+                            <div class="industry-stat-label">Praxis-Erfahrung</div>
                         </div>
                         <div class="industry-stat">
-                            <div class="industry-stat-value">-25%</div>
-                            <div class="industry-stat-label">Stillstand</div>
+                            <div class="industry-stat-value">📊</div>
+                            <div class="industry-stat-label">Live-Dashboard</div>
                         </div>
                     </div>
                     
@@ -1181,25 +1094,53 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
+    <!-- Expertise Section - NEW (replaces fake testimonials) -->
+    <section class="expertise-section">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number" data-count="15">0+</div>
-                    <div class="stat-label">Jahre Erfahrung</div>
+            <div class="expertise-grid">
+                <div class="expertise-content">
+                    <h2>Warum SwissDigital?</h2>
+                    <p>
+                        Mein Name ist Serkan Aydin. Ich bin kein typischer Web-Entwickler - ich komme aus der 
+                        <strong>Produktionshalle</strong>. 19 Jahre lang habe ich als CNC-Schleiftechniker gearbeitet, 
+                        zuletzt bei Schneeberger Lineartechnik AG.
+                    </p>
+                    <p>
+                        Diese einzigartige Kombination aus <strong>Industrie-Praxis und Tech-Expertise</strong> 
+                        ermöglicht es mir, Digitalisierungslösungen zu entwickeln, die wirklich funktionieren - 
+                        weil ich beide Welten verstehe.
+                    </p>
+                    
+                    <div class="expertise-highlight">
+                        <p style="margin: 0; font-weight: 500;">
+                            💡 <strong>Ich verstehe Ihre Sprache:</strong> Ob Sie über Toleranzen im Mikrometerbereich 
+                            sprechen oder über Restaurant-Auslastung - ich kann Ihnen helfen, weil ich praktische 
+                            Erfahrung aus der echten Arbeitswelt mitbringe.
+                        </p>
+                    </div>
+
+                    <a href="about.html" class="cta-button" style="background: var(--primary-color);">
+                        Mehr über mich erfahren →
+                    </a>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-count="50">0+</div>
-                    <div class="stat-label">Erfolgreich abgeschlossene Projekte</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-count="100">0%</div>
-                    <div class="stat-label">Kundenzufriedenheit</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Support & Betreuung</div>
+
+                <div class="expertise-stats">
+                    <div class="expertise-stat">
+                        <div class="expertise-stat-value">19</div>
+                        <div class="expertise-stat-label">Jahre CNC-Erfahrung</div>
+                    </div>
+                    <div class="expertise-stat">
+                        <div class="expertise-stat-value">🔗</div>
+                        <div class="expertise-stat-label">Web3 & Blockchain</div>
+                    </div>
+                    <div class="expertise-stat">
+                        <div class="expertise-stat-value">🇨🇭</div>
+                        <div class="expertise-stat-label">In Aargau ansässig</div>
+                    </div>
+                    <div class="expertise-stat">
+                        <div class="expertise-stat-value">⚽</div>
+                        <div class="expertise-stat-label">SFV-Trainer</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1211,36 +1152,36 @@
             <div class="problem-content">
                 <h2>🚨 Verlieren Sie gerade Kunden?</h2>
                 <p style="font-size: 1.2rem; margin-bottom: 2rem;">
-                    Während Sie diesen Text lesen, verlieren Schweizer KMUs durchschnittlich:
+                    Typische Herausforderungen von Schweizer KMUs:
                 </p>
                 
                 <div class="problem-list">
                     <div class="problem-item">
                         <div class="problem-icon">📞</div>
                         <h3>Verpasste Anrufe</h3>
-                        <p>3-5 Anrufe während Sie im Gespräch sind</p>
-                        <div class="problem-cost">850 CHF/Tag</div>
+                        <p>Während Sie arbeiten, gehen Anfragen verloren</p>
+                        <div class="problem-cost">💸</div>
                     </div>
                     <div class="problem-item">
                         <div class="problem-icon">⏰</div>
                         <h3>Zeitverschwendung</h3>
-                        <p>2-3 Stunden täglich für Terminkoordination</p>
+                        <p>Stunden täglich für Terminkoordination</p>
                         <div class="problem-cost">15h/Woche</div>
                     </div>
                     <div class="problem-item">
-                        <div class="problem-icon">😞</div>
-                        <h3>No-Shows</h3>
-                        <p>25% der Termine ohne Erinnerung</p>
-                        <div class="problem-cost">-30% Umsatz</div>
+                        <div class="problem-icon">📝</div>
+                        <h3>Papierchaos</h3>
+                        <p>Excel, Notizen, keine Übersicht</p>
+                        <div class="problem-cost">😵</div>
                     </div>
                 </div>
 
-                <p style="font-size: 1.5rem; font-weight: bold; margin: 2rem 0; color: var(--accent-color);">
-                    = 18'500 CHF Verlust pro Monat!
+                <p style="font-size: 1.3rem; font-weight: bold; margin: 2rem 0; color: var(--primary-color);">
+                    Es geht auch anders. Lassen Sie uns darüber sprechen.
                 </p>
 
                 <a href="roi-rechner.html" class="cta-button">
-                    Berechnen Sie Ihren Verlust →
+                    Ihr Potential berechnen →
                 </a>
             </div>
         </div>
@@ -1272,165 +1213,11 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 class="section-title">Erfolgreiche Projekte</h2>
-            <p class="section-subtitle">Ein Einblick in unsere Arbeit für Schweizer KMUs</p>
-
-            <div class="portfolio-grid">
-                <!-- Project 1 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image">🍽️</div>
-                    <div class="portfolio-content">
-                        <span class="portfolio-badge">Restaurant</span>
-                        <h3>Restaurant Bellevue, Basel</h3>
-                        <p>Online-Buchungssystem, WhatsApp-Integration und digitale Menükarte für gehobene Gastronomie.</p>
-                        <div class="portfolio-results">
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">+40%</div>
-                                <div class="portfolio-result-label">Reservierungen</div>
-                            </div>
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">-60%</div>
-                                <div class="portfolio-result-label">No-Shows</div>
-                            </div>
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">3 Mon.</div>
-                                <div class="portfolio-result-label">ROI</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">🔧</div>
-                    <div class="portfolio-content">
-                        <span class="portfolio-badge" style="background: var(--handwerk-color);">Handwerk</span>
-                        <h3>Keller Elektro GmbH, Luzern</h3>
-                        <p>Mobile App für Aufträge, Online-Terminbuchung und automatische Rechnungserstellung.</p>
-                        <div class="portfolio-results">
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">-70%</div>
-                                <div class="portfolio-result-label">Telefon</div>
-                            </div>
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">12h</div>
-                                <div class="portfolio-result-label">Zeit/Woche</div>
-                            </div>
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">+35%</div>
-                                <div class="portfolio-result-label">Aufträge</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image">🏭</div>
-                    <div class="portfolio-content">
-                        <span class="portfolio-badge">Produktion</span>
-                        <h3>Präzisionsteile AG, Aargau</h3>
-                        <p>IoT-Integration für 12 CNC-Maschinen, Echtzeit-Dashboard und Predictive Maintenance.</p>
-                        <div class="portfolio-results">
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">+28%</div>
-                                <div class="portfolio-result-label">Produktivität</div>
-                            </div>
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">-35%</div>
-                                <div class="portfolio-result-label">Stillstände</div>
-                            </div>
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">5 Mon.</div>
-                                <div class="portfolio-result-label">ROI</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image">☕</div>
-                    <div class="portfolio-content">
-                        <span class="portfolio-badge" style="background: var(--gastro-color);">Cafe</span>
-                        <h3>Cafe Central, Zürich</h3>
-                        <p>Website-Relaunch, Online-Bestellung und automatisches Marketing-System.</p>
-                        <div class="portfolio-results">
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">+55%</div>
-                                <div class="portfolio-result-label">Online-Orders</div>
-                            </div>
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">4.8⭐</div>
-                                <div class="portfolio-result-label">Google Rating</div>
-                            </div>
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">2 Wo.</div>
-                                <div class="portfolio-result-label">Launch</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">🚿</div>
-                    <div class="portfolio-content">
-                        <span class="portfolio-badge" style="background: var(--handwerk-color);">Sanitär</span>
-                        <h3>Müller Sanitär AG, Bern</h3>
-                        <p>Kundenportal, automatische Terminvergabe und digitales Auftragsmanagement.</p>
-                        <div class="portfolio-results">
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">-80%</div>
-                                <div class="portfolio-result-label">Papier</div>
-                            </div>
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">10h</div>
-                                <div class="portfolio-result-label">Zeit/Woche</div>
-                            </div>
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">+45%</div>
-                                <div class="portfolio-result-label">Effizienz</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image">🍕</div>
-                    <div class="portfolio-content">
-                        <span class="portfolio-badge" style="background: var(--gastro-color);">Pizzeria</span>
-                        <h3>Pizzeria Da Marco, Basel</h3>
-                        <p>Online-Bestellung mit Echtzeit-Tracking, WhatsApp-Benachrichtigungen und Treueprogramm.</p>
-                        <div class="portfolio-results">
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">+65%</div>
-                                <div class="portfolio-result-label">Delivery</div>
-                            </div>
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">-50%</div>
-                                <div class="portfolio-result-label">Telefon</div>
-                            </div>
-                            <div class="portfolio-result">
-                                <div class="portfolio-result-value">3 Wo.</div>
-                                <div class="portfolio-result-label">Launch</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title">Unsere Dienstleistungen</h2>
-            <p class="section-subtitle">Alles was Sie für die digitale Transformation brauchen</p>
+            <h2 class="section-title">Dienstleistungen</h2>
+            <p class="section-subtitle">Was ich für Sie tun kann</p>
 
             <div class="services-grid">
                 <!-- Service 1 -->
@@ -1455,7 +1242,7 @@
                     <ul class="service-features">
                         <li>Kalender-Integration</li>
                         <li>SMS/WhatsApp Erinnerungen</li>
-                        <li>No-Show Reduktion -60%</li>
+                        <li>No-Show Reduktion</li>
                         <li>Google Calendar Sync</li>
                     </ul>
                     <div class="service-price">Ab 4'500 CHF</div>
@@ -1465,7 +1252,7 @@
                 <div class="service-card">
                     <div class="service-icon">💬</div>
                     <h3>WhatsApp Business</h3>
-                    <p>Automatische Kundenkommun ikation. FAQ-Bot beantwortet 70% der Anfragen automatisch.</p>
+                    <p>Automatische Kundenkommunikation. FAQ-Bot beantwortet häufige Anfragen automatisch.</p>
                     <ul class="service-features">
                         <li>24/7 Auto-Antworten</li>
                         <li>Terminbuchung via Chat</li>
@@ -1479,7 +1266,7 @@
                 <div class="service-card">
                     <div class="service-icon">🤖</div>
                     <h3>Prozess-Automatisierung</h3>
-                    <p>Sparen Sie 10-15 Stunden pro Woche durch automatische Workflows.</p>
+                    <p>Sparen Sie Zeit durch automatische Workflows mit n8n und AI-Integration.</p>
                     <ul class="service-features">
                         <li>E-Mail Marketing automatisch</li>
                         <li>Rechnungen generieren</li>
@@ -1492,12 +1279,12 @@
                 <!-- Service 5 -->
                 <div class="service-card">
                     <div class="service-icon">📱</div>
-                    <h3>Mobile Apps</h3>
-                    <p>Custom Apps für iOS und Android. Perfekt für Handwerker und Aussendienst.</p>
+                    <h3>Web-Apps & Mobile</h3>
+                    <p>Custom Apps für Ihre spezifischen Bedürfnisse. React, Next.js, Progressive Web Apps.</p>
                     <ul class="service-features">
-                        <li>Native iOS & Android</li>
+                        <li>React & Next.js</li>
                         <li>Offline-Funktionalität</li>
-                        <li>Digitale Unterschrift</li>
+                        <li>Digitale Formulare</li>
                         <li>Foto-Dokumentation</li>
                     </ul>
                     <div class="service-price">Ab 8'500 CHF</div>
@@ -1507,114 +1294,14 @@
                 <div class="service-card">
                     <div class="service-icon">🏭</div>
                     <h3>Industrie 4.0</h3>
-                    <p>IoT-Integration, Echtzeit-Monitoring und Predictive Maintenance für Produktionsbetriebe.</p>
+                    <p>IoT-Integration, Echtzeit-Monitoring und Dashboards - von jemandem der CNC-Maschinen kennt.</p>
                     <ul class="service-features">
                         <li>Maschinen-Anbindung</li>
                         <li>Live-Dashboard</li>
-                        <li>Wartungsvorhersage</li>
+                        <li>Produktions-Tracking</li>
                         <li>OEE-Monitoring</li>
                     </ul>
                     <div class="service-price">Ab 15'000 CHF</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2 class="section-title">Was unsere Kunden sagen</h2>
-            <p class="section-subtitle">Echte Erfahrungen von Schweizer KMUs</p>
-
-            <div class="testimonials-grid">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">MS</div>
-                        <div class="testimonial-info">
-                            <h4>M. Schmidt</h4>
-                            <p class="testimonial-position">Inhaber, Restaurant Bellevue, Basel</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">
-                        "Die Digitalisierung hat unser Restaurant komplett verändert. Früher habe ich täglich 2-3 Stunden am Telefon verbracht - jetzt buchen die Gäste selbst online. Wir haben 40% mehr Reservierungen und unsere No-Show Rate ist von 25% auf 10% gesunken. Die Investition hat sich in nur 3 Monaten amortisiert!"
-                    </p>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">PK</div>
-                        <div class="testimonial-info">
-                            <h4>P. Keller</h4>
-                            <p class="testimonial-position">Elektriker, Keller Elektro GmbH, Luzern</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">
-                        "Früher habe ich jeden Tag 2-3 Stunden am Telefon verbracht. Jetzt buchen die Kunden selbst online und ich spare Zeit. Die Mobile App für Aufträge ist genial - alles auf dem Handy, auch ohne Internet. Ich kann mehr Aufträge annehmen und verdiene 35% mehr!"
-                    </p>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">MW</div>
-                        <div class="testimonial-info">
-                            <h4>M. Weber</h4>
-                            <p class="testimonial-position">Geschäftsführer, Präzisionsteile AG, Aargau</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">
-                        "Als ehemaliger CNC-Schleiftechniker versteht Serkan unsere Herausforderungen. Die IoT-Lösung hat unsere Produktion revolutioniert. Wir sehen ALLES in Echtzeit und können proaktiv handeln statt zu reagieren. +28% Produktivität und -35% Stillstände. ROI in 5 Monaten!"
-                    </p>
-                </div>
-
-                <!-- Testimonial 4 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">AL</div>
-                        <div class="testimonial-info">
-                            <h4>A. Lopez</h4>
-                            <p class="testimonial-position">Inhaberin, Cafe Central, Zürich</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">
-                        "Professionelle Arbeit von A bis Z. Die Kommunikation war klar, die Umsetzung schnell und das Ergebnis übertrifft unsere Erwartungen. Die WhatsApp-Integration ist genial - unsere Gäste lieben es! Endlich ein Partner, der versteht was KMUs wirklich brauchen."
-                    </p>
-                </div>
-
-                <!-- Testimonial 5 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">TM</div>
-                        <div class="testimonial-info">
-                            <h4>T. Müller</h4>
-                            <p class="testimonial-position">Inhaber, Müller Sanitär AG, Bern</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">
-                        "Das digitale Auftragsmanagement hat unser Chaos in Ordnung verwandelt. Kein Papier mehr, alles digital. Kunden unterschreiben auf dem Tablet und bekommen sofort die Rechnung. Wir sparen 10 Stunden pro Woche und machen weniger Fehler. Absolut empfehlenswert!"
-                    </p>
-                </div>
-
-                <!-- Testimonial 6 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">MD</div>
-                        <div class="testimonial-info">
-                            <h4>M. Di Marco</h4>
-                            <p class="testimonial-position">Inhaber, Pizzeria Da Marco, Basel</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">
-                        "Das Online-Bestellsystem mit WhatsApp-Benachrichtigungen ist perfekt! Kunden bestellen online, wir bekommen die Order sofort und sie sehen live wo ihr Essen ist. Delivery-Umsatz ist um 65% gestiegen und wir haben 50% weniger Telefon. Danke!"
-                    </p>
                 </div>
             </div>
         </div>
@@ -1646,7 +1333,7 @@
 
                 <!-- Plus Package -->
                 <div class="pricing-card featured">
-                    <span class="pricing-badge">⭐ Beliebteste Wahl</span>
+                    <span class="pricing-badge">⭐ Empfohlen</span>
                     <h3>Digital Plus</h3>
                     <div class="price">4'500 CHF</div>
                     <p class="price-period">Einmalig</p>
@@ -1661,9 +1348,6 @@
                         <li>3 Monate Premium Support</li>
                     </ul>
                     <a href="#contact" class="pricing-cta">Jetzt anfragen</a>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--success-color); font-weight: 600;">
-                        ROI in 2-4 Monaten!
-                    </p>
                 </div>
 
                 <!-- Premium Package -->
@@ -1674,7 +1358,7 @@
                     <ul class="pricing-features">
                         <li>Alles aus Digital Plus</li>
                         <li>Custom Web-App</li>
-                        <li>Mobile App (iOS + Android)</li>
+                        <li>Mobile App (PWA)</li>
                         <li>Echtzeit-Dashboard</li>
                         <li>CRM-Integration</li>
                         <li>Automatisierungs-Workflows</li>
@@ -1688,7 +1372,7 @@
             <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--bg-light); border-radius: 15px;">
                 <h3 style="color: var(--primary-color); margin-bottom: 1rem;">💡 Wartung & Support</h3>
                 <p style="color: var(--text-light); max-width: 800px; margin: 0 auto;">
-                    <strong>Ab 150 CHF/Monat</strong> für kontinuierliche Betreuung, Updates, Backups und 24/7 Support. 
+                    <strong>Ab 150 CHF/Monat</strong> für kontinuierliche Betreuung, Updates, Backups und Support. 
                     Alle Pakete beinhalten 1-6 Monate kostenlosen Support.
                 </p>
             </div>
@@ -1699,8 +1383,8 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="contact-content">
-                <h2>Bereit für die Digitalisierung?</h2>
-                <p>Kontaktieren Sie uns für eine kostenlose Erstberatung</p>
+                <h2>Lassen Sie uns sprechen</h2>
+                <p>Kostenlose Erstberatung - unverbindlich und persönlich</p>
                 
                 <div class="contact-options">
                     <a href="tel:+41786650253" class="contact-option">
@@ -1709,10 +1393,10 @@
                         <p>+41 78 665 02 53</p>
                     </a>
 
-                    <a href="mailto:serayd6161@gmail.com" class="contact-option">
+                    <a href="mailto:info@swissdigital.life" class="contact-option">
                         <div class="contact-icon">✉️</div>
                         <h3>E-Mail</h3>
-                        <p>serayd6161@gmail.com</p>
+                        <p>info@swissdigital.life</p>
                     </a>
 
                     <a href="https://wa.me/41786650253" class="contact-option">
@@ -1723,7 +1407,7 @@
                 </div>
 
                 <p style="margin-top: 2rem; opacity: 0.9;">
-                    📍 <strong>Standort:</strong> Pratteln, Basel-Landschaft, Schweiz
+                    📍 <strong>Standort:</strong> Dottikon, Aargau, Schweiz
                 </p>
             </div>
         </div>
@@ -1736,7 +1420,7 @@
                 <div class="footer-section">
                     <h3>SwissDigital Consulting</h3>
                     <p>Digitalisierungslösungen für Schweizer KMUs</p>
-                    <p>Professionell • Zuverlässig • Persönlich</p>
+                    <p>Industrie-Erfahrung trifft Tech-Expertise</p>
                 </div>
 
                 <div class="footer-section">
@@ -1763,14 +1447,14 @@
 
                 <div class="footer-section">
                     <h3>Kontakt</h3>
-                    <p>📧 serayd6161@gmail.com</p>
+                    <p>📧 info@swissdigital.life</p>
                     <p>📱 +41 78 665 02 53</p>
-                    <p>📍 Pratteln, Basel-Landschaft</p>
+                    <p>📍 Dottikon, Aargau</p>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 SwissDigital Consulting. Alle Rechte vorbehalten.</p>
+                <p>&copy; 2024 SwissDigital Consulting - Serkan Aydin. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
@@ -1794,35 +1478,6 @@
             }
             lastScroll = currentScroll;
         });
-
-        // Animated Counter
-        function animateCounter(element, target) {
-            let current = 0;
-            const increment = target / 100;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target + (element.textContent.includes('%') ? '%' : element.textContent.includes('+') ? '+' : '');
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current) + (element.textContent.includes('%') ? '%' : element.textContent.includes('+') ? '+' : '');
-                }
-            }, 20);
-        }
-
-        // Trigger counters on scroll
-        const stats = document.querySelectorAll('.stat-number[data-count]');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                    entry.target.classList.add('counted');
-                    const target = parseInt(entry.target.dataset.count);
-                    animateCounter(entry.target, target);
-                }
-            });
-        });
-
-        stats.forEach(stat => observer.observe(stat));
 
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
