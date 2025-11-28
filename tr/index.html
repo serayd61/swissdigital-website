@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwissDigital Consulting - KOBİ'ler için Dijitalleşme | Restoran, Zanaat, Üretim</title>
+    <meta name="description" content="İsviçre'deki restoranlar, zanaatkarlar ve üretim firmaları için profesyonel dijitalleşme çözümleri. İşletme diploması, 8+ yıl web geliştirme deneyimi.">
+    <meta name="keywords" content="Dijitalleşme İsviçre, Web Geliştirme, Restoran Yazılımı, Zanaat Dijitalleşme, Endüstri 4.0">
+    <link rel="canonical" href="https://swissdigital.life/tr/">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #dc2626;
+            --success-color: #059669;
+            --warning-color: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+            --gastro-color: #dc2626;
+            --handwerk-color: #f59e0b;
+            --produktion-color: #2563eb;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Sticky CTA Bar */
+        .sticky-cta {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.75rem 0;
+            z-index: 2000;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .sticky-cta.show {
+            transform: translateY(0);
+        }
+
+        .sticky-cta-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .sticky-cta-text {
+            font-weight: 600;
+        }
+
+        .sticky-cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .sticky-cta-btn {
+            background: var(--white);
+            color: var(--accent-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+
+        .sticky-cta-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-switcher a {
+            text-decoration: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .lang-switcher a:hover {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .lang-switcher a.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.tools-link {
+            background: var(--warning-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        /* Dropdown Menu */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            border-radius: 10px;
+            padding: 1rem;
+            min-width: 250px;
+            margin-top: 0.5rem;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-content {
+            display: block;
+        }
+
+        .nav-dropdown-content a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .nav-dropdown-content a:hover {
+            background: var(--bg-light);
+        }
+
+        .dropdown-icon {
+            margin-left: 0.25rem;
+            font-size: 0.8rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            background: var(--white);
+            padding: 2rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .badges-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .badge-icon {
+            font-size: 1.5rem;
+            color: var(--success-color);
+        }
+
+        /* Industry Selector */
+        .industry-selector {
+            background: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .industry-selector h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .industry-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+
+        .industry-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .industry-card {
+            background: var(--white);
+            border: 3px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .industry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--card-color) 0%, var(--card-color) 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .industry-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .industry-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--card-color);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .industry-card.gastro {
+            --card-color: #dc2626;
+        }
+
+        .industry-card.handwerk {
+            --card-color: #f59e0b;
+        }
+
+        .industry-card.produktion {
+            --card-color: #2563eb;
+        }
+
+        .industry-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .industry-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .industry-card p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .industry-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .industry-stat {
+            text-align: center;
+        }
+
+        .industry-stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--card-color);
+        }
+
+        .industry-stat-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .industry-cta {
+            background: var(--card-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .industry-card:hover .industry-cta {
+            transform: scale(1.05);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: #fef2f2;
+            border-top: 5px solid var(--accent-color);
+            border-bottom: 5px solid var(--accent-color);
+            padding: 3rem 0;
+        }
+
+        .problem-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .problem-content h2 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .problem-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-item h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-cost {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 1rem 0;
+        }
+
+        /* Tools Banner */
+        .tools-banner {
+            background: linear-gradient(135deg, var(--warning-color) 0%, #f97316 100%);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .tools-banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tools-banner p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tool-card-mini {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: block;
+        }
+
+        .tool-card-mini:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .tool-card-mini h3 {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            color: var(--primary-color);
+        }
+
+        .tool-icon-mini {
+            font-size: 3rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        /* About/Expertise Section - NEW */
+        .expertise-section {
+            padding: 5rem 0;
+            background: var(--bg-light);
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .expertise-content h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-highlight {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-color);
+            margin: 2rem 0;
+        }
+
+        .expertise-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .expertise-stat {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .expertise-stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .expertise-stat-label {
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 3px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary-color);
+            border-width: 5px;
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.3);
+        }
+
+        .pricing-badge {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f3f4f6;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pricing-features li:before {
+            content: "✓";
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .pricing-cta {
+            width: 100%;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .pricing-cta:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .contact-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .contact-option {
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 2rem;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-option:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+        }
+
+        .contact-option h3 {
+            font-size: 1.25rem;
+            margin: 0;
+        }
+
+        .contact-option p {
+            margin: 0;
+            color: var(--text-dark);
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #9ca3af;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            z-index: 999;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .problem-list {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sticky-cta-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .industry-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .industry-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky CTA Bar -->
+    <div class="sticky-cta" id="stickyCta">
+        <div class="sticky-cta-content">
+            <div class="sticky-cta-text">
+                💡 Kostenlose Erstberatung für Ihr Digitalisierungsprojekt
+            </div>
+            <div class="sticky-cta-buttons">
+                <a href="tel:+41786650253" class="sticky-cta-btn">📞 Anrufen</a>
+                <a href="#contact" class="sticky-cta-btn">✉️ Kontakt</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">SwissDigital Consulting</a>
+            <ul class="nav-links">
+                <li class="nav-dropdown">
+                    <a href="#industries">
+                        Sektörler <span class="dropdown-icon">▼</span>
+                    </a>
+                    <div class="nav-dropdown-content">
+                        <a href="gastro.html">🍽️ Gastronomi & Restoranlar</a>
+                        <a href="zanaat.html">🔧 Zanaat & Hizmet</a>
+                        <a href="uretim.html">🏭 Üretim & Endüstri</a>
+                    </div>
+                </li>
+                <li><a href="#services">Hizmetler</a></li>
+                <li><a href="demos.html" class="tools-link">🎯 Araçlar</a></li>
+                <li><a href="#pricing">Fiyatlar</a></li>
+                <li><a href="hakkimda.html">Hakkımda</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+            <div class="lang-switcher">
+                <a href="/">DE</a>
+                <a href="/tr/" class="active">TR</a>
+                <a href="/en/">EN</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>İsviçre KOBİ'leri için Dijitalleşme</h1>
+            <p>İş deneyimi ve teknoloji uzmanlığı bir arada</p>
+            <a href="#industries" class="cta-button">Sektörünüzü Seçin →</a>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="container">
+            <div class="badges-grid">
+                <div class="badge">
+                    <span class="badge-icon">✓</span>
+                    <span>8+ Yıl Web Geliştirme</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">✓</span>
+                    <span>İşletme & Blockchain Uzmanlığı</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">✓</span>
+                    <span>%100 İsviçre Şirketi</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">✓</span>
+                    <span>Şeffaf Fiyatlar</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Selector Section -->
+    <section id="industries" class="industry-selector">
+        <div class="container">
+            <h2>Sektörünüzü Seçin</h2>
+            <p class="industry-subtitle">İşletmeniz için özel dijitalleşme çözümleri</p>
+            
+            <div class="industry-cards">
+                <!-- Gastro Card -->
+                <a href="gastro.html" class="industry-card gastro">
+                    <span class="industry-icon">🍽️</span>
+                    <h3>Restoran & Gastronomi</h3>
+                    <p>Online rezervasyon, WhatsApp entegrasyonu, dijital menüler ve daha fazlası. Restoranlar, kafeler ve barlar için ideal.</p>
+                    
+                    <div class="industry-stats">
+                        <div class="industry-stat">
+                            <div class="industry-stat-value">24/7</div>
+                            <div class="industry-stat-label">Online buchbar</div>
+                        </div>
+                        <div class="industry-stat">
+                            <div class="industry-stat-value">-70%</div>
+                            <div class="industry-stat-label">Weniger Telefon</div>
+                        </div>
+                    </div>
+                    
+                    <span class="industry-cta">Gastro-Lösungen ansehen →</span>
+                </a>
+
+                <!-- Handwerk Card -->
+                <a href="handwerk-digitalisierung.html" class="industry-card handwerk">
+                    <span class="industry-icon">🔧</span>
+                    <h3>Handwerk & Dienstleister</h3>
+                    <p>Online-Terminbuchung, Mobile Apps für unterwegs, automatische Rechnungen. Für Elektriker, Sanitär, Schreiner und mehr.</p>
+                    
+                    <div class="industry-stats">
+                        <div class="industry-stat">
+                            <div class="industry-stat-value">10h+</div>
+                            <div class="industry-stat-label">Zeit gespart/Woche</div>
+                        </div>
+                        <div class="industry-stat">
+                            <div class="industry-stat-value">📱</div>
+                            <div class="industry-stat-label">Mobile App</div>
+                        </div>
+                    </div>
+                    
+                    <span class="industry-cta">Handwerk-Lösungen ansehen →</span>
+                </a>
+
+                <!-- Produktion Card -->
+                <a href="produktion-digitalisierung.html" class="industry-card produktion">
+                    <span class="industry-icon">🏭</span>
+                    <h3>Produktion & Industrie</h3>
+                    <p>Echtzeit-Dashboards, IoT-Integration, Prozessautomatisierung. Technische Expertise trifft Business-Verständnis.</p>
+                    
+                    <div class="industry-stats">
+                        <div class="industry-stat">
+                            <div class="industry-stat-value">8+ J.</div>
+                            <div class="industry-stat-label">Digital-Erfahrung</div>
+                        </div>
+                        <div class="industry-stat">
+                            <div class="industry-stat-value">📊</div>
+                            <div class="industry-stat-label">Live-Dashboard</div>
+                        </div>
+                    </div>
+                    
+                    <span class="industry-cta">Produktions-Lösungen ansehen →</span>
+                </a>
+            </div>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--bg-light); border-radius: 15px; text-align: center;">
+                <p style="font-size: 1.2rem; color: var(--text-dark); margin-bottom: 1rem;">
+                    <strong>🤔 Nicht sicher welche Lösung passt?</strong>
+                </p>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                    Kein Problem! Ich berate Sie gerne kostenlos und unverbindlich.
+                </p>
+                <a href="#contact" class="cta-button" style="background: var(--primary-color);">
+                    Kostenlose Beratung anfragen
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section - NEW (replaces fake testimonials) -->
+    <section class="expertise-section">
+        <div class="container">
+            <div class="expertise-grid">
+                <div class="expertise-content">
+                    <h2>Warum SwissDigital?</h2>
+                    <p>
+                        Mein Name ist Serkan Aydin. Mit einem <strong>Studium in Betriebswirtschaft</strong> 
+                        und einer <strong>Blockchain-Manager-Zertifizierung</strong> verbinde ich 
+                        Business-Verständnis mit technischer Expertise.
+                    </p>
+                    <p>
+                        <strong>Seit 2017</strong> entwickle ich professionelle Webseiten, Applikationen und 
+                        Blockchain-Lösungen. Meine Stärke: Ich verstehe sowohl die technische als auch die 
+                        geschäftliche Seite - und kann beides verbinden.
+                    </p>
+                    
+                    <div class="expertise-highlight">
+                        <p style="margin: 0; font-weight: 500;">
+                            💡 <strong>Der Unterschied:</strong> Viele Entwickler können programmieren, aber 
+                            verstehen Ihr Geschäft nicht. Viele Berater verstehen Business, aber nicht die 
+                            Technik. Ich bringe beides zusammen.
+                        </p>
+                    </div>
+
+                    <a href="about.html" class="cta-button" style="background: var(--primary-color);">
+                        Mehr über mich erfahren →
+                    </a>
+                </div>
+
+                <div class="expertise-stats">
+                    <div class="expertise-stat">
+                        <div class="expertise-stat-value">8+</div>
+                        <div class="expertise-stat-label">Jahre Web-Entwicklung</div>
+                    </div>
+                    <div class="expertise-stat">
+                        <div class="expertise-stat-value">🎓</div>
+                        <div class="expertise-stat-label">BWL & Blockchain</div>
+                    </div>
+                    <div class="expertise-stat">
+                        <div class="expertise-stat-value">🇨🇭</div>
+                        <div class="expertise-stat-label">In Aargau ansässig</div>
+                    </div>
+                    <div class="expertise-stat">
+                        <div class="expertise-stat-value">⚽</div>
+                        <div class="expertise-stat-label">SFV-Trainer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="problem-content">
+                <h2>🚨 Verlieren Sie gerade Kunden?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    Typische Herausforderungen von Schweizer KMUs:
+                </p>
+                
+                <div class="problem-list">
+                    <div class="problem-item">
+                        <div class="problem-icon">📞</div>
+                        <h3>Verpasste Anrufe</h3>
+                        <p>Während Sie arbeiten, gehen Anfragen verloren</p>
+                        <div class="problem-cost">💸</div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-icon">⏰</div>
+                        <h3>Zeitverschwendung</h3>
+                        <p>Stunden täglich für Terminkoordination</p>
+                        <div class="problem-cost">15h/Woche</div>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-icon">📝</div>
+                        <h3>Papierchaos</h3>
+                        <p>Excel, Notizen, keine Übersicht</p>
+                        <div class="problem-cost">😵</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 1.3rem; font-weight: bold; margin: 2rem 0; color: var(--primary-color);">
+                    Es geht auch anders. Lassen Sie uns darüber sprechen.
+                </p>
+
+                <a href="roi-rechner.html" class="cta-button">
+                    Ihr Potential berechnen →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Banner -->
+    <section class="tools-banner">
+        <div class="container">
+            <h2>💡 Kostenlose Tools - Testen Sie jetzt!</h2>
+            <p>Finden Sie in 2 Minuten heraus, wie viel Sie sparen können</p>
+            
+            <div class="tools-grid">
+                <a href="roi-rechner.html" class="tool-card-mini">
+                    <div class="tool-icon-mini">💰</div>
+                    <h3>ROI-Rechner</h3>
+                    <p>Berechnen Sie Ihr Spar-Potential</p>
+                </a>
+                <a href="digital-check.html" class="tool-card-mini">
+                    <div class="tool-icon-mini">📊</div>
+                    <h3>Digital-Check</h3>
+                    <p>3-Min Quiz: Wie digital sind Sie?</p>
+                </a>
+                <a href="demos.html" class="tool-card-mini">
+                    <div class="tool-icon-mini">🎯</div>
+                    <h3>Live Demos</h3>
+                    <p>Interaktive Demos ausprobieren</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Dienstleistungen</h2>
+            <p class="section-subtitle">Was ich für Sie tun kann</p>
+
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Professionelle Websites</h3>
+                    <p>Modern, schnell und mobil-optimiert. Perfekt für KMUs die online gefunden werden wollen.</p>
+                    <ul class="service-features">
+                        <li>Mobile-responsive Design</li>
+                        <li>SEO-optimiert für Google</li>
+                        <li>Ladezeit unter 2 Sekunden</li>
+                        <li>SSL & DSGVO-konform</li>
+                    </ul>
+                    <div class="service-price">Ab 2'500 CHF</div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">📅</div>
+                    <h3>Online-Buchungssysteme</h3>
+                    <p>Kunden buchen 24/7 selbst. Automatische Bestätigungen und Erinnerungen.</p>
+                    <ul class="service-features">
+                        <li>Kalender-Integration</li>
+                        <li>SMS/WhatsApp Erinnerungen</li>
+                        <li>No-Show Reduktion</li>
+                        <li>Google Calendar Sync</li>
+                    </ul>
+                    <div class="service-price">Ab 4'500 CHF</div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">💬</div>
+                    <h3>WhatsApp Business</h3>
+                    <p>Automatische Kundenkommunikation. FAQ-Bot beantwortet häufige Anfragen automatisch.</p>
+                    <ul class="service-features">
+                        <li>24/7 Auto-Antworten</li>
+                        <li>Terminbuchung via Chat</li>
+                        <li>Broadcast-Nachrichten</li>
+                        <li>Analytics Dashboard</li>
+                    </ul>
+                    <div class="service-price">Ab 4'500 CHF</div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>Prozess-Automatisierung</h3>
+                    <p>Sparen Sie Zeit durch automatische Workflows mit n8n und AI-Integration.</p>
+                    <ul class="service-features">
+                        <li>E-Mail Marketing automatisch</li>
+                        <li>Rechnungen generieren</li>
+                        <li>CRM-Integration</li>
+                        <li>Follow-up Workflows</li>
+                    </ul>
+                    <div class="service-price">Ab 4'500 CHF</div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Web-Apps & Mobile</h3>
+                    <p>Custom Apps für Ihre spezifischen Bedürfnisse. React, Next.js, Progressive Web Apps.</p>
+                    <ul class="service-features">
+                        <li>React & Next.js</li>
+                        <li>Offline-Funktionalität</li>
+                        <li>Digitale Formulare</li>
+                        <li>Foto-Dokumentation</li>
+                    </ul>
+                    <div class="service-price">Ab 8'500 CHF</div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-icon">🏭</div>
+                    <h3>Industrie 4.0</h3>
+                    <p>IoT-Integration, Echtzeit-Monitoring und Dashboards - technische Expertise für Ihre Produktion.</p>
+                    <ul class="service-features">
+                        <li>Maschinen-Anbindung</li>
+                        <li>Live-Dashboard</li>
+                        <li>Produktions-Tracking</li>
+                        <li>OEE-Monitoring</li>
+                    </ul>
+                    <div class="service-price">Ab 15'000 CHF</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Transparente Preise</h2>
+            <p class="section-subtitle">Keine versteckten Kosten. Faire Preise für Schweizer KMUs.</p>
+
+            <div class="pricing-grid">
+                <!-- Basic Package -->
+                <div class="pricing-card">
+                    <h3>Digital Start</h3>
+                    <div class="price">2'500 CHF</div>
+                    <p class="price-period">Einmalig</p>
+                    <ul class="pricing-features">
+                        <li>Professionelle Website</li>
+                        <li>Mobile-responsive Design</li>
+                        <li>SEO Grundoptimierung</li>
+                        <li>Kontaktformular</li>
+                        <li>Google My Business Setup</li>
+                        <li>SSL-Zertifikat</li>
+                        <li>1 Monat Support</li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Jetzt anfragen</a>
+                </div>
+
+                <!-- Plus Package -->
+                <div class="pricing-card featured">
+                    <span class="pricing-badge">⭐ Empfohlen</span>
+                    <h3>Digital Plus</h3>
+                    <div class="price">4'500 CHF</div>
+                    <p class="price-period">Einmalig</p>
+                    <ul class="pricing-features">
+                        <li>Alles aus Digital Start</li>
+                        <li>Online-Buchungssystem</li>
+                        <li>WhatsApp Business Integration</li>
+                        <li>Automatische Erinnerungen</li>
+                        <li>E-Mail Marketing Setup</li>
+                        <li>Google Calendar Sync</li>
+                        <li>Analytics Dashboard</li>
+                        <li>3 Monate Premium Support</li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Jetzt anfragen</a>
+                </div>
+
+                <!-- Premium Package -->
+                <div class="pricing-card">
+                    <h3>Digital Premium</h3>
+                    <div class="price">8'500 CHF</div>
+                    <p class="price-period">Einmalig</p>
+                    <ul class="pricing-features">
+                        <li>Alles aus Digital Plus</li>
+                        <li>Custom Web-App</li>
+                        <li>Mobile App (PWA)</li>
+                        <li>Echtzeit-Dashboard</li>
+                        <li>CRM-Integration</li>
+                        <li>Automatisierungs-Workflows</li>
+                        <li>API-Integrationen</li>
+                        <li>6 Monate Premium Support</li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Jetzt anfragen</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--bg-light); border-radius: 15px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">💡 Wartung & Support</h3>
+                <p style="color: var(--text-light); max-width: 800px; margin: 0 auto;">
+                    <strong>Ab 150 CHF/Monat</strong> für kontinuierliche Betreuung, Updates, Backups und Support. 
+                    Alle Pakete beinhalten 1-6 Monate kostenlosen Support.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Lassen Sie uns sprechen</h2>
+                <p>Kostenlose Erstberatung - unverbindlich und persönlich</p>
+                
+                <div class="contact-options">
+                    <a href="tel:+41786650253" class="contact-option">
+                        <div class="contact-icon">📞</div>
+                        <h3>Telefon</h3>
+                        <p>+41 78 665 02 53</p>
+                    </a>
+
+                    <a href="mailto:info@swissdigital.life" class="contact-option">
+                        <div class="contact-icon">✉️</div>
+                        <h3>E-Mail</h3>
+                        <p>info@swissdigital.life</p>
+                    </a>
+
+                    <a href="https://wa.me/41786650253" class="contact-option">
+                        <div class="contact-icon">💬</div>
+                        <h3>WhatsApp</h3>
+                        <p>Direkt chatten</p>
+                    </a>
+                </div>
+
+                <p style="margin-top: 2rem; opacity: 0.9;">
+                    📍 <strong>Standort:</strong> Dottikon, Aargau, Schweiz
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SwissDigital Consulting</h3>
+                    <p>Digitalisierungslösungen für Schweizer KMUs</p>
+                    <p>Industrie-Erfahrung trifft Tech-Expertise</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Branchen</h3>
+                    <a href="gastro-digitalisierung.html">Restaurant & Gastro</a>
+                    <a href="handwerk-digitalisierung.html">Handwerk & Dienstleister</a>
+                    <a href="produktion-digitalisierung.html">Produktion & Industrie</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <a href="#services">Web-Entwicklung</a>
+                    <a href="#services">Automatisierung</a>
+                    <a href="#services">WhatsApp Business</a>
+                    <a href="#services">Custom Apps</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Tools</h3>
+                    <a href="roi-rechner.html">ROI-Rechner</a>
+                    <a href="booking-demo.html">Booking Demo</a>
+                    <a href="digitalisierungs-check.html">Digitalisierungs-Check</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <p>📧 info@swissdigital.life</p>
+                    <p>📱 +41 78 665 02 53</p>
+                    <p>📍 Dottikon, Aargau</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 SwissDigital Consulting - Serkan Aydin. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/41786650253" class="whatsapp-float" target="_blank">
+        💬
+    </a>
+
+    <script>
+        // Sticky CTA Bar
+        let lastScroll = 0;
+        const stickyCta = document.getElementById('stickyCta');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 500) {
+                stickyCta.classList.add('show');
+            } else {
+                stickyCta.classList.remove('show');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
