@@ -45,6 +45,32 @@
             z-index: 1000;
         }
 
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-switcher a {
+            text-decoration: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .lang-switcher a:hover {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .lang-switcher a.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
         nav {
             display: flex;
             justify-content: space-between;
@@ -453,6 +479,17 @@
                 display: none;
             }
 
+            .lang-switcher {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            nav {
+                position: relative;
+            }
+
             .about-hero h1 {
                 font-size: 2rem;
             }
@@ -467,11 +504,16 @@
             <ul class="nav-links">
                 <li><a href="index.html#industries">Branchen</a></li>
                 <li><a href="index.html#services">Services</a></li>
-                <li><a href="tools.html">Tools</a></li>
+                <li><a href="demos.html">Tools</a></li>
                 <li><a href="index.html#pricing">Preise</a></li>
                 <li><a href="about.html" style="color: var(--primary-color);">Über mich</a></li>
                 <li><a href="contact.html">Kontakt</a></li>
             </ul>
+            <div class="lang-switcher">
+                <a href="/about.html" class="active">DE</a>
+                <a href="/tr/hakkimda.html">TR</a>
+                <a href="/en/about.html">EN</a>
+            </div>
         </nav>
     </header>
 
@@ -479,7 +521,7 @@
     <section class="about-hero">
         <div class="container">
             <h1>Über mich</h1>
-            <p>19 Jahre Industrie-Erfahrung + Web3-Expertise = Digitalisierung, die funktioniert</p>
+            <p>Business-Expertise trifft Tech-Know-how = Digitalisierung, die funktioniert</p>
         </div>
     </section>
 
