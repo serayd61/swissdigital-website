@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Digitalisierung Schweiz | Mehr Reservierungen, Weniger Stress</title>
-    <meta name="description" content="Spezialisiert auf Digitalisierung für Restaurants und Gastronomie in der Schweiz. Online-Buchung, WhatsApp-Integration, digitale Menükarten. Ab 2'500 CHF.">
-    <meta name="keywords" content="Restaurant Digitalisierung, Gastro Schweiz, Online Buchung Restaurant, WhatsApp Restaurant">
+    <title>Restaurant Digitalisierung | Online-Buchung & WhatsApp | SwissDigital</title>
+    <meta name="description" content="Digitalisierung für Restaurants und Gastronomie: Online-Buchungssystem, WhatsApp Business, digitale Menükarten. Mehr Reservierungen, weniger Aufwand.">
     <style>
         * {
             margin: 0;
@@ -14,12 +13,11 @@
         }
 
         :root {
-            --primary-color: #2563eb;
+            --primary-color: #dc2626;
+            --primary-dark: #b91c1c;
             --secondary-color: #1e40af;
-            --accent-color: #dc2626;
             --success-color: #059669;
             --warning-color: #f59e0b;
-            --gastro-color: #dc2626;
             --text-dark: #1f2937;
             --text-light: #6b7280;
             --bg-light: #f9fafb;
@@ -78,603 +76,294 @@
             color: var(--primary-color);
         }
 
-        /* Hero Section */
-        .hero-gastro {
-            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
             color: var(--white);
-            padding: 6rem 0 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-gastro::before {
-            content: "🍽️";
-            position: absolute;
-            font-size: 20rem;
-            opacity: 0.1;
-            right: -5rem;
-            top: -5rem;
+            padding: 5rem 0;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .breadcrumb {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-
-        .breadcrumb a {
-            color: var(--white);
-            text-decoration: none;
-        }
-
-        .hero-gastro h1 {
+        .hero h1 {
             font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
+        .hero p {
+            font-size: 1.25rem;
             margin-bottom: 2rem;
             opacity: 0.95;
         }
 
         .hero-stats {
             display: flex;
-            gap: 3rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
         .hero-stat {
             text-align: center;
         }
 
-        .hero-stat-number {
-            font-size: 3rem;
+        .hero-stat-value {
+            font-size: 2.5rem;
             font-weight: bold;
-            display: block;
         }
 
         .hero-stat-label {
-            font-size: 1rem;
+            font-size: 0.9rem;
             opacity: 0.9;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
         }
 
         .cta-button {
             display: inline-block;
             background: var(--white);
-            color: var(--gastro-color);
+            color: var(--primary-color);
             padding: 1rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
         }
 
-        .cta-button.secondary {
-            background: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
+        .hero-visual {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .hero-visual-icon {
+            font-size: 8rem;
         }
 
         /* Problem Section */
         .problem-section {
+            padding: 5rem 0;
             background: #fef2f2;
-            padding: 4rem 0;
-            border-top: 5px solid var(--gastro-color);
         }
 
-        .section-title {
+        .problem-section h2 {
             text-align: center;
             font-size: 2.5rem;
-            color: var(--gastro-color);
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--text-light);
             margin-bottom: 3rem;
+            color: var(--primary-color);
         }
 
         .problems-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
         }
 
         .problem-card {
             background: var(--white);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border-left: 5px solid var(--gastro-color);
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         .problem-icon {
-            font-size: 3rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
         }
 
         .problem-card h3 {
-            color: var(--gastro-color);
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-        }
-
-        .problem-cost {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--gastro-color);
-            margin: 1rem 0;
-        }
-
-        /* Solution Section */
-        .solution-section {
-            padding: 5rem 0;
-            background: var(--white);
-        }
-
-        .solution-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-            align-items: center;
-        }
-
-        .solution-visual {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 3rem;
-            border-radius: 20px;
-            color: var(--white);
-            text-align: center;
-        }
-
-        .solution-visual h3 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .workflow-step {
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 10px;
-            text-align: left;
-        }
-
-        .workflow-arrow {
-            font-size: 2rem;
-            margin: 1rem 0;
-        }
-
-        .solution-features {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .feature-item {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            padding: 1.5rem;
-            background: var(--bg-light);
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .feature-item:hover {
-            transform: translateX(10px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            flex-shrink: 0;
-        }
-
-        .feature-content h4 {
-            color: var(--gastro-color);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Case Study */
-        .case-study {
-            background: var(--bg-light);
-            padding: 5rem 0;
-        }
-
-        .case-study-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .case-study-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .case-study-badge {
-            background: var(--gastro-color);
-            color: var(--white);
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-        }
-
-        .case-study-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .case-block {
-            background: var(--bg-light);
-            padding: 2rem;
-            border-radius: 10px;
-        }
-
-        .case-block h4 {
-            color: var(--gastro-color);
-            margin-bottom: 1rem;
-        }
-
-        .case-block ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .case-block li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .case-block li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--gastro-color);
-            font-weight: bold;
-        }
-
-        .results-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 3px solid var(--gastro-color);
-        }
-
-        .result-metric {
-            text-align: center;
-        }
-
-        .result-value {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--success-color);
-        }
-
-        .result-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-top: 0.5rem;
-        }
-
-        /* Calculator Section */
-        .calculator-section {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: var(--white);
-        }
-
-        .calculator-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
-            border-radius: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .calculator-inputs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .calc-input-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .calc-input-group label {
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .calc-input-group input {
-            padding: 1rem;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            background: var(--white);
             color: var(--text-dark);
         }
 
-        .calc-result {
-            background: rgba(255,255,255,0.2);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            margin-top: 2rem;
+        .problem-card p {
+            color: var(--text-light);
         }
 
-        .calc-result-value {
-            font-size: 4rem;
-            font-weight: bold;
-            margin: 1rem 0;
-        }
-
-        /* Pricing Section */
-        .pricing-section {
+        /* Solutions Section */
+        .solutions-section {
             padding: 5rem 0;
-            background: var(--white);
         }
 
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .pricing-card {
-            background: var(--white);
-            border: 3px solid #e5e7eb;
-            border-radius: 20px;
-            padding: 2.5rem;
+        .solutions-section h2 {
             text-align: center;
-            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gastro-color);
-            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2);
-        }
-
-        .pricing-card.featured {
-            border-color: var(--gastro-color);
-            border-width: 5px;
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.3);
-        }
-
-        .recommended-badge {
-            background: var(--gastro-color);
-            color: var(--white);
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: inline-block;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
-        .pricing-card h3 {
+        .solutions-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .solution-card {
+            background: var(--white);
+            border: 2px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .solution-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.1);
+        }
+
+        .solution-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-card h3 {
             font-size: 1.75rem;
             margin-bottom: 1rem;
             color: var(--text-dark);
         }
 
-        .price {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: var(--gastro-color);
-            margin: 1rem 0;
-        }
-
-        .price-period {
-            font-size: 1rem;
+        .solution-card p {
             color: var(--text-light);
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin: 2rem 0;
-            text-align: left;
-        }
-
-        .pricing-features li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #f3f4f6;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .pricing-features li:before {
-            content: "✓";
-            color: var(--success-color);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .price-cta {
-            width: 100%;
-            background: var(--gastro-color);
-            color: var(--white);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background 0.3s;
-        }
-
-        .price-cta:hover {
-            background: #b91c1c;
-        }
-
-        /* Testimonials */
-        .testimonials-section {
-            padding: 5rem 0;
-            background: var(--bg-light);
-        }
-
-        .testimonial-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-
-        .testimonial-header {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
             margin-bottom: 1.5rem;
         }
 
-        .testimonial-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--gastro-color);
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
+        .solution-features {
+            list-style: none;
+        }
+
+        .solution-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .solution-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
             font-weight: bold;
         }
 
-        .testimonial-info h4 {
-            margin-bottom: 0.25rem;
+        .solution-price {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
         }
 
-        .testimonial-position {
+        .solution-price-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .solution-price-label {
             color: var(--text-light);
             font-size: 0.9rem;
         }
 
-        .testimonial-rating {
-            color: #fbbf24;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            font-style: italic;
-            color: var(--text-dark);
-        }
-
-        /* FAQ Section */
-        .faq-section {
+        /* Benefits Section */
+        .benefits-section {
             padding: 5rem 0;
-            background: var(--white);
-        }
-
-        .faq-item {
             background: var(--bg-light);
+        }
+
+        .benefits-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: var(--white);
             padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-            border-left: 5px solid var(--gastro-color);
-        }
-
-        .faq-item h3 {
-            color: var(--gastro-color);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .faq-item p {
-            line-height: 1.8;
-            color: var(--text-dark);
-        }
-
-        /* CTA Section */
-        .final-cta {
-            background: linear-gradient(135deg, var(--gastro-color) 0%, #b91c1c 100%);
-            color: var(--white);
-            padding: 5rem 0;
+            border-radius: 15px;
             text-align: center;
         }
 
-        .final-cta h2 {
+        .benefit-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
         }
 
-        .final-cta p {
-            font-size: 1.3rem;
+        .benefit-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-light);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.95;
         }
 
-        .contact-options {
+        .cta-options {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
         }
 
-        .contact-option {
+        .cta-option {
             background: var(--white);
-            color: var(--gastro-color);
-            padding: 1.5rem 2rem;
+            color: var(--text-dark);
+            padding: 1.5rem 2.5rem;
             border-radius: 15px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.2rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             transition: transform 0.3s;
         }
 
-        .contact-option:hover {
-            transform: translateY(-5px);
+        .cta-option:hover {
+            transform: translateY(-3px);
+        }
+
+        .cta-option-icon {
+            font-size: 1.5rem;
         }
 
         /* Footer */
@@ -686,7 +375,7 @@
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
@@ -714,61 +403,27 @@
             color: #9ca3af;
         }
 
-        /* WhatsApp Float Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-            cursor: pointer;
-            z-index: 999;
-            text-decoration: none;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-        }
-
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero-gastro h1 {
-                font-size: 2rem;
-            }
-
-            .solution-grid {
+        @media (max-width: 968px) {
+            .hero-content {
                 grid-template-columns: 1fr;
             }
 
-            .calculator-inputs {
-                grid-template-columns: 1fr;
+            .hero-visual {
+                display: none;
             }
 
             .nav-links {
                 display: none;
             }
 
-            .hero-stats {
-                flex-direction: column;
-                gap: 1.5rem;
+            .hero h1 {
+                font-size: 2rem;
             }
 
-            .pricing-card.featured {
-                transform: scale(1);
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
@@ -777,45 +432,51 @@
     <!-- Header -->
     <header>
         <nav class="container">
-            <a href="/" class="logo">SwissDigital Consulting</a>
+            <a href="index.html" class="logo">SwissDigital</a>
             <ul class="nav-links">
-                <li><a href="/#portfolio">Portfolio</a></li>
-                <li><a href="/#services">Dienstleistungen</a></li>
-                <li><a href="/tools.html">Tools</a></li>
-                <li><a href="/#pricing">Preise</a></li>
-                <li><a href="/#contact">Kontakt</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gastro-digitalisierung.html" style="color: var(--primary-color);">Gastronomie</a></li>
+                <li><a href="handwerk-digitalisierung.html">Handwerk</a></li>
+                <li><a href="produktion-digitalisierung.html">Produktion</a></li>
+                <li><a href="index.html#pricing">Preise</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-gastro">
+    <!-- Hero -->
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="breadcrumb">
-                    <a href="/">Home</a> / <a href="/#services">Dienstleistungen</a> / Restaurant Digitalisierung
-                </div>
-                <h1>🍽️ Digitalisierung für Restaurants</h1>
-                <p class="hero-subtitle">Mehr Reservierungen. Weniger Telefon-Stress. Zufriedenere Gäste.</p>
-                
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <span class="hero-stat-number">+40%</span>
-                        <span class="hero-stat-label">Mehr Reservierungen</span>
+                <div>
+                    <h1>Mehr Gäste, weniger Stress</h1>
+                    <p>
+                        Online-Buchung, WhatsApp-Integration, digitale Menükarten - 
+                        alles was Ihr Restaurant erfolgreicher macht.
+                    </p>
+
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">24/7</div>
+                            <div class="hero-stat-label">Online buchbar</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">-70%</div>
+                            <div class="hero-stat-label">Weniger Telefon</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">+30%</div>
+                            <div class="hero-stat-label">Mehr Reservierungen</div>
+                        </div>
                     </div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-number">-70%</span>
-                        <span class="hero-stat-label">Weniger Telefon-Anrufe</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-number">-60%</span>
-                        <span class="hero-stat-label">No-Show Reduktion</span>
-                    </div>
+
+                    <a href="#contact" class="cta-button">Kostenlose Beratung →</a>
                 </div>
 
-                <div class="cta-buttons">
-                    <a href="#contact" class="cta-button">Kostenlose Beratung anfragen</a>
-                    <a href="#calculator" class="cta-button secondary">Einsparung berechnen</a>
+                <div class="hero-visual">
+                    <div class="hero-visual-icon">🍽️</div>
+                    <h3 style="margin-top: 1rem; color: var(--text-dark);">Restaurant Digital</h3>
+                    <p style="color: var(--text-light);">Buchung • Menü • Kommunikation</p>
                 </div>
             </div>
         </div>
@@ -824,413 +485,197 @@
     <!-- Problem Section -->
     <section class="problem-section">
         <div class="container">
-            <h2 class="section-title">🚨 Kennen Sie diese Probleme?</h2>
-            <p class="section-subtitle">Täglich verlieren Schweizer Restaurants Geld durch ineffiziente Prozesse</p>
-            
+            <h2>🚨 Kennen Sie das?</h2>
+
             <div class="problems-grid">
                 <div class="problem-card">
                     <div class="problem-icon">📞</div>
-                    <h3>Verpasste Reservierungen</h3>
-                    <p>Während Sie am Telefon sind oder in der Küche arbeiten, gehen 5-10 Anrufe verloren.</p>
-                    <div class="problem-cost">30-40%</div>
-                    <p>der potenziellen Gäste verloren</p>
+                    <h3>Telefon-Chaos</h3>
+                    <p>
+                        Während des Service klingelt ständig das Telefon. 
+                        Reservierungen gehen verloren, Gäste sind frustriert.
+                    </p>
                 </div>
 
                 <div class="problem-card">
-                    <div class="problem-icon">⏰</div>
-                    <h3>Zeitverschwendung</h3>
-                    <p>2-3 Stunden täglich mit Terminkoordination am Telefon.</p>
-                    <div class="problem-cost">15 Std/Wo</div>
-                    <p>für manuelle Reservierungsverwaltung</p>
-                </div>
-
-                <div class="problem-card">
-                    <div class="problem-icon">😞</div>
+                    <div class="problem-icon">🪑</div>
                     <h3>No-Shows</h3>
-                    <p>25% der Reservierungen erscheinen nicht - ohne Absage.</p>
-                    <div class="problem-cost">-30%</div>
-                    <p>Umsatzverlust durch leere Tische</p>
+                    <p>
+                        Reservierte Tische bleiben leer. Kein Reminder, 
+                        keine Bestätigung - verlorener Umsatz.
+                    </p>
                 </div>
 
                 <div class="problem-card">
-                    <div class="problem-icon">📝</div>
-                    <h3>Doppelbuchungen & Chaos</h3>
-                    <p>Handgeschriebene Reservierungen führen zu Fehlern und unzufriedenen Gästen.</p>
-                    <div class="problem-cost">💥</div>
-                    <p>Schlechte Bewertungen & verlorene Stammgäste</p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 15px; border-left: 5px solid var(--gastro-color);">
-                <h3 style="color: var(--gastro-color); font-size: 2rem; margin-bottom: 1rem;">
-                    = 21'600 CHF Verlust pro Jahr!
-                </h3>
-                <p style="font-size: 1.1rem; color: var(--text-light);">
-                    Durchschnittliches Restaurant mit 5 verpassten Anrufen/Tag à 120 CHF Deckungsbeitrag
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Section -->
-    <section class="solution-section">
-        <div class="container">
-            <h2 class="section-title" style="color: var(--gastro-color);">✅ Die Lösung: Digitales Restaurant</h2>
-            <p class="section-subtitle">Automatisieren Sie Ihr Restaurant und fokussieren Sie auf Ihre Gäste</p>
-
-            <div class="solution-grid">
-                <div class="solution-visual">
-                    <h3>Vorher vs. Nachher</h3>
-                    
-                    <div class="workflow-step">
-                        <strong>❌ VORHER:</strong><br>
-                        Gast ruft an → Besetzt → Geht zur Konkurrenz
-                    </div>
-                    
-                    <div class="workflow-arrow">↓</div>
-                    
-                    <div class="workflow-step">
-                        <strong>✅ NACHHER:</strong><br>
-                        Gast bucht online (24/7) → Automatische Bestätigung per WhatsApp → Erinnerung 24h vorher
-                    </div>
-                    
-                    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(5, 150, 105, 0.2); border-radius: 10px;">
-                        <strong style="font-size: 1.3rem;">📈 Resultat:</strong><br>
-                        +40% mehr Reservierungen<br>
-                        -70% weniger Telefon<br>
-                        -60% weniger No-Shows
-                    </div>
-                </div>
-
-                <div class="solution-features">
-                    <div class="feature-item">
-                        <div class="feature-icon">🌐</div>
-                        <div class="feature-content">
-                            <h4>24/7 Online-Buchung</h4>
-                            <p>Gäste buchen selbst auf Ihrer Website oder Google. Automatische Kalender-Integration. Keine verpassten Reservierungen mehr!</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-item">
-                        <div class="feature-icon">💬</div>
-                        <div class="feature-content">
-                            <h4>WhatsApp Business Integration</h4>
-                            <p>Automatische Bestätigungen, Erinnerungen und Feedback-Anfragen per WhatsApp. Gäste lieben es!</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-item">
-                        <div class="feature-icon">📱</div>
-                        <div class="feature-content">
-                            <h4>Digitale Menükarte (QR-Code)</h4>
-                            <p>Gäste scannen QR-Code am Tisch. Allergene, Preise, Bilder - alles digital. Änderungen in 2 Minuten!</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-item">
-                        <div class="feature-icon">📊</div>
-                        <div class="feature-content">
-                            <h4>Echtzeit-Dashboard</h4>
-                            <p>Sehen Sie live: Auslastung, Umsatz, Top-Gerichte, Gästefeedback. Treffen Sie datenbasierte Entscheidungen.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-item">
-                        <div class="feature-icon">⭐</div>
-                        <div class="feature-content">
-                            <h4>Automatisches Bewertungs-Management</h4>
-                            <p>Nach dem Besuch automatisch Google-Bewertung anfragen. Mehr 5-Sterne-Reviews = mehr neue Gäste!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Case Study -->
-    <section class="case-study">
-        <div class="container">
-            <h2 class="section-title" style="color: var(--gastro-color);">📈 Erfolgsgeschichte: Restaurant Bellevue</h2>
-            <p class="section-subtitle">Wie ein Schweizer Restaurant mit Digitalisierung 40% mehr Umsatz machte</p>
-
-            <div class="case-study-card">
-                <div class="case-study-header">
-                    <h3 style="font-size: 2rem; color: var(--text-dark);">Restaurant Bellevue, Basel</h3>
-                    <span class="case-study-badge">Gastronomie</span>
-                </div>
-
-                <div class="case-study-content">
-                    <div class="case-block">
-                        <h4>Herausforderung</h4>
-                        <ul>
-                            <li>30% verlorene Reservierungen durch besetztes Telefon</li>
-                            <li>Keine Online-Präsenz</li>
-                            <li>Manuelle Reservierungsverwaltung</li>
-                            <li>Hohe No-Show Rate (25%)</li>
-                            <li>Wenig Google-Bewertungen</li>
-                        </ul>
-                    </div>
-
-                    <div class="case-block">
-                        <h4>Lösung</h4>
-                        <ul>
-                            <li>24/7 Online-Buchungssystem</li>
-                            <li>WhatsApp Integration für Bestätigungen</li>
-                            <li>Automatische Erinnerungen (SMS + WhatsApp)</li>
-                            <li>Digitale Menükarte mit QR-Code</li>
-                            <li>Automatisches Review-Management</li>
-                        </ul>
-                    </div>
-
-                    <div class="case-block">
-                        <h4>Technologie</h4>
-                        <ul>
-                            <li>Custom Web-App mit Booking-System</li>
-                            <li>WhatsApp Business API</li>
-                            <li>Google Calendar Integration</li>
-                            <li>Mobile-optimierte Menükarte</li>
-                            <li>Analytics Dashboard</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="results-bar">
-                    <div class="result-metric">
-                        <div class="result-value">+40%</div>
-                        <div class="result-label">Mehr Reservierungen</div>
-                    </div>
-                    <div class="result-metric">
-                        <div class="result-value">-15h</div>
-                        <div class="result-label">Weniger Telefon pro Woche</div>
-                    </div>
-                    <div class="result-metric">
-                        <div class="result-value">-60%</div>
-                        <div class="result-label">No-Show Reduktion</div>
-                    </div>
-                    <div class="result-metric">
-                        <div class="result-value">3 Mon.</div>
-                        <div class="result-label">ROI erreicht in</div>
-                    </div>
-                    <div class="result-metric">
-                        <div class="result-value">4.8⭐</div>
-                        <div class="result-label">Neuer Google Rating</div>
-                    </div>
-                </div>
-
-                <div style="margin-top: 3rem; padding: 2rem; background: #ecfdf5; border-radius: 15px; text-align: center;">
-                    <p style="font-size: 1.2rem; color: var(--text-dark); line-height: 1.8;">
-                        <em>"Die Digitalisierung hat unser Restaurant komplett verändert. Wir haben mehr Zeit für unsere Gäste, weniger Stress im Alltag und 40% mehr Umsatz. Die Investition hat sich in nur 3 Monaten amortisiert!"</em>
+                    <div class="problem-icon">📋</div>
+                    <h3>Papier-Menüs</h3>
+                    <p>
+                        Preisänderungen bedeuten neue Druckkosten. 
+                        Allergene-Info ist mühsam zu pflegen.
                     </p>
-                    <p style="margin-top: 1rem; font-weight: 600; color: var(--text-dark);">
-                        - M. Schmidt, Inhaber Restaurant Bellevue
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">😴</div>
+                    <h3>Keine Sichtbarkeit</h3>
+                    <p>
+                        Google zeigt veraltete Infos. Potenzielle Gäste 
+                        finden Sie nicht oder sehen falsche Öffnungszeiten.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Calculator Section -->
-    <section id="calculator" class="calculator-section">
+    <!-- Solutions Section -->
+    <section class="solutions-section">
         <div class="container">
-            <div class="calculator-card">
-                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">
-                    🧮 Ihr Restaurant Verlust-Rechner
-                </h2>
-                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">
-                    Berechnen Sie, wie viel Geld Sie durch verpasste Reservierungen verlieren
-                </p>
+            <h2>Die Lösung für Ihre Gastronomie</h2>
+            <p class="solutions-subtitle">Massgeschneiderte Digitalisierung für Restaurants, Cafés und Bars</p>
 
-                <div class="calculator-inputs">
-                    <div class="calc-input-group">
-                        <label>Verpasste Anrufe pro Tag:</label>
-                        <input type="number" id="missedCalls" value="5" min="0">
-                    </div>
-                    <div class="calc-input-group">
-                        <label>Ø Reservierungswert (CHF):</label>
-                        <input type="number" id="avgReservation" value="120" min="0">
-                    </div>
-                </div>
-
-                <div class="calc-result">
-                    <div style="font-size: 1.3rem;">Ihr jährlicher Verlust:</div>
-                    <div class="calc-result-value" id="yearlyLoss">21'600 CHF</div>
-                    <p style="margin-top: 1rem; opacity: 0.9; font-size: 1.1rem;">
-                        Das könnten Sie mit unserem System sparen!
-                    </p>
-                    <a href="#contact" class="cta-button" style="margin-top: 2rem; background: var(--white); color: #667eea;">
-                        Jetzt Lösung anfragen →
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing-section">
-        <div class="container">
-            <h2 class="section-title" style="color: var(--gastro-color);">💰 Transparente Preise für Restaurants</h2>
-            <p class="section-subtitle">Wählen Sie das passende Paket für Ihr Restaurant</p>
-
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Gastro Start</h3>
-                    <div class="price">2'500 CHF</div>
-                    <p class="price-period">Einmalig</p>
-                    <ul class="pricing-features">
-                        <li>Professionelle Restaurant-Website</li>
-                        <li>Mobile-responsive Design</li>
-                        <li>Digitale Menükarte mit QR-Code</li>
-                        <li>Kontaktformular</li>
-                        <li>Google My Business Setup</li>
-                        <li>SEO Grundoptimierung</li>
-                        <li>1 Monat Support</li>
-                    </ul>
-                    <a href="#contact" class="price-cta">Jetzt anfragen</a>
-                </div>
-
-                <div class="pricing-card featured">
-                    <div class="recommended-badge">⭐ Beliebteste Wahl</div>
-                    <h3>Gastro Plus</h3>
-                    <div class="price">4'500 CHF</div>
-                    <p class="price-period">Einmalig</p>
-                    <ul class="pricing-features">
-                        <li>Alles aus Gastro Start</li>
-                        <li>24/7 Online-Buchungssystem</li>
-                        <li>WhatsApp Business Integration</li>
-                        <li>Automatische Bestätigungen</li>
-                        <li>SMS/WhatsApp Erinnerungen</li>
+            <div class="solutions-grid">
+                <!-- Solution 1 -->
+                <div class="solution-card">
+                    <div class="solution-icon">📅</div>
+                    <h3>Online-Buchungssystem</h3>
+                    <p>Gäste reservieren 24/7 selbst - Sie konzentrieren sich auf den Service.</p>
+                    
+                    <ul class="solution-features">
+                        <li>Echtzeit-Verfügbarkeit</li>
+                        <li>Automatische E-Mail-Bestätigung</li>
+                        <li>SMS/WhatsApp Reminder</li>
+                        <li>No-Show Reduktion bis 80%</li>
                         <li>Google Calendar Integration</li>
-                        <li>No-Show Reduktion System</li>
-                        <li>3 Monate Premium Support</li>
+                        <li>Tischverwaltung</li>
                     </ul>
-                    <a href="#contact" class="price-cta">Jetzt anfragen</a>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--success-color); font-weight: 600;">
-                        ROI in 3-4 Monaten!
-                    </p>
-                </div>
 
-                <div class="pricing-card">
-                    <h3>Gastro Premium</h3>
-                    <div class="price">8'500 CHF</div>
-                    <p class="price-period">Einmalig</p>
-                    <ul class="pricing-features">
-                        <li>Alles aus Gastro Plus</li>
-                        <li>Custom Web-App</li>
-                        <li>Echtzeit Analytics Dashboard</li>
-                        <li>Multi-Standort Verwaltung</li>
-                        <li>Automatisches Review-Management</li>
-                        <li>CRM-Integration</li>
-                        <li>Loyalty Program System</li>
-                        <li>6 Monate Premium Support</li>
-                    </ul>
-                    <a href="#contact" class="price-cta">Jetzt anfragen</a>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--bg-light); border-radius: 15px;">
-                <p style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 0.5rem;">
-                    <strong>Wartung & Support:</strong>
-                </p>
-                <p style="color: var(--text-light);">
-                    Ab 150 CHF/Monat für kontinuierliche Betreuung, Updates und 24/7 Support
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials-section">
-        <div class="container">
-            <h2 class="section-title" style="color: var(--gastro-color);">⭐ Was unsere Restaurant-Kunden sagen</h2>
-            
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">MS</div>
-                    <div class="testimonial-info">
-                        <h4>M. Schmidt</h4>
-                        <p class="testimonial-position">Inhaber, Restaurant Bellevue, Basel</p>
+                    <div class="solution-price">
+                        <span class="solution-price-value">Ab 4'500 CHF</span>
+                        <span class="solution-price-label">einmalig</span>
                     </div>
                 </div>
-                <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text">
-                    "Die Digitalisierung hat unser Restaurant komplett verändert. Früher habe ich täglich 2-3 Stunden am Telefon verbracht - jetzt buchen die Gäste selbst online. Wir haben 40% mehr Reservierungen und unsere No-Show Rate ist von 25% auf 10% gesunken. Die Investition hat sich in nur 3 Monaten amortisiert. Absolut empfehlenswert!"
-                </p>
-            </div>
 
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">AL</div>
-                    <div class="testimonial-info">
-                        <h4>A. Lopez</h4>
-                        <p class="testimonial-position">Inhaberin, Cafe Central, Basel</p>
+                <!-- Solution 2 -->
+                <div class="solution-card">
+                    <div class="solution-icon">💬</div>
+                    <h3>WhatsApp Business</h3>
+                    <p>Kommunizieren Sie dort, wo Ihre Gäste sind - automatisch und persönlich.</p>
+                    
+                    <ul class="solution-features">
+                        <li>24/7 Auto-Antworten</li>
+                        <li>Reservierung per Chat</li>
+                        <li>Speisekarte teilen</li>
+                        <li>Broadcast für Angebote</li>
+                        <li>FAQ-Bot für häufige Fragen</li>
+                        <li>Multi-Agent Support</li>
+                    </ul>
+
+                    <div class="solution-price">
+                        <span class="solution-price-value">Ab 4'500 CHF</span>
+                        <span class="solution-price-label">einmalig</span>
                     </div>
                 </div>
-                <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text">
-                    "Professionelle Arbeit von A bis Z. Die Kommunikation war klar, die Umsetzung schnell und das Ergebnis übertrifft unsere Erwartungen. Die WhatsApp-Integration ist genial - unsere Gäste lieben es! Endlich ein Partner, der versteht was KMUs in der Gastro wirklich brauchen."
-                </p>
+
+                <!-- Solution 3 -->
+                <div class="solution-card">
+                    <div class="solution-icon">📱</div>
+                    <h3>Digitale Menükarte</h3>
+                    <p>QR-Code scannen, Speisekarte sehen - immer aktuell, mehrsprachig, mit Allergenen.</p>
+                    
+                    <ul class="solution-features">
+                        <li>QR-Code am Tisch</li>
+                        <li>Echtzeit-Updates</li>
+                        <li>Mehrsprachig (DE/EN/FR/IT)</li>
+                        <li>Allergene & Zusatzstoffe</li>
+                        <li>Fotos & Beschreibungen</li>
+                        <li>Keine App nötig</li>
+                    </ul>
+
+                    <div class="solution-price">
+                        <span class="solution-price-value">Ab 1'500 CHF</span>
+                        <span class="solution-price-label">einmalig</span>
+                    </div>
+                </div>
+
+                <!-- Solution 4 -->
+                <div class="solution-card">
+                    <div class="solution-icon">🌐</div>
+                    <h3>Restaurant-Website</h3>
+                    <p>Professioneller Auftritt mit integrierter Buchung und Google-Optimierung.</p>
+                    
+                    <ul class="solution-features">
+                        <li>Mobile-optimiert</li>
+                        <li>SEO für lokale Suche</li>
+                        <li>Google Maps Integration</li>
+                        <li>Schnelle Ladezeit</li>
+                        <li>Menükarte integriert</li>
+                        <li>Buchungs-Widget</li>
+                    </ul>
+
+                    <div class="solution-price">
+                        <span class="solution-price-value">Ab 2'500 CHF</span>
+                        <span class="solution-price-label">einmalig</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section">
+    <!-- Benefits Section -->
+    <section class="benefits-section">
         <div class="container">
-            <h2 class="section-title" style="color: var(--gastro-color);">❓ Häufig gestellte Fragen</h2>
-            
-            <div class="faq-item">
-                <h3>Wie lange dauert die Implementation?</h3>
-                <p>Die meisten Restaurant-Projekte sind in <strong>2-4 Wochen live</strong>. Gastro Start (Website + Menükarte) in 2 Wochen, Gastro Plus (mit Buchungssystem) in 3-4 Wochen. Wir arbeiten schnell und effizient, ohne die Qualität zu kompromittieren.</p>
-            </div>
+            <h2>Was Sie gewinnen</h2>
 
-            <div class="faq-item">
-                <h3>Brauche ich technische Kenntnisse?</h3>
-                <p>Nein! Das System ist <strong>extrem einfach zu bedienen</strong>. Sie bekommen eine persönliche Schulung (1-2 Stunden) und danach können Sie alles selbst verwalten. Die meisten unserer Kunden sind innerhalb von 1 Stunde produktiv.</p>
-            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⏰</div>
+                    <h3>Zeit sparen</h3>
+                    <p>Weniger Telefonate, weniger Admin, mehr Zeit für Ihre Gäste</p>
+                </div>
 
-            <div class="faq-item">
-                <h3>Was passiert bei technischen Problemen?</h3>
-                <p>Sie haben <strong>direkten WhatsApp-Zugang zu mir</strong> (kein Call-Center!). Alle Pakete inkludieren Support. Bei dringenden Problemen antworte ich innerhalb von 1-4 Stunden. Zusätzlich biete ich Wartungsverträge ab 150 CHF/Monat mit 24/7 Monitoring an.</p>
-            </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Mehr Umsatz</h3>
+                    <p>Höhere Auslastung durch bessere Erreichbarkeit und weniger No-Shows</p>
+                </div>
 
-            <div class="faq-item">
-                <h3>Kann ich das System mit meinem bestehenden Kassensystem verbinden?</h3>
-                <p>Ja! Wir können das Buchungssystem mit den meisten gängigen Kassensystemen (wie Lightspeed, Poster, gastronovi, etc.) integrieren. Das besprechen wir im Detail bei der Beratung.</p>
-            </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">😊</div>
+                    <h3>Zufriedene Gäste</h3>
+                    <p>Einfache Buchung, schnelle Antworten, professioneller Eindruck</p>
+                </div>
 
-            <div class="faq-item">
-                <h3>Funktioniert das auch für mehrere Standorte?</h3>
-                <p>Absolut! Mit dem <strong>Gastro Premium Paket</strong> können Sie mehrere Restaurant-Standorte zentral verwalten. Sie sehen alle Buchungen, Statistiken und Reviews an einem Ort.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>Wie sieht der ROI aus?</h3>
-                <p>Unsere Restaurant-Kunden erreichen durchschnittlich einen <strong>ROI in 3-4 Monaten</strong>. Durch mehr Reservierungen (+40%), weniger No-Shows (-60%) und Zeitersparnis (15h/Woche) sparen Sie 1'500-3'000 CHF pro Monat. Das Gastro Plus Paket (4'500 CHF) amortisiert sich also in 2-3 Monaten!</p>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3>Bessere Übersicht</h3>
+                    <p>Dashboard zeigt Reservierungen, Trends und Auslastung</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section id="contact" class="final-cta">
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
         <div class="container">
-            <h2>Bereit für mehr Reservierungen?</h2>
-            <p>Starten Sie jetzt mit der Digitalisierung Ihres Restaurants</p>
-            
-            <div class="contact-options">
-                <a href="tel:+41786650253" class="contact-option">
-                    📞 +41 78 665 02 53
+            <h2>Bereit für mehr Gäste?</h2>
+            <p>Kostenlose Erstberatung - unverbindlich und persönlich</p>
+
+            <div class="cta-options">
+                <a href="tel:+41786650253" class="cta-option">
+                    <span class="cta-option-icon">📞</span>
+                    <span>+41 78 665 02 53</span>
                 </a>
-                <a href="mailto:serayd6161@gmail.com" class="contact-option">
-                    ✉️ serayd6161@gmail.com
+
+                <a href="mailto:info@swissdigital.life" class="cta-option">
+                    <span class="cta-option-icon">✉️</span>
+                    <span>info@swissdigital.life</span>
                 </a>
-                <a href="https://wa.me/41786650253" class="contact-option">
-                    💬 WhatsApp Chat
+
+                <a href="https://wa.me/41786650253" class="cta-option">
+                    <span class="cta-option-icon">💬</span>
+                    <span>WhatsApp</span>
                 </a>
             </div>
-
-            <p style="margin-top: 2rem; font-size: 1.1rem; opacity: 0.9;">
-                Kostenlose Beratung • Transparente Preise • Schnelle Umsetzung
-            </p>
         </div>
     </section>
 
@@ -1240,75 +685,36 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>SwissDigital Consulting</h3>
-                    <p>Digitalisierungslösungen für Schweizer Restaurants</p>
+                    <p>Digitalisierung für Schweizer KMUs</p>
                     <p>Spezialisiert auf Gastronomie</p>
                 </div>
 
                 <div class="footer-section">
-                    <h3>Gastro Services</h3>
-                    <a href="#calculator">ROI-Rechner</a>
-                    <a href="booking-demo.html">Booking Demo</a>
-                    <a href="#pricing">Preise</a>
-                    <a href="#testimonials">Referenzen</a>
+                    <h3>Branchen</h3>
+                    <a href="gastro-digitalisierung.html">Gastronomie</a>
+                    <a href="handwerk-digitalisierung.html">Handwerk</a>
+                    <a href="produktion-digitalisierung.html">Produktion</a>
                 </div>
 
                 <div class="footer-section">
-                    <h3>Andere Branchen</h3>
-                    <a href="handwerk-digitalisierung.html">Handwerk</a>
-                    <a href="produktion-digitalisierung.html">Produktion</a>
-                    <a href="/#services">Alle Dienstleistungen</a>
+                    <h3>Services</h3>
+                    <a href="index.html#services">Online-Buchung</a>
+                    <a href="index.html#services">WhatsApp Business</a>
+                    <a href="index.html#services">Digitale Menüs</a>
                 </div>
 
                 <div class="footer-section">
                     <h3>Kontakt</h3>
-                    <p>📧 serayd6161@gmail.com</p>
+                    <p>📧 info@swissdigital.life</p>
                     <p>📱 +41 78 665 02 53</p>
-                    <p>📍 Pratteln, Basel-Landschaft</p>
+                    <p>📍 Dottikon, Aargau</p>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 SwissDigital Consulting. Alle Rechte vorbehalten.</p>
+                <p>&copy; 2024 SwissDigital Consulting - Serkan Aydin. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
-
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/41786650253" class="whatsapp-float" target="_blank">
-        💬
-    </a>
-
-    <script>
-        // Calculator functionality
-        function calculateLoss() {
-            const missedCalls = parseInt(document.getElementById('missedCalls').value) || 0;
-            const avgReservation = parseInt(document.getElementById('avgReservation').value) || 0;
-            const conversionRate = 0.6; // 60% would have booked
-            const workDaysPerYear = 300; // ~300 days open per year for restaurants
-            
-            const yearlyLoss = missedCalls * avgReservation * conversionRate * workDaysPerYear;
-            document.getElementById('yearlyLoss').textContent = yearlyLoss.toLocaleString('de-CH') + ' CHF';
-        }
-
-        document.getElementById('missedCalls').addEventListener('input', calculateLoss);
-        document.getElementById('avgReservation').addEventListener('input', calculateLoss);
-        
-        // Initialize calculator
-        calculateLoss();
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
