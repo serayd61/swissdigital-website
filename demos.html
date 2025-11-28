@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Demos & Referenzen | SwissDigital Consulting</title>
+    <meta name="description" content="Entdecken Sie interaktive Demos unserer Digitalisierungslösungen: Online-Buchung, WhatsApp Automation, Produktions-Dashboards und mehr.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --accent-color: #dc2626;
+            --success-color: #059669;
+            --warning-color: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-alt {
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Demo Cards */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .demo-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .demo-preview {
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-preview.gastro {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        }
+
+        .demo-preview.handwerk {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .demo-preview.produktion {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+
+        .demo-preview.automation {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+
+        .demo-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .demo-content {
+            padding: 2rem;
+        }
+
+        .demo-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .demo-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .demo-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-feature {
+            background: var(--bg-light);
+            padding: 0.35rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        .demo-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .demo-btn {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .demo-btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .demo-btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .demo-btn-secondary {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .demo-btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
+        /* Live Booking Demo Section */
+        .booking-demo-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        }
+
+        .booking-demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .booking-demo-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .booking-demo-text p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .booking-demo-text ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .booking-demo-text ul li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .booking-demo-text ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .booking-embed {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            min-height: 500px;
+        }
+
+        .booking-embed-placeholder {
+            height: 100%;
+            min-height: 450px;
+            border: 3px dashed #e5e7eb;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .booking-embed-placeholder-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .booking-embed-placeholder h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .booking-embed-placeholder p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Case Studies Section */
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .case-study-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .case-study-header {
+            padding: 2rem;
+            color: var(--white);
+        }
+
+        .case-study-header.gastro {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        }
+
+        .case-study-header.handwerk {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .case-study-header.produktion {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+
+        .case-study-header .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-study-header .industry {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .case-study-body {
+            padding: 2rem;
+        }
+
+        .case-study-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .case-study-section h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .case-study-section p {
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        .case-study-results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .result-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Technology Stack */
+        .tech-stack {
+            padding: 5rem 0;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tech-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .tech-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* n8n Workflows Section */
+        .workflows-section {
+            padding: 5rem 0;
+            background: var(--text-dark);
+            color: var(--white);
+        }
+
+        .workflows-section .section-title {
+            color: var(--white);
+        }
+
+        .workflows-section .section-subtitle {
+            color: #9ca3af;
+        }
+
+        .workflow-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .workflow-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .workflow-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .workflow-card p {
+            color: #d1d5db;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .workflow-steps {
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            padding: 1rem;
+        }
+
+        .workflow-step {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: #e5e7eb;
+        }
+
+        .workflow-step-num {
+            width: 24px;
+            height: 24px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-btn-white {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        .cta-btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #9ca3af;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .booking-demo-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .case-study-results {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">SwissDigital Consulting</a>
+            <ul class="nav-links">
+                <li><a href="index.html#industries">Branchen</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="demos.html" style="color: var(--primary-color);">Live Demos</a></li>
+                <li><a href="index.html#pricing">Preise</a></li>
+                <li><a href="about.html">Über mich</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Live Demos & Referenzen</h1>
+            <p>Erleben Sie unsere Digitalisierungslösungen in Aktion. Testen Sie interaktive Demos und sehen Sie, was möglich ist.</p>
+        </div>
+    </section>
+
+    <!-- Interactive Demos -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Interaktive Demos</h2>
+            <p class="section-subtitle">Klicken Sie sich durch unsere Demo-Anwendungen und erleben Sie die Funktionen selbst</p>
+
+            <div class="demo-grid">
+                <!-- Restaurant Booking Demo -->
+                <div class="demo-card">
+                    <div class="demo-preview gastro">
+                        📅
+                        <span class="demo-badge">Live Demo</span>
+                    </div>
+                    <div class="demo-content">
+                        <h3>Restaurant Online-Buchung</h3>
+                        <p>Erleben Sie ein voll funktionsfähiges Buchungssystem wie es für Restaurants eingesetzt wird. 24/7 Online-Reservierung mit automatischen Bestätigungen.</p>
+                        <div class="demo-features">
+                            <span class="demo-feature">Tischverwaltung</span>
+                            <span class="demo-feature">Auto-Reminder</span>
+                            <span class="demo-feature">Google Calendar</span>
+                            <span class="demo-feature">WhatsApp</span>
+                        </div>
+                        <div class="demo-actions">
+                            <a href="booking-demo.html" class="demo-btn demo-btn-primary">Demo starten →</a>
+                            <a href="gastro-digitalisierung.html" class="demo-btn demo-btn-secondary">Mehr Info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Handwerk Terminbuchung Demo -->
+                <div class="demo-card">
+                    <div class="demo-preview handwerk">
+                        🔧
+                        <span class="demo-badge">Live Demo</span>
+                    </div>
+                    <div class="demo-content">
+                        <h3>Handwerker Terminbuchung</h3>
+                        <p>Kunden buchen selbst ihre Termine - mit automatischer Fahrtzeit-Berechnung und Service-Auswahl. Ideal für Elektriker, Sanitär, Schreiner.</p>
+                        <div class="demo-features">
+                            <span class="demo-feature">Service-Auswahl</span>
+                            <span class="demo-feature">Fahrtzeit-Puffer</span>
+                            <span class="demo-feature">SMS-Reminder</span>
+                            <span class="demo-feature">Notfall-Slots</span>
+                        </div>
+                        <div class="demo-actions">
+                            <a href="booking-demo.html" class="demo-btn demo-btn-primary">Demo starten →</a>
+                            <a href="handwerk-digitalisierung.html" class="demo-btn demo-btn-secondary">Mehr Info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produktion Dashboard Demo -->
+                <div class="demo-card">
+                    <div class="demo-preview produktion">
+                        📊
+                        <span class="demo-badge">Live Demo</span>
+                    </div>
+                    <div class="demo-content">
+                        <h3>Produktions-Dashboard</h3>
+                        <p>Echtzeit-Übersicht Ihrer Produktion: OEE-Monitoring, Maschinenstatus, Stillstandsanalyse. So sieht Industrie 4.0 in der Praxis aus.</p>
+                        <div class="demo-features">
+                            <span class="demo-feature">OEE Live</span>
+                            <span class="demo-feature">Maschinenstatus</span>
+                            <span class="demo-feature">Stillstand-Analyse</span>
+                            <span class="demo-feature">Alerts</span>
+                        </div>
+                        <div class="demo-actions">
+                            <a href="dashboard-demo.html" class="demo-btn demo-btn-primary">Demo starten →</a>
+                            <a href="produktion-digitalisierung.html" class="demo-btn demo-btn-secondary">Mehr Info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Bot Demo -->
+                <div class="demo-card">
+                    <div class="demo-preview automation">
+                        💬
+                        <span class="demo-badge">Live Demo</span>
+                    </div>
+                    <div class="demo-content">
+                        <h3>WhatsApp Business Bot</h3>
+                        <p>Automatische Kundenkommunikation via WhatsApp: FAQ-Bot, Terminbuchung, Benachrichtigungen. 24/7 erreichbar ohne Mehraufwand.</p>
+                        <div class="demo-features">
+                            <span class="demo-feature">Auto-Antworten</span>
+                            <span class="demo-feature">FAQ-Bot</span>
+                            <span class="demo-feature">Buchung via Chat</span>
+                            <span class="demo-feature">Broadcasts</span>
+                        </div>
+                        <div class="demo-actions">
+                            <a href="https://wa.me/41786650253?text=Demo%20anfragen" class="demo-btn demo-btn-primary" target="_blank">WhatsApp testen →</a>
+                            <a href="index.html#services" class="demo-btn demo-btn-secondary">Mehr Info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Booking Demo Embed Section -->
+    <section class="booking-demo-section">
+        <div class="container">
+            <div class="booking-demo-container">
+                <div class="booking-demo-text">
+                    <h2>Online-Buchung in Aktion</h2>
+                    <p>
+                        So könnte Ihr Buchungssystem aussehen. Kunden wählen selbst Datum, Uhrzeit und Service - 
+                        Sie erhalten automatisch eine Benachrichtigung und der Termin erscheint in Ihrem Kalender.
+                    </p>
+                    <ul>
+                        <li>Kein Telefonieren mehr während der Arbeit</li>
+                        <li>Automatische Bestätigungen per E-Mail & SMS</li>
+                        <li>Reminder 24h vor dem Termin (reduziert No-Shows um 80%)</li>
+                        <li>Sync mit Google Calendar, Outlook, Apple</li>
+                        <li>Anpassbar an Ihr Corporate Design</li>
+                    </ul>
+                    <p>
+                        <strong>Technologie:</strong> Basierend auf Cal.com (Open Source) oder custom-entwickelt 
+                        nach Ihren Anforderungen.
+                    </p>
+                </div>
+                <div class="booking-embed">
+                    <div class="booking-embed-placeholder">
+                        <div class="booking-embed-placeholder-icon">📅</div>
+                        <h3>Booking Widget Demo</h3>
+                        <p>Hier könnte Ihr individuelles Buchungs-Widget eingebettet sein.</p>
+                        <a href="contact.html" class="demo-btn demo-btn-primary">
+                            Demo für mein Business anfragen
+                        </a>
+                    </div>
+                    <!-- 
+                    Cal.com Embed würde hier eingefügt:
+                    <script type="text/javascript">
+                    (function (C, A, L) { ... })(window, "https://cal.com", "embed");
+                    </script>
+                    -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies / Projekt-Beispiele -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Projekt-Beispiele</h2>
+            <p class="section-subtitle">
+                Typische Digitalisierungsprojekte die wir umsetzen. 
+                Diese Beispiele zeigen, was mit unseren Lösungen möglich ist.
+            </p>
+
+            <div class="case-studies-grid">
+                <!-- Case Study 1: Restaurant -->
+                <div class="case-study-card">
+                    <div class="case-study-header gastro">
+                        <div class="icon">🍽️</div>
+                        <h3>Restaurant "Zur Krone"</h3>
+                        <span class="industry">Gastronomie • Zürich</span>
+                    </div>
+                    <div class="case-study-body">
+                        <div class="case-study-section">
+                            <h4>Herausforderung</h4>
+                            <p>Während des Services klingelte ständig das Telefon. Reservierungen gingen verloren, No-Shows kosteten Umsatz.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h4>Lösung</h4>
+                            <p>Online-Buchungssystem mit WhatsApp-Integration, automatische Reminder 24h vor dem Termin, digitale Menükarte mit QR-Code.</p>
+                        </div>
+                        <div class="case-study-results">
+                            <div class="result-item">
+                                <div class="result-value">-70%</div>
+                                <div class="result-label">Telefonate</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">-80%</div>
+                                <div class="result-label">No-Shows</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">+25%</div>
+                                <div class="result-label">Reservierungen</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2: Handwerk -->
+                <div class="case-study-card">
+                    <div class="case-study-header handwerk">
+                        <div class="icon">⚡</div>
+                        <h3>Elektro Müller GmbH</h3>
+                        <span class="industry">Elektroinstallationen • Aargau</span>
+                    </div>
+                    <div class="case-study-body">
+                        <div class="case-study-section">
+                            <h4>Herausforderung</h4>
+                            <p>Der Inhaber verbrachte jeden Abend 2-3 Stunden mit Rechnungen schreiben und Terminkoordination statt Zeit mit der Familie.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h4>Lösung</h4>
+                            <p>Mobile App für Auftragserfassung vor Ort, automatische Rechnungsgenerierung mit QR-Code, Online-Terminbuchung für Kunden.</p>
+                        </div>
+                        <div class="case-study-results">
+                            <div class="result-item">
+                                <div class="result-value">10h</div>
+                                <div class="result-label">Zeit gespart/Woche</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">-5 Tage</div>
+                                <div class="result-label">Schnellere Zahlung</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">0</div>
+                                <div class="result-label">Papierkram</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 3: Produktion -->
+                <div class="case-study-card">
+                    <div class="case-study-header produktion">
+                        <div class="icon">🏭</div>
+                        <h3>Precision Parts AG</h3>
+                        <span class="industry">CNC-Fertigung • Basel-Land</span>
+                    </div>
+                    <div class="case-study-body">
+                        <div class="case-study-section">
+                            <h4>Herausforderung</h4>
+                            <p>Keine Übersicht über Maschinenstillstände. OEE wurde geschätzt statt gemessen. Probleme wurden zu spät erkannt.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h4>Lösung</h4>
+                            <p>IoT-Sensoren an 5 CNC-Maschinen, Echtzeit-Dashboard mit OEE-Monitoring, automatische Alerts bei Stillständen über 15 Minuten.</p>
+                        </div>
+                        <div class="case-study-results">
+                            <div class="result-item">
+                                <div class="result-value">+15%</div>
+                                <div class="result-label">OEE Steigerung</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">-40%</div>
+                                <div class="result-label">Stillstandzeit</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-value">ROI</div>
+                                <div class="result-label">in 8 Monaten</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--white); border-radius: 15px;">
+                <p style="color: var(--text-light); margin-bottom: 1rem;">
+                    <em>* Diese Beispiele zeigen typische Projektergebnisse. Ihre Ergebnisse können je nach Ausgangssituation variieren.</em>
+                </p>
+                <a href="contact.html" class="demo-btn demo-btn-primary" style="display: inline-block;">
+                    Eigenes Projekt besprechen →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- n8n Workflow Examples -->
+    <section class="workflows-section">
+        <div class="container">
+            <h2 class="section-title">Automatisierungs-Workflows</h2>
+            <p class="section-subtitle">Beispiele für n8n-Automatisierungen die wir für Sie einrichten können</p>
+
+            <div class="workflow-cards">
+                <!-- Workflow 1 -->
+                <div class="workflow-card">
+                    <h3>📧 Automatische Rechnungen</h3>
+                    <p>Auftrag abschliessen → Rechnung wird automatisch generiert und per E-Mail versendet.</p>
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">1</span>
+                            Auftrag als "erledigt" markieren
+                        </div>
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">2</span>
+                            PDF-Rechnung mit QR-Code generieren
+                        </div>
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">3</span>
+                            Per E-Mail an Kunde senden
+                        </div>
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">4</span>
+                            In Buchhaltung exportieren
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workflow 2 -->
+                <div class="workflow-card">
+                    <h3>💬 WhatsApp Auto-Responder</h3>
+                    <p>Kunden erhalten sofort Antworten auf häufige Fragen - auch nachts und am Wochenende.</p>
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">1</span>
+                            WhatsApp-Nachricht empfangen
+                        </div>
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">2</span>
+                            Intent erkennen (Buchung/Frage/Support)
+                        </div>
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">3</span>
+                            Passende Antwort senden
+                        </div>
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">4</span>
+                            Bei Bedarf an Mensch weiterleiten
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workflow 3 -->
+                <div class="workflow-card">
+                    <h3>🔔 Produktions-Alerts</h3>
+                    <p>Maschinenstillstand? Sie werden sofort per SMS oder Slack benachrichtigt.</p>
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">1</span>
+                            IoT-Sensor meldet Stillstand
+                        </div>
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">2</span>
+                            Prüfen: > 10 Minuten Stillstand?
+                        </div>
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">3</span>
+                            Alert an Schichtleiter senden
+                        </div>
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">4</span>
+                            Vorfall im Dashboard loggen
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workflow 4 -->
+                <div class="workflow-card">
+                    <h3>📅 Termin-Reminder</h3>
+                    <p>Automatische Erinnerungen reduzieren No-Shows um bis zu 80%.</p>
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">1</span>
+                            Täglicher Check: Termine morgen?
+                        </div>
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">2</span>
+                            SMS-Reminder an Kunden
+                        </div>
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">3</span>
+                            Bestätigung/Absage erfassen
+                        </div>
+                        <div class="workflow-step">
+                            <span class="workflow-step-num">4</span>
+                            Kalender aktualisieren
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="tech-stack section">
+        <div class="container">
+            <h2 class="section-title">Unsere Technologien</h2>
+            <p class="section-subtitle">Wir setzen auf bewährte, moderne Open-Source-Technologien</p>
+
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon">⚛️</div>
+                    <h4>React / Next.js</h4>
+                    <p>Schnelle, moderne Web-Apps</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🔄</div>
+                    <h4>n8n</h4>
+                    <p>Workflow-Automatisierung</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">📅</div>
+                    <h4>Cal.com</h4>
+                    <p>Open-Source Booking</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">💬</div>
+                    <h4>WhatsApp API</h4>
+                    <p>Business Messaging</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">📊</div>
+                    <h4>Grafana</h4>
+                    <p>Echtzeit-Dashboards</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🔗</div>
+                    <h4>Web3 / Blockchain</h4>
+                    <p>Smart Contracts (Base)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Bereit für Ihre Demo?</h2>
+            <p>Lassen Sie uns gemeinsam besprechen, welche Lösung für Ihr Business passt</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-btn cta-btn-white">Kostenlose Beratung →</a>
+                <a href="https://wa.me/41786650253" class="cta-btn cta-btn-outline">WhatsApp Chat</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SwissDigital Consulting</h3>
+                    <p>Digitalisierung für Schweizer KMUs</p>
+                    <p>Industrie-Erfahrung trifft Tech</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Branchen</h3>
+                    <a href="gastro-digitalisierung.html">Gastronomie</a>
+                    <a href="handwerk-digitalisierung.html">Handwerk</a>
+                    <a href="produktion-digitalisierung.html">Produktion</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Demos</h3>
+                    <a href="booking-demo.html">Booking Demo</a>
+                    <a href="dashboard-demo.html">Dashboard Demo</a>
+                    <a href="roi-rechner.html">ROI-Rechner</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <p>📧 info@swissdigital.life</p>
+                    <p>📱 +41 78 665 02 53</p>
+                    <p>📍 Dottikon, Aargau</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 SwissDigital Consulting - Serkan Aydin. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
