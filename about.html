@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Über mich - Serkan Aydin | SwissDigital Consulting</title>
     <meta name="description" content="Lernen Sie Serkan Aydin kennen: BWL-Studium, Blockchain-Zertifizierung und 8+ Jahre Web-Entwicklung. Ihr Partner für Digitalisierung in der Schweiz.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,132 +16,232 @@
         }
 
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --accent-color: #dc2626;
-            --success-color: #059669;
-            --warning-color: #f59e0b;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
-            --bg-light: #f9fafb;
-            --white: #ffffff;
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a24;
+            --bg-card: rgba(26, 26, 36, 0.8);
+            --accent-cyan: #00d4aa;
+            --accent-cyan-glow: rgba(0, 212, 170, 0.3);
+            --accent-gold: #f4b942;
+            --accent-gold-glow: rgba(244, 185, 66, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6b6b7b;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
         }
+
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-gradient-orb {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb-1 { top: -200px; right: -100px; background: var(--accent-cyan); }
+        .orb-2 { bottom: -200px; left: -100px; background: var(--accent-gold); }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
         /* Header */
         header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
-        }
-
-        /* Language Switcher */
-        .lang-switcher {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .lang-switcher a {
-            text-decoration: none;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            color: var(--text-light);
-            transition: all 0.3s;
-        }
-
-        .lang-switcher a:hover {
-            background: var(--bg-light);
-            color: var(--text-dark);
-        }
-
-        .lang-switcher a.active {
-            background: var(--primary-color);
-            color: var(--white);
+            padding: 1rem 0;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
 
         .logo {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
+            font-weight: 700;
+            color: var(--text-primary);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-dark);
+            color: var(--text-secondary);
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--primary-color);
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-cyan);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent-cyan), #00a88a);
+            color: var(--bg-primary) !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 0.25rem;
+            background: var(--bg-tertiary);
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .lang-switcher a {
+            text-decoration: none;
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .lang-switcher a.active {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         /* Hero Section */
-        .about-hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: 5rem 0;
+        .hero {
+            padding: 10rem 0 4rem;
             text-align: center;
         }
 
-        .about-hero h1 {
-            font-size: 3rem;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
             margin-bottom: 1rem;
         }
 
-        .about-hero p {
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
             font-size: 1.25rem;
-            opacity: 0.95;
-            max-width: 700px;
+            color: var(--text-secondary);
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        /* Main Content */
+        /* About Content */
         .about-content {
-            padding: 5rem 0;
+            padding: 4rem 0;
         }
 
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: 350px 1fr;
             gap: 4rem;
             align-items: start;
         }
 
         /* Profile Card */
         .profile-card {
-            background: var(--white);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
             overflow: hidden;
             position: sticky;
             top: 100px;
@@ -146,12 +249,9 @@
 
         .profile-image {
             width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
+            height: 320px;
+            object-fit: cover;
+            object-position: top;
         }
 
         .profile-info {
@@ -160,19 +260,20 @@
         }
 
         .profile-info h2 {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
 
         .profile-title {
-            color: var(--primary-color);
+            color: var(--accent-cyan);
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .profile-location {
-            color: var(--text-light);
+            color: var(--text-muted);
             margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
 
         .profile-contact {
@@ -191,57 +292,69 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s;
+            font-size: 0.95rem;
         }
 
-        .profile-contact .primary-btn {
-            background: var(--primary-color);
-            color: var(--white);
+        .profile-contact .btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), #00a88a);
+            color: var(--bg-primary);
         }
 
-        .profile-contact .primary-btn:hover {
-            background: var(--secondary-color);
+        .profile-contact .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
         }
 
-        .profile-contact .secondary-btn {
-            background: var(--bg-light);
-            color: var(--text-dark);
-        }
-
-        .profile-contact .secondary-btn:hover {
-            background: #e5e7eb;
+        .profile-contact .btn-secondary:hover {
+            border-color: var(--accent-cyan);
         }
 
         /* Story Content */
         .story-content h2 {
             font-size: 2rem;
-            color: var(--text-dark);
             margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--primary-color);
-            display: inline-block;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .story-content h2::before {
+            content: '';
+            width: 4px;
+            height: 100%;
+            min-height: 32px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
         }
 
         .story-content p {
             font-size: 1.1rem;
             line-height: 1.9;
             margin-bottom: 1.5rem;
-            color: var(--text-dark);
+            color: var(--text-secondary);
         }
 
-        .story-content .highlight {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            padding: 2rem;
-            border-radius: 15px;
-            border-left: 5px solid var(--primary-color);
+        .story-content p strong {
+            color: var(--text-primary);
+        }
+
+        .highlight-box {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-left: 4px solid var(--accent-cyan);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
             margin: 2rem 0;
         }
 
-        .story-content .highlight p {
-            margin-bottom: 0;
-            font-weight: 500;
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-primary);
         }
 
-        /* Experience Timeline */
+        /* Timeline */
         .experience-section {
             margin-top: 3rem;
         }
@@ -249,6 +362,7 @@
         .timeline {
             position: relative;
             padding-left: 30px;
+            margin-top: 2rem;
         }
 
         .timeline::before {
@@ -257,72 +371,102 @@
             left: 0;
             top: 0;
             bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--primary-color), var(--success-color));
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-gold));
         }
 
         .timeline-item {
             position: relative;
             padding-bottom: 2rem;
+            padding-left: 1.5rem;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -34px;
+            left: -35px;
             top: 5px;
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: var(--primary-color);
-            border: 3px solid var(--white);
-            box-shadow: 0 0 0 3px var(--primary-color);
+            background: var(--accent-cyan);
+            border: 3px solid var(--bg-primary);
+            box-shadow: 0 0 0 3px var(--accent-cyan);
         }
 
         .timeline-date {
             font-size: 0.9rem;
-            color: var(--primary-color);
+            color: var(--accent-cyan);
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .timeline-title {
             font-size: 1.25rem;
-            font-weight: bold;
+            font-weight: 700;
             margin-bottom: 0.25rem;
+            color: var(--text-primary);
         }
 
         .timeline-company {
-            color: var(--text-light);
+            color: var(--text-muted);
             margin-bottom: 0.5rem;
         }
 
         .timeline-description {
-            color: var(--text-dark);
+            color: var(--text-secondary);
             font-size: 1rem;
         }
 
         /* Skills Section */
         .skills-section {
-            background: var(--bg-light);
+            background: var(--bg-secondary);
             padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
         .skill-category {
-            background: var(--white);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
         }
 
         .skill-category h3 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
@@ -332,22 +476,23 @@
         .skill-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
 
         .skill-tag {
-            background: var(--bg-light);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            border: 1px solid #e5e7eb;
+            background: var(--bg-tertiary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
         }
 
         .skill-tag.highlight {
-            background: var(--primary-color);
-            color: var(--white);
-            border-color: var(--primary-color);
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            border-color: var(--accent-cyan);
+            font-weight: 600;
         }
 
         /* Values Section */
@@ -357,113 +502,154 @@
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
         }
 
         .value-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
             text-align: center;
-            padding: 2.5rem;
-            background: var(--white);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
         }
 
         .value-card:hover {
-            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
         }
 
         .value-icon {
-            font-size: 4rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
 
         .value-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
         }
 
         .value-card p {
-            color: var(--text-light);
-            line-height: 1.7;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
 
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
+            background: linear-gradient(135deg, var(--accent-cyan), #00a88a);
             padding: 5rem 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cta-section .container {
+            position: relative;
+            z-index: 1;
         }
 
         .cta-section h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: var(--bg-primary);
         }
 
         .cta-section p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            opacity: 0.95;
+            color: var(--bg-primary);
+            opacity: 0.9;
         }
 
         .cta-button {
             display: inline-block;
-            background: var(--white);
-            color: var(--primary-color);
+            background: var(--bg-primary);
+            color: var(--accent-cyan);
             padding: 1rem 2.5rem;
-            border-radius: 50px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
 
         /* Footer */
         footer {
-            background: var(--text-dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 0 2rem;
         }
 
-        .footer-content {
+        .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
-        .footer-section h3 {
+        .footer-brand .logo {
             margin-bottom: 1rem;
         }
 
-        .footer-section p,
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
         .footer-section a {
-            color: #9ca3af;
-            text-decoration: none;
             display: block;
-            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
 
         .footer-section a:hover {
-            color: var(--white);
+            color: var(--accent-cyan);
         }
 
         .footer-bottom {
-            text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid #374151;
-            color: #9ca3af;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 968px) {
             .about-grid {
                 grid-template-columns: 1fr;
@@ -479,75 +665,90 @@
                 display: none;
             }
 
-            .lang-switcher {
-                position: absolute;
-                right: 20px;
-                top: 50%;
-                transform: translateY(-50%);
+            .mobile-menu-btn {
+                display: block;
             }
 
-            nav {
-                position: relative;
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
             }
 
-            .about-hero h1 {
-                font-size: 2rem;
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <div class="bg-grid"></div>
+    <div class="bg-gradient-orb orb-1"></div>
+    <div class="bg-gradient-orb orb-2"></div>
+
     <!-- Header -->
     <header>
-        <nav class="container">
-            <a href="index.html" class="logo">SwissDigital Consulting</a>
-            <ul class="nav-links">
-                <li><a href="index.html#industries">Branchen</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="demos.html">Tools</a></li>
-                <li><a href="index.html#pricing">Preise</a></li>
-                <li><a href="about.html" style="color: var(--primary-color);">Über mich</a></li>
-                <li><a href="contact.html">Kontakt</a></li>
-            </ul>
-            <div class="lang-switcher">
-                <a href="/about.html" class="active">DE</a>
-                <a href="/tr/hakkimda.html">TR</a>
-                <a href="/en/about.html">EN</a>
-            </div>
-        </nav>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">⚡</span>
+                    SwissDigital
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html#industries">Branchen</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#pricing">Preise</a></li>
+                    <li><a href="about.html" class="active">Über mich</a></li>
+                    <li><a href="demos.html">Tools</a></li>
+                    <li><a href="contact.html" class="nav-cta">Kontakt</a></li>
+                </ul>
+                <div class="lang-switcher">
+                    <a href="/about.html" class="active">DE</a>
+                    <a href="/tr/">TR</a>
+                    <a href="/en/">EN</a>
+                </div>
+                <button class="mobile-menu-btn">☰</button>
+            </nav>
+        </div>
     </header>
 
     <!-- Hero -->
-    <section class="about-hero">
+    <section class="hero">
         <div class="container">
-            <h1>Über mich</h1>
-            <p>Business-Expertise trifft Tech-Know-how = Digitalisierung, die funktioniert</p>
+            <div class="hero-badge">→ Über mich</div>
+            <h1>Business trifft <span class="gradient-text">Technologie</span></h1>
+            <p class="hero-subtitle">BWL-Expertise kombiniert mit Tech-Know-how = Digitalisierung, die funktioniert</p>
         </div>
     </section>
 
-    <!-- Main Content -->
+    <!-- About Content -->
     <section class="about-content">
         <div class="container">
             <div class="about-grid">
                 <!-- Profile Card -->
                 <aside class="profile-card">
-                    <img src="serkan-photo.jpeg" alt="Serkan Aydin" class="profile-image" style="width: 100%; height: 300px; object-fit: cover; object-position: top;">
+                    <img src="serkan-photo.jpeg" alt="Serkan Aydin" class="profile-image">
                     <div class="profile-info">
                         <h2>Serkan Aydin</h2>
                         <p class="profile-title">Digital Consultant | BWL & Blockchain</p>
                         <p class="profile-location">📍 Dottikon, Aargau, Schweiz</p>
-                        
+
                         <div class="profile-contact">
-                            <a href="mailto:info@swissdigital.life" class="primary-btn">
+                            <a href="mailto:info@swissdigital.life" class="btn-primary">
                                 ✉️ info@swissdigital.life
                             </a>
-                            <a href="tel:+41786650253" class="secondary-btn">
+                            <a href="tel:+41786650253" class="btn-secondary">
                                 📞 +41 78 665 02 53
                             </a>
-                            <a href="https://wa.me/41786650253" class="secondary-btn">
+                            <a href="https://wa.me/41786650253" class="btn-secondary">
                                 💬 WhatsApp
                             </a>
-                            <a href="https://www.linkedin.com/in/serkan-aydin-1273a38a/" class="secondary-btn" target="_blank">
+                            <a href="https://www.linkedin.com/in/serkan-aydin-1273a38a/" class="btn-secondary" target="_blank">
                                 🔗 LinkedIn
                             </a>
                         </div>
@@ -557,43 +758,43 @@
                 <!-- Story Content -->
                 <div class="story-content">
                     <h2>Meine Geschichte</h2>
-                    
+
                     <p>
-                        Mit einem <strong>Studium in Betriebswirtschaft</strong> (Anadolu Universität) und einer 
-                        <strong>Blockchain-Manager-Zertifizierung</strong> (BitBrain Academy) verbinde ich 
+                        Mit einem <strong>Studium in Betriebswirtschaft</strong> (Anadolu Universität) und einer
+                        <strong>Blockchain-Manager-Zertifizierung</strong> (BitBrain Academy) verbinde ich
                         Business-Verständnis mit technischer Expertise.
                     </p>
 
                     <p>
-                        <strong>Seit 2017</strong> entwickle ich professionelle Webseiten, Applikationen und 
-                        Blockchain-Lösungen. Meine Stärke: Ich verstehe sowohl die technische als auch die 
+                        <strong>Seit 2017</strong> entwickle ich professionelle Webseiten, Applikationen und
+                        Blockchain-Lösungen. Meine Stärke: Ich verstehe sowohl die technische als auch die
                         geschäftliche Seite - und kann beides verbinden.
                     </p>
 
-                    <div class="highlight">
+                    <div class="highlight-box">
                         <p>
-                            💡 Das macht den Unterschied: Viele Entwickler können programmieren, aber verstehen 
-                            Ihr Geschäft nicht. Viele Berater verstehen Business, aber nicht die Technik. 
+                            <strong>💡 Der Unterschied:</strong> Viele Entwickler können programmieren, aber verstehen
+                            Ihr Geschäft nicht. Viele Berater verstehen Business, aber nicht die Technik.
                             Ich bringe beides zusammen.
                         </p>
                     </div>
 
                     <p>
-                        Meine technischen Kompetenzen umfassen moderne Web-Technologien wie <strong>HTML, CSS, 
-                        JavaScript, React und Next.js</strong>, sowie Blockchain-Entwicklung auf dem 
+                        Meine technischen Kompetenzen umfassen moderne Web-Technologien wie <strong>HTML, CSS,
+                        JavaScript, React und Next.js</strong>, sowie Blockchain-Entwicklung auf dem
                         <strong>Base Network</strong> mit Smart Contracts und Web3-Integration.
                     </p>
 
                     <p>
-                        Neben meiner Arbeit bin ich <strong>SFV-zertifizierter Fussballtrainer</strong> bei 
-                        FC Villmergen. Was ich dort gelernt habe - Teamführung, klare Kommunikation, 
+                        Neben meiner Arbeit bin ich <strong>SFV-zertifizierter Fussballtrainer</strong> bei
+                        FC Villmergen. Was ich dort gelernt habe - Teamführung, klare Kommunikation,
                         systematisches Training - wende ich auch in meinen Projekten an.
                     </p>
 
-                    <!-- Education & Certifications -->
+                    <!-- Education Timeline -->
                     <div class="experience-section">
                         <h2>Ausbildung & Zertifizierungen</h2>
-                        
+
                         <div class="timeline">
                             <div class="timeline-item">
                                 <div class="timeline-date">2020 - 2021</div>
@@ -609,8 +810,7 @@
                                 <div class="timeline-title">Web Development (Freelance)</div>
                                 <div class="timeline-company">Selbständig</div>
                                 <div class="timeline-description">
-                                    8+ Jahre Erfahrung mit HTML, CSS, JavaScript, React, Next.js, 
-                                    Node.js und weiteren Web-Technologien
+                                    8+ Jahre Erfahrung mit HTML, CSS, JavaScript, React, Next.js, Node.js
                                 </div>
                             </div>
 
@@ -619,15 +819,14 @@
                                 <div class="timeline-title">Business Administration</div>
                                 <div class="timeline-company">Anadolu Universität, Türkei</div>
                                 <div class="timeline-description">
-                                    Diplom in Betriebswirtschaft - fundiertes Verständnis für 
-                                    Geschäftsprozesse und Unternehmensführung
+                                    Diplom in Betriebswirtschaft - fundiertes Verständnis für Geschäftsprozesse
                                 </div>
                             </div>
 
                             <div class="timeline-item">
                                 <div class="timeline-date">1999 - 2001</div>
                                 <div class="timeline-title">Maschinen-Techniker</div>
-                                <div class="timeline-company">Kahramanmaras Sütcü Imam Universität, Türkei</div>
+                                <div class="timeline-company">Kahramanmaras Sütcü Imam Universität</div>
                                 <div class="timeline-description">
                                     Technisches Fundament und Verständnis für industrielle Prozesse
                                 </div>
@@ -638,14 +837,14 @@
                     <!-- Professional Experience -->
                     <div class="experience-section">
                         <h2>Berufserfahrung</h2>
-                        
+
                         <div class="timeline">
                             <div class="timeline-item">
                                 <div class="timeline-date">2024 - Heute</div>
                                 <div class="timeline-title">Gründer & Digital Consultant</div>
                                 <div class="timeline-company">SwissDigital Consulting</div>
                                 <div class="timeline-description">
-                                    Digitalisierungslösungen für Schweizer KMUs: Websites, Automatisierung, 
+                                    Digitalisierungslösungen für Schweizer KMUs: Websites, Automatisierung,
                                     WhatsApp Business, Custom Apps, Blockchain-Lösungen
                                 </div>
                             </div>
@@ -655,7 +854,7 @@
                                 <div class="timeline-title">Freelance Web & Blockchain Developer</div>
                                 <div class="timeline-company">Selbständig</div>
                                 <div class="timeline-description">
-                                    Entwicklung von Webseiten, Web-Applikationen, Smart Contracts 
+                                    Entwicklung von Webseiten, Web-Applikationen, Smart Contracts
                                     und Blockchain-Projekten auf Base Network
                                 </div>
                             </div>
@@ -663,23 +862,23 @@
                     </div>
 
                     <h2 style="margin-top: 3rem;">Warum SwissDigital?</h2>
-                    
+
                     <p>
-                        Viele Digitalisierungs-Agenturen verstehen Technik, aber nicht Ihr Geschäft. 
+                        Viele Digitalisierungs-Agenturen verstehen Technik, aber nicht Ihr Geschäft.
                         Sie liefern schöne Websites, die am Ende niemand braucht.
                     </p>
 
                     <p>
-                        Mein Ansatz ist anders: Ich höre erst zu, verstehe Ihre Prozesse, und entwickle 
-                        dann Lösungen, die <strong>wirklich Zeit und Geld sparen</strong>. Keine 
-                        Buzzwords, keine überteuerten Enterprise-Lösungen - sondern praktische Tools, 
+                        Mein Ansatz ist anders: Ich höre erst zu, verstehe Ihre Prozesse, und entwickle
+                        dann Lösungen, die <strong>wirklich Zeit und Geld sparen</strong>. Keine
+                        Buzzwords, keine überteuerten Enterprise-Lösungen - sondern praktische Tools,
                         die funktionieren.
                     </p>
 
-                    <div class="highlight">
+                    <div class="highlight-box">
                         <p>
-                            🎯 <strong>Mein Versprechen:</strong> Transparente Preise, ehrliche Beratung, 
-                            und Lösungen die sich rechnen. Wenn ich glaube, dass sich eine Investition 
+                            <strong>🎯 Mein Versprechen:</strong> Transparente Preise, ehrliche Beratung,
+                            und Lösungen die sich rechnen. Wenn ich glaube, dass sich eine Investition
                             nicht lohnt, sage ich Ihnen das.
                         </p>
                     </div>
@@ -691,9 +890,10 @@
     <!-- Skills Section -->
     <section class="skills-section">
         <div class="container">
-            <h2 class="section-title" style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">
-                Kompetenzen & Technologien
-            </h2>
+            <div class="section-header">
+                <div class="section-label">→ Kompetenzen</div>
+                <h2 class="section-title">Technologien & Expertise</h2>
+            </div>
 
             <div class="skills-grid">
                 <div class="skill-category">
@@ -703,10 +903,7 @@
                         <span class="skill-tag">Prozessanalyse</span>
                         <span class="skill-tag">Digitale Transformation</span>
                         <span class="skill-tag">KMU-Beratung</span>
-                        <span class="skill-tag">Projektmanagement</span>
                         <span class="skill-tag">ROI-Analyse</span>
-                        <span class="skill-tag">Geschäftsprozesse</span>
-                        <span class="skill-tag">Automatisierung</span>
                     </div>
                 </div>
 
@@ -717,10 +914,7 @@
                         <span class="skill-tag highlight">Next.js</span>
                         <span class="skill-tag">TypeScript</span>
                         <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">HTML/CSS</span>
                         <span class="skill-tag">Tailwind CSS</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">PostgreSQL</span>
                     </div>
                 </div>
 
@@ -730,11 +924,8 @@
                         <span class="skill-tag highlight">Base Network</span>
                         <span class="skill-tag">Solidity</span>
                         <span class="skill-tag">Smart Contracts</span>
-                        <span class="skill-tag">Farcaster</span>
-                        <span class="skill-tag">NFTs</span>
                         <span class="skill-tag">DeFi</span>
                         <span class="skill-tag">Web3.js</span>
-                        <span class="skill-tag">Ethers.js</span>
                     </div>
                 </div>
 
@@ -743,11 +934,8 @@
                     <div class="skill-list">
                         <span class="skill-tag highlight">n8n</span>
                         <span class="skill-tag">AI Integration</span>
-                        <span class="skill-tag">WhatsApp Business API</span>
-                        <span class="skill-tag">E-Mail Automation</span>
+                        <span class="skill-tag">WhatsApp API</span>
                         <span class="skill-tag">CRM Integration</span>
-                        <span class="skill-tag">Zapier</span>
-                        <span class="skill-tag">Make</span>
                     </div>
                 </div>
 
@@ -759,7 +947,6 @@
                         <span class="skill-tag">SEO</span>
                         <span class="skill-tag">Vercel</span>
                         <span class="skill-tag">GitHub</span>
-                        <span class="skill-tag">Figma</span>
                     </div>
                 </div>
 
@@ -767,7 +954,7 @@
                     <h3>🌍 Sprachen</h3>
                     <div class="skill-list">
                         <span class="skill-tag highlight">Deutsch</span>
-                        <span class="skill-tag highlight">Türkisch (Muttersprache)</span>
+                        <span class="skill-tag highlight">Türkisch</span>
                         <span class="skill-tag">Englisch</span>
                     </div>
                 </div>
@@ -778,45 +965,34 @@
     <!-- Values Section -->
     <section class="values-section">
         <div class="container">
-            <h2 class="section-title" style="text-align: center; font-size: 2.5rem;">
-                Meine Werte
-            </h2>
+            <div class="section-header">
+                <div class="section-label">→ Werte</div>
+                <h2 class="section-title">Meine Arbeitsweise</h2>
+            </div>
 
             <div class="values-grid">
                 <div class="value-card">
                     <div class="value-icon">🎯</div>
                     <h3>Praktisch</h3>
-                    <p>
-                        Keine theoretischen Konzepte, sondern Lösungen die im Alltag funktionieren. 
-                        Ich kenne die Herausforderungen aus eigener Erfahrung.
-                    </p>
+                    <p>Keine theoretischen Konzepte, sondern Lösungen die im Alltag funktionieren.</p>
                 </div>
 
                 <div class="value-card">
                     <div class="value-icon">💰</div>
                     <h3>Transparent</h3>
-                    <p>
-                        Klare Preise, keine versteckten Kosten. Sie wissen von Anfang an, 
-                        was eine Lösung kostet und was sie bringt.
-                    </p>
+                    <p>Klare Preise, keine versteckten Kosten. Sie wissen von Anfang an, was es kostet.</p>
                 </div>
 
                 <div class="value-card">
                     <div class="value-icon">🤝</div>
                     <h3>Ehrlich</h3>
-                    <p>
-                        Wenn sich eine Investition nicht lohnt, sage ich es Ihnen. 
-                        Langfristige Partnerschaften sind mir wichtiger als schnelle Verkäufe.
-                    </p>
+                    <p>Wenn sich eine Investition nicht lohnt, sage ich es Ihnen direkt.</p>
                 </div>
 
                 <div class="value-card">
                     <div class="value-icon">🇨🇭</div>
                     <h3>Lokal</h3>
-                    <p>
-                        In der Schweiz ansässig, für Schweizer KMUs. Ich verstehe den Markt, 
-                        die Kultur und die Anforderungen.
-                    </p>
+                    <p>In der Schweiz ansässig, für Schweizer KMUs. Ich verstehe den Markt.</p>
                 </div>
             </div>
         </div>
@@ -834,32 +1010,34 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>SwissDigital Consulting</h3>
-                    <p>Digitalisierung für Schweizer KMUs</p>
-                    <p>Industrie-Erfahrung trifft Tech</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <span class="logo-icon">⚡</span>
+                        SwissDigital
+                    </a>
+                    <p>Digitalisierungslösungen für Schweizer KMUs. Industrie-Erfahrung trifft Tech-Expertise.</p>
                 </div>
 
                 <div class="footer-section">
-                    <h3>Services</h3>
+                    <h4>Branchen</h4>
+                    <a href="gastro-digitalisierung.html">Restaurant & Gastro</a>
+                    <a href="handwerk-digitalisierung.html">Handwerk & Dienstleister</a>
+                    <a href="produktion-digitalisierung.html">Produktion & Industrie</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
                     <a href="index.html#services">Web-Entwicklung</a>
                     <a href="index.html#services">Automatisierung</a>
                     <a href="index.html#services">WhatsApp Business</a>
                 </div>
 
                 <div class="footer-section">
-                    <h3>Branchen</h3>
-                    <a href="gastro-digitalisierung.html">Gastronomie</a>
-                    <a href="handwerk-digitalisierung.html">Handwerk</a>
-                    <a href="produktion-digitalisierung.html">Produktion</a>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Kontakt</h3>
-                    <p>📧 info@swissdigital.life</p>
-                    <p>📱 +41 78 665 02 53</p>
-                    <p>📍 Dottikon, Aargau</p>
+                    <h4>Kontakt</h4>
+                    <a href="mailto:info@swissdigital.life">info@swissdigital.life</a>
+                    <a href="tel:+41786650253">+41 78 665 02 53</a>
+                    <a href="#">Dottikon, Aargau</a>
                 </div>
             </div>
 

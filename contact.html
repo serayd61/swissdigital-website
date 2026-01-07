@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakt - SwissDigital Consulting | Kostenlose Erstberatung</title>
     <meta name="description" content="Kontaktieren Sie SwissDigital Consulting für eine kostenlose Erstberatung. Telefon, E-Mail, WhatsApp - wir sind für Sie da.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,95 +16,213 @@
         }
 
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --accent-color: #dc2626;
-            --success-color: #059669;
-            --warning-color: #f59e0b;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
-            --bg-light: #f9fafb;
-            --white: #ffffff;
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a24;
+            --bg-card: rgba(26, 26, 36, 0.8);
+            --accent-cyan: #00d4aa;
+            --accent-cyan-glow: rgba(0, 212, 170, 0.3);
+            --accent-gold: #f4b942;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6b6b7b;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
         }
 
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
         }
+
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-gradient-orb {
+            position: fixed;
+            width: 600px; height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb-1 { top: -200px; right: -100px; background: var(--accent-cyan); }
+        .orb-2 { bottom: -200px; left: -100px; background: var(--accent-gold); }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
         /* Header */
         header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
+            position: fixed;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
+            padding: 1rem 0;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
 
         .logo {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
+            font-weight: 700;
+            color: var(--text-primary);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-dark);
+            color: var(--text-secondary);
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--primary-color);
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-cyan);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent-cyan), #00a88a);
+            color: var(--bg-primary) !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 0.25rem;
+            background: var(--bg-tertiary);
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .lang-switcher a {
+            text-decoration: none;
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .lang-switcher a.active {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         /* Hero */
-        .contact-hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: 5rem 0;
+        .hero {
+            padding: 10rem 0 4rem;
             text-align: center;
         }
 
-        .contact-hero h1 {
-            font-size: 3rem;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
             margin-bottom: 1rem;
         }
 
-        .contact-hero p {
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
             font-size: 1.25rem;
-            opacity: 0.95;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* Contact Section */
         .contact-section {
-            padding: 5rem 0;
+            padding: 4rem 0;
         }
 
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 4rem;
         }
 
@@ -109,12 +230,23 @@
         .contact-info h2 {
             font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        .contact-info p {
+        .contact-info h2::before {
+            content: '';
+            width: 4px;
+            height: 100%;
+            min-height: 32px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+        }
+
+        .contact-info > p {
             font-size: 1.1rem;
-            color: var(--text-light);
+            color: var(--text-secondary);
             margin-bottom: 2rem;
             line-height: 1.8;
         }
@@ -122,7 +254,7 @@
         .contact-methods {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .contact-method {
@@ -130,87 +262,69 @@
             align-items: center;
             gap: 1.5rem;
             padding: 1.5rem;
-            background: var(--bg-light);
-            border-radius: 15px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
             text-decoration: none;
-            color: var(--text-dark);
-            transition: all 0.3s;
-            border: 2px solid transparent;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
         }
 
         .contact-method:hover {
-            border-color: var(--primary-color);
-            transform: translateX(10px);
-            background: var(--white);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-color: var(--accent-cyan);
+            transform: translateX(8px);
         }
 
         .contact-method-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 15px;
+            width: 56px; height: 56px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             flex-shrink: 0;
-        }
-
-        .contact-method-icon.phone {
-            background: #dcfce7;
-        }
-
-        .contact-method-icon.email {
-            background: #dbeafe;
-        }
-
-        .contact-method-icon.whatsapp {
-            background: #d1fae5;
-        }
-
-        .contact-method-icon.location {
-            background: #fef3c7;
+            background: var(--bg-tertiary);
         }
 
         .contact-method-content h3 {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             margin-bottom: 0.25rem;
         }
 
         .contact-method-content p {
             margin: 0;
-            color: var(--text-light);
-            font-size: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
 
         /* Contact Form */
         .contact-form-wrapper {
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 24px;
         }
 
         .contact-form-wrapper h2 {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: var(--text-dark);
         }
 
         .contact-form-wrapper > p {
-            color: var(--text-light);
+            color: var(--text-secondary);
             margin-bottom: 2rem;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .form-group label {
             display: block;
-            font-weight: 600;
+            font-weight: 500;
             margin-bottom: 0.5rem;
-            color: var(--text-dark);
+            color: var(--text-primary);
+            font-size: 0.95rem;
         }
 
         .form-group input,
@@ -218,23 +332,39 @@
         .form-group textarea {
             width: 100%;
             padding: 1rem;
-            border: 2px solid #e5e7eb;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
             border-radius: 10px;
             font-size: 1rem;
+            color: var(--text-primary);
             transition: border-color 0.3s;
             font-family: inherit;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
         }
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary-color);
+            border-color: var(--accent-cyan);
         }
 
         .form-group textarea {
-            min-height: 150px;
+            min-height: 120px;
             resize: vertical;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
         }
 
         .form-row {
@@ -245,53 +375,68 @@
 
         .submit-btn {
             width: 100%;
-            background: var(--primary-color);
-            color: var(--white);
+            background: linear-gradient(135deg, var(--accent-cyan), #00a88a);
+            color: var(--bg-primary);
             padding: 1.25rem 2rem;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s, transform 0.3s;
+            transition: all 0.3s ease;
+            font-family: inherit;
         }
 
         .submit-btn:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px var(--accent-cyan-glow);
         }
 
-        /* Response Time */
         .response-time {
             display: flex;
             align-items: center;
             gap: 0.5rem;
             margin-top: 1.5rem;
             padding: 1rem;
-            background: #f0fdf4;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.2);
             border-radius: 10px;
-            color: var(--success-color);
+            color: var(--accent-cyan);
             font-weight: 500;
+            font-size: 0.95rem;
         }
 
-        /* Map Section */
+        /* Service Area */
         .map-section {
             padding: 5rem 0;
-            background: var(--bg-light);
+            background: var(--bg-secondary);
         }
 
-        .map-content {
+        .section-header {
             text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .map-content h2 {
-            font-size: 2rem;
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             margin-bottom: 1rem;
         }
 
-        .map-content p {
-            color: var(--text-light);
-            margin-bottom: 2rem;
+        .section-title {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
         }
 
         .service-area {
@@ -299,20 +444,27 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-top: 2rem;
         }
 
         .area-tag {
-            background: var(--white);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             padding: 0.75rem 1.5rem;
-            border-radius: 25px;
+            border-radius: 100px;
             font-weight: 500;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .area-tag:hover {
+            border-color: var(--accent-cyan);
+            color: var(--text-primary);
         }
 
         .area-tag.primary {
-            background: var(--primary-color);
-            color: var(--white);
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            border-color: var(--accent-cyan);
         }
 
         /* FAQ Section */
@@ -320,70 +472,105 @@
             padding: 5rem 0;
         }
 
-        .faq-section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 3rem;
-        }
-
         .faq-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
         }
 
         .faq-item {
-            background: var(--bg-light);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             padding: 2rem;
-            border-radius: 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
         }
 
         .faq-item h3 {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             margin-bottom: 1rem;
-            color: var(--text-dark);
+            color: var(--text-primary);
         }
 
         .faq-item p {
-            color: var(--text-light);
+            color: var(--text-secondary);
             line-height: 1.7;
         }
 
         /* Footer */
         footer {
-            background: var(--text-dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 0 2rem;
         }
 
-        .footer-content {
+        .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
-        .footer-section h3 {
-            margin-bottom: 1rem;
+        .footer-brand .logo { margin-bottom: 1rem; }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
-        .footer-section p,
+        .footer-section h4 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
         .footer-section a {
-            color: #9ca3af;
-            text-decoration: none;
             display: block;
-            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
 
         .footer-section a:hover {
-            color: var(--white);
+            color: var(--accent-cyan);
         }
 
         .footer-bottom {
-            text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid #374151;
-            color: #9ca3af;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px; right: 24px;
+            width: 60px; height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
         }
 
         /* Responsive */
@@ -404,33 +591,59 @@
                 display: none;
             }
 
-            .contact-hero h1 {
-                font-size: 2rem;
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <div class="bg-grid"></div>
+    <div class="bg-gradient-orb orb-1"></div>
+    <div class="bg-gradient-orb orb-2"></div>
+
     <!-- Header -->
     <header>
-        <nav class="container">
-            <a href="index.html" class="logo">SwissDigital Consulting</a>
-            <ul class="nav-links">
-                <li><a href="index.html#industries">Branchen</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="tools.html">Tools</a></li>
-                <li><a href="index.html#pricing">Preise</a></li>
-                <li><a href="about.html">Über mich</a></li>
-                <li><a href="contact.html" style="color: var(--primary-color);">Kontakt</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">⚡</span>
+                    SwissDigital
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html#industries">Branchen</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#pricing">Preise</a></li>
+                    <li><a href="about.html">Über mich</a></li>
+                    <li><a href="demos.html">Tools</a></li>
+                    <li><a href="contact.html" class="nav-cta active">Kontakt</a></li>
+                </ul>
+                <div class="lang-switcher">
+                    <a href="/contact.html" class="active">DE</a>
+                    <a href="/tr/">TR</a>
+                    <a href="/en/">EN</a>
+                </div>
+                <button class="mobile-menu-btn">☰</button>
+            </nav>
+        </div>
     </header>
 
     <!-- Hero -->
-    <section class="contact-hero">
+    <section class="hero">
         <div class="container">
-            <h1>Kontaktieren Sie mich</h1>
-            <p>Kostenlose Erstberatung - unverbindlich und persönlich</p>
+            <div class="hero-badge">→ Kontakt</div>
+            <h1>Lassen Sie uns <span class="gradient-text">sprechen</span></h1>
+            <p class="hero-subtitle">Kostenlose Erstberatung - unverbindlich und persönlich</p>
         </div>
     </section>
 
@@ -442,13 +655,13 @@
                 <div class="contact-info">
                     <h2>So erreichen Sie mich</h2>
                     <p>
-                        Haben Sie Fragen zur Digitalisierung Ihres Unternehmens? Möchten Sie wissen, 
+                        Haben Sie Fragen zur Digitalisierung Ihres Unternehmens? Möchten Sie wissen,
                         welche Lösung für Sie passt? Ich freue mich auf Ihre Nachricht!
                     </p>
 
                     <div class="contact-methods">
                         <a href="tel:+41786650253" class="contact-method">
-                            <div class="contact-method-icon phone">📞</div>
+                            <div class="contact-method-icon">📞</div>
                             <div class="contact-method-content">
                                 <h3>Telefon</h3>
                                 <p>+41 78 665 02 53</p>
@@ -456,7 +669,7 @@
                         </a>
 
                         <a href="mailto:info@swissdigital.life" class="contact-method">
-                            <div class="contact-method-icon email">✉️</div>
+                            <div class="contact-method-icon">✉️</div>
                             <div class="contact-method-content">
                                 <h3>E-Mail</h3>
                                 <p>info@swissdigital.life</p>
@@ -464,7 +677,7 @@
                         </a>
 
                         <a href="https://wa.me/41786650253" class="contact-method">
-                            <div class="contact-method-icon whatsapp">💬</div>
+                            <div class="contact-method-icon">💬</div>
                             <div class="contact-method-content">
                                 <h3>WhatsApp</h3>
                                 <p>Schnell und unkompliziert</p>
@@ -472,7 +685,7 @@
                         </a>
 
                         <div class="contact-method" style="cursor: default;">
-                            <div class="contact-method-icon location">📍</div>
+                            <div class="contact-method-icon">📍</div>
                             <div class="contact-method-content">
                                 <h3>Standort</h3>
                                 <p>Dottikon, Aargau, Schweiz</p>
@@ -534,7 +747,7 @@
 
                         <div class="form-group">
                             <label for="message">Nachricht *</label>
-                            <textarea id="message" name="message" required 
+                            <textarea id="message" name="message" required
                                 placeholder="Beschreiben Sie kurz Ihr Projekt oder Ihre Frage..."></textarea>
                         </div>
 
@@ -554,20 +767,21 @@
     <!-- Service Area -->
     <section class="map-section">
         <div class="container">
-            <div class="map-content">
-                <h2>Servicegebiet</h2>
-                <p>Vor-Ort-Termine in der Deutschschweiz, Remote-Projekte schweizweit</p>
-                
-                <div class="service-area">
-                    <span class="area-tag primary">Aargau</span>
-                    <span class="area-tag primary">Zürich</span>
-                    <span class="area-tag">Luzern</span>
-                    <span class="area-tag">Zug</span>
-                    <span class="area-tag">Basel</span>
-                    <span class="area-tag">Bern</span>
-                    <span class="area-tag">St. Gallen</span>
-                    <span class="area-tag">Gesamte Schweiz (Remote)</span>
-                </div>
+            <div class="section-header">
+                <div class="section-label">→ Servicegebiet</div>
+                <h2 class="section-title">Wo ich tätig bin</h2>
+                <p class="section-subtitle">Vor-Ort-Termine in der Deutschschweiz, Remote-Projekte schweizweit</p>
+            </div>
+
+            <div class="service-area">
+                <span class="area-tag primary">Aargau</span>
+                <span class="area-tag primary">Zürich</span>
+                <span class="area-tag">Luzern</span>
+                <span class="area-tag">Zug</span>
+                <span class="area-tag">Basel</span>
+                <span class="area-tag">Bern</span>
+                <span class="area-tag">St. Gallen</span>
+                <span class="area-tag">Gesamte Schweiz (Remote)</span>
             </div>
         </div>
     </section>
@@ -575,14 +789,17 @@
     <!-- FAQ Section -->
     <section class="faq-section">
         <div class="container">
-            <h2>Häufige Fragen</h2>
+            <div class="section-header">
+                <div class="section-label">→ FAQ</div>
+                <h2 class="section-title">Häufige Fragen</h2>
+            </div>
 
             <div class="faq-grid">
                 <div class="faq-item">
                     <h3>Wie läuft eine Erstberatung ab?</h3>
                     <p>
-                        In einem 30-minütigen Gespräch (telefonisch oder vor Ort) lernen wir uns kennen. 
-                        Ich höre mir Ihre Situation an und gebe Ihnen eine erste Einschätzung, 
+                        In einem 30-minütigen Gespräch (telefonisch oder vor Ort) lernen wir uns kennen.
+                        Ich höre mir Ihre Situation an und gebe Ihnen eine erste Einschätzung,
                         welche Lösungen sinnvoll sein könnten. Komplett unverbindlich.
                     </p>
                 </div>
@@ -590,8 +807,8 @@
                 <div class="faq-item">
                     <h3>Was kostet ein Projekt?</h3>
                     <p>
-                        Die Preise beginnen bei 2'500 CHF für eine professionelle Website und 
-                        reichen bis zu 15'000+ CHF für komplexe Industrie-4.0-Lösungen. 
+                        Die Preise beginnen bei 2'500 CHF für eine professionelle Website und
+                        reichen bis zu 15'000+ CHF für komplexe Industrie-4.0-Lösungen.
                         Sie erhalten immer ein detailliertes Angebot vor Projektstart.
                     </p>
                 </div>
@@ -599,8 +816,8 @@
                 <div class="faq-item">
                     <h3>Wie lange dauert ein Projekt?</h3>
                     <p>
-                        Eine einfache Website ist in 2-3 Wochen fertig. Komplexere Projekte 
-                        mit Buchungssystemen oder Automatisierungen benötigen 4-8 Wochen. 
+                        Eine einfache Website ist in 2-3 Wochen fertig. Komplexere Projekte
+                        mit Buchungssystemen oder Automatisierungen benötigen 4-8 Wochen.
                         Den genauen Zeitplan besprechen wir gemeinsam.
                     </p>
                 </div>
@@ -608,7 +825,7 @@
                 <div class="faq-item">
                     <h3>Bieten Sie auch Wartung an?</h3>
                     <p>
-                        Ja, optional. Ab 150 CHF/Monat kümmere ich mich um Updates, Backups, 
+                        Ja, optional. Ab 150 CHF/Monat kümmere ich mich um Updates, Backups,
                         Sicherheit und Support. So können Sie sich auf Ihr Kerngeschäft konzentrieren.
                     </p>
                 </div>
@@ -619,32 +836,34 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>SwissDigital Consulting</h3>
-                    <p>Digitalisierung für Schweizer KMUs</p>
-                    <p>Industrie-Erfahrung trifft Tech</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <span class="logo-icon">⚡</span>
+                        SwissDigital
+                    </a>
+                    <p>Digitalisierungslösungen für Schweizer KMUs. Industrie-Erfahrung trifft Tech-Expertise.</p>
                 </div>
 
                 <div class="footer-section">
-                    <h3>Services</h3>
+                    <h4>Branchen</h4>
+                    <a href="gastro-digitalisierung.html">Restaurant & Gastro</a>
+                    <a href="handwerk-digitalisierung.html">Handwerk & Dienstleister</a>
+                    <a href="produktion-digitalisierung.html">Produktion & Industrie</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
                     <a href="index.html#services">Web-Entwicklung</a>
                     <a href="index.html#services">Automatisierung</a>
                     <a href="index.html#services">WhatsApp Business</a>
                 </div>
 
                 <div class="footer-section">
-                    <h3>Branchen</h3>
-                    <a href="gastro-digitalisierung.html">Gastronomie</a>
-                    <a href="handwerk-digitalisierung.html">Handwerk</a>
-                    <a href="produktion-digitalisierung.html">Produktion</a>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Kontakt</h3>
-                    <p>📧 info@swissdigital.life</p>
-                    <p>📱 +41 78 665 02 53</p>
-                    <p>📍 Dottikon, Aargau</p>
+                    <h4>Kontakt</h4>
+                    <a href="mailto:info@swissdigital.life">info@swissdigital.life</a>
+                    <a href="tel:+41786650253">+41 78 665 02 53</a>
+                    <a href="#">Dottikon, Aargau</a>
                 </div>
             </div>
 
@@ -653,5 +872,8 @@
             </div>
         </div>
     </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/41786650253" class="whatsapp-float" target="_blank">💬</a>
 </body>
 </html>
